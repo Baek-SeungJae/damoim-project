@@ -15,7 +15,6 @@
 	<tiles:insertAttribute name="content"></tiles:insertAttribute>
 	<br/><br/>
 	<tiles:insertAttribute name="footer"></tiles:insertAttribute>
-	
 	<script type="text/javascript" src="/damoim/static/common/mdb/js/mdb.min.js"></script>
 	
 </body>
