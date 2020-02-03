@@ -17,5 +17,9 @@ public class BoardListServiceImpl implements BoardListService {
 	public List<BoardListVO> boardList(String gathering, String board) {
 		return dao.boardList(gathering,board);
 	}
-
+	
+	@Override
+	public int insert(BoardListVO board) {
+		return dao.insert(board);
+	}
 }

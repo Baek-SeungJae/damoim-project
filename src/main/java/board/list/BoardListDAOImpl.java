@@ -20,6 +20,9 @@ public class BoardListDAOImpl implements BoardListDAO {
 		map.put("board", board);
 		return sqlSession.selectList("board.list.listAll",map);
 	}
-
+	@Override
+	public int insert(BoardListVO board) {
+		return sqlSession.insert("multi.erp.board.insert", board);
+	}
 	
 }
