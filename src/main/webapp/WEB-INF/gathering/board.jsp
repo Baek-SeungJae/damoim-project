@@ -34,10 +34,10 @@
 <body class="">
 	<%
 		ArrayList<BoardListVO> list = (ArrayList<BoardListVO>) request.getAttribute("boardlist");
-	%>
-	<%
 		int articlecount = (int) request.getAttribute("boardlistcount");
+		
 	%>
+	<%! int pagenum; %>
 	<!-- 메인화면 시작 -->
 	<div class="container-fluid">
 		<div class="row">
@@ -64,7 +64,7 @@
 							</thead>
 							<tbody>
 								<%
-									for (int i = 0; i < 10; i++) {
+									for (int i = 0+pagenum*10; i <10+pagenum*10; i++) {
 										BoardListVO row = list.get(i);
 								%><tr>
 									<td><%=row.getBoard_no()%></td>
@@ -89,22 +89,22 @@
 					<div class="col-xl-12">
 						<ul class="pagination justify-content-center">
 							<%
-								if (articlecount > 200) {
+								if (articlecount > 100) {
 							%>
-							<li class="page-item"><a class="page-link" href="#"> <span>«</span></a></li>
+							<li class="page-item active"><a class="page-link" href="#"> <span>«</span></a></li>
 							<%
-								for (int i = 0; i < articlecount / 10; i++) {
+								for (int i = 0; i < 10; i++) {
 							%>
-							<li class="page-item active"><a class="page-link" href="#"><%=i + 1%></a></li>
+							<li class="page-item"><a class="page-link" href="#"><%=i + 1%></a></li>
 							<%
 								}
 							%>
-							<li class="page-item"><a class="page-link" href="#"> <span>»</span></a></li>
+							<li class="page-item active"><a class="page-link" href="#"> <span>»</span></a></li>
 							<%
 								} else {
 									for (int i = 0; i < articlecount / 10; i++) {
 							%>
-							<li class="page-item active"><a class="page-link" href="#"><%=i + 1%></a></li>
+							<li class="page-item"><a class="page-link" href="#"><%=i + 1%></a></li>
 							<%
 								}
 							%>
@@ -117,38 +117,38 @@
 					<div class="col-xl-2"></div>
 					<div class="col-xl-8">
 						<div class="row">
-							<div class="col-xl-1"></div>
-							<div class="col-xl-3 w-100">
-								<select class="form-control" id="sel1" name="sellist1">
-									<option>전체기간</option>
-									<option>1일</option>
-									<option>1주</option>
-									<option>1개월</option>
-									<option>6개월</option>
-									<option>1년</option>
-								</select>
-							</div>
-							<div class="col-xl-3 w-100">
-								<select class="form-control" id="sel1" name="sellist1">
-									<option>제목만</option>
-									<option>글작성자</option>
-									<option>댓글내용</option>
-									<option>댓글작성자</option>
-								</select>
-							</div>
-							<div class="col-xl-5">
-								<form class="form-inline">
-									<div class="input-group">
-										<input type="text" class="form-control"
-											id="inlineFormInputGroup" placeholder="Search">
+							<form class="form-inline" method="post">
+								<div class="col-xl-1"></div>
+								<div class="col-xl-3">
+									<select class="form-control w-100" id="sel1" name="range">
+										<option>전체기간</option>
+										<option>1일</option>
+										<option>1주</option>
+										<option>1개월</option>
+										<option>6개월</option>
+										<option>1년</option>
+									</select>
+								</div>
+								<div class="col-xl-3">
+									<select class="form-control w-100" id="sel1" name="tag">
+										<option>제목만</option>
+										<option>글작성자</option>
+										<option>댓글내용</option>
+										<option>댓글작성자</option>
+									</select>
+								</div>
+								<div class="col-xl-5">
+									<div class="input-group w-100">
+										<input type="text" class="form-control 2-100"
+											id="inlineFormInputGroup" placeholder="Search" name="search">
 										<div class="input-group-append">
-											<button class="btn btn-primary" type="button">
+											<button class="btn btn-primary" type="submit">
 												<i class="fa fa-search"></i>
 											</button>
 										</div>
 									</div>
-								</form>
-							</div>
+								</div>
+							</form>
 						</div>
 					</div>
 					<div class="col-xl-2"></div>
