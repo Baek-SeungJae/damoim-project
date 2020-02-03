@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- main관련 작업을 하기 위해 필요한 뷰만 설정 -->
+	<definition name="main/home" extends="mainTemplate">
+		<put-attribute name="menu" value="/WEB-INF/commonTiles/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/member/main.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/commonTiles/footer.jsp"/>
+	</definition>
+	
+	<!-- <definition name="main/search" extends="mainTemplate">
+		<put-attribute name="menu" value="/WEB-INF/commonTiles/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/gathering/board.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/commonTiles/footer.jsp"/>
+	</definition> -->
+	
+	<definition name="guide" extends="mainTemplate">
+		<put-attribute name="menu" value="/WEB-INF/commonTiles/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/member/guide.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/commonTiles/footer.jsp"/>
+	</definition>
+	
+	<definition name="login" extends="mainTemplate">
+		<put-attribute name="menu" value="/WEB-INF/commonTiles/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/member/login.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/commonTiles/footer.jsp"/>
+	</definition>
+	
+	<definition name="mypage" extends="mainTemplate">
+		<put-attribute name="menu" value="/WEB-INF/commonTiles/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/member/mypage1.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/commonTiles/footer.jsp"/>
+	</definition>
+	
+	<definition name="reg" extends="mainTemplate">
+		<put-attribute name="menu" value="/WEB-INF/commonTiles/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/member/reg1.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/commonTiles/footer.jsp"/>
+	</definition>
+	
+</tiles-definitions>

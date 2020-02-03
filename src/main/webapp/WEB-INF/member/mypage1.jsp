@@ -11,7 +11,6 @@
 </head>
 
 <body >
-<button type="button" class="btn btn-primary" onclick="location.href='http://70.12.115.80:8088/serverweb/project/homeupside4.jsp' "><b>홈</b></button>
   <div class="py-5">
     <div class="container">
       <div class="row">
