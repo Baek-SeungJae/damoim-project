@@ -1,5 +1,4 @@
 package member;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +17,10 @@ public class MemberController {
 	public ModelAndView BoardList() {
 		ModelAndView mav = new ModelAndView();
 		List<BoardListVO> list = service.boardList();
-		
+
 		mav.addObject("boardlist", list);
 		mav.setViewName("gathering/board");
-		
+
 		return mav;
 	}
 }

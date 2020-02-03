@@ -18,4 +18,8 @@ public class GatheringController {
 	public String gatheringArticle() {
 		return "gathering/article";
 	}
+	@RequestMapping("/gathering/newarticle.do")
+	public String gatheringNewArticle() {
+		return "gathering/newarticle";
+	}
 }
