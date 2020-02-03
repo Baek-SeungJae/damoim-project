@@ -45,9 +45,28 @@
 		value="org.springframework.web.servlet.view.tiles3.TilesView" />
 		<beans:property name="order" value="1" />
 	</beans:bean>
-
+	
+	<!-- 3. mybatis사용을 위해 등록 -->
+	<!-- 1) connection관리를 담당하는 객체 -->
+	<beans:bean id="ds"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<beans:property name="jndiName" value="jdbc/myoracle"/>
+		<beans:property name="resourceRef" value="true"/>
+	</beans:bean>
+	<!-- 2) spring에서 mybatis의 핵심클래스인 SqlSession을 사용할 수 있도록 생서하는 객체 -->
+	<beans:bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="ds"/>
+		<beans:property name="configLocation" value="/WEB-INF/config/mybatis-config.xml"/>
+	</beans:bean>
+	<!-- 3) mybatis의 핵심클래스를 등록 -->
+	<beans:bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg ref="sqlSessionFactory"/>
+	</beans:bean>	
 		
 	<context:component-scan base-package="web.project.damoim" />
 	<context:component-scan base-package="gathering" />
 	<context:component-scan base-package="main" />
+	<context:component-scan base-package="board" />
 </beans:beans>

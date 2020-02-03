@@ -1,3 +1,5 @@
+<%@page import="board.list.BoardListVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,6 +32,12 @@
 </style>
 </head>
 <body class="">
+	<%
+		ArrayList<BoardListVO> list = (ArrayList<BoardListVO>) request.getAttribute("boardlist");
+	%>
+	<%
+		int articlecount = (int) request.getAttribute("boardlistcount");
+	%>
 	<!-- 메인화면 시작 -->
 	<div class="container-fluid">
 		<div class="row">
@@ -56,14 +64,15 @@
 							</thead>
 							<tbody>
 								<%
-									for (int i = 1; i <= 10; i++) {
+									for (int i = 0; i < 10; i++) {
+										BoardListVO row = list.get(i);
 								%><tr>
-									<td><kbd style="background-color: red; font-weight: bold;">공지</kbd></td>
+									<td><%=row.getBoard_no()%></td>
 									<td><a href="/damoim/gathering/article.do"
-										style="color: red;">내용<%=i%></a></td>
-									<td>작성자<%=i%></td>
-									<td>작성일<%=i%></td>
-									<td>조회수<%=i%></td>
+										style="color: red;"><%=row.getBoard_content()%></a></td>
+									<td><%=row.getBoard_mno()%></td>
+									<td><%=row.getBoard_date()%></td>
+									<td><%=row.getBoard_hit()%></td>
 								</tr>
 								<%
 									}
@@ -74,24 +83,36 @@
 					<!-- 게시물 끝 -->
 					<div class="col-xl-10"></div>
 					<div class="col-xl-2">
-						<a class ="btn btn-primary btn-block" href="/damoim/gathering/newarticle.do">글쓰기</a>
+						<a class="btn btn-primary btn-block"
+							href="/damoim/gathering/newarticle.do">글쓰기</a>
 					</div>
 					<div class="col-xl-12">
 						<ul class="pagination justify-content-center">
+							<%
+								if (articlecount > 200) {
+							%>
 							<li class="page-item"><a class="page-link" href="#"> <span>«</span></a></li>
-							
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">6</a></li>
-							<li class="page-item"><a class="page-link" href="#">7</a></li>
-							<li class="page-item"><a class="page-link" href="#">8</a></li>
-							<li class="page-item"><a class="page-link" href="#">9</a></li>
-							<li class="page-item"><a class="page-link" href="#">10</a></li>
+							<%
+								for (int i = 0; i < articlecount / 10; i++) {
+							%>
+							<li class="page-item active"><a class="page-link" href="#"><%=i + 1%></a></li>
+							<%
+								}
+							%>
 							<li class="page-item"><a class="page-link" href="#"> <span>»</span></a></li>
+							<%
+								} else {
+									for (int i = 0; i < articlecount / 10; i++) {
+							%>
+							<li class="page-item active"><a class="page-link" href="#"><%=i + 1%></a></li>
+							<%
+								}
+							%>
+							<%
+								}
+							%>
 						</ul>
+
 					</div>
 					<div class="col-xl-2"></div>
 					<div class="col-xl-8">

@@ -3,7 +3,7 @@ package board.list;
 import java.util.List;
 
 public interface BoardListService {
-	List<BoardListVO> boardList();
+	List<BoardListVO> boardList(String gathering, String board);
 	
 }
 

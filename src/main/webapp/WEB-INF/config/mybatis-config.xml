@@ -3,11 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- <typeAliases>
-		<typeAlias type="multi.erp.board.BoardVO" alias="board"/>
+	<typeAliases>
+		<typeAlias type="board.list.BoardListVO" alias="boardList"/>
 	</typeAliases>
 	<mappers>
-		src부터 인식
+		<!-- src부터 인식 -->
 		<mapper resource="mapper/board.xml"/>
-	</mappers> -->
+	</mappers>
 </configuration>

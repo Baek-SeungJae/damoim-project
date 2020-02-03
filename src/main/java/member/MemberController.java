@@ -16,10 +16,10 @@ public class MemberController {
 	@RequestMapping("/gathering/board.do")
 	public ModelAndView BoardList() {
 		ModelAndView mav = new ModelAndView();
-		List<BoardListVO> list = service.boardList();
+		//List<BoardListVO> list = service.boardList();
 
-		mav.addObject("boardlist", list);
-		mav.setViewName("gathering/board");
+		//mav.addObject("boardlist", list);
+	//	mav.setViewName("gathering/board");
 
 		return mav;
 	}

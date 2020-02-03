@@ -1,4 +1,4 @@
-package board;
+package board.list;
 
 import java.util.List;
 
@@ -7,21 +7,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import board.list.BoardListService;
-import board.list.BoardListVO;
-
 @Controller
 public class BoardController {
 	@Autowired
 	BoardListService service;
+	
 	@RequestMapping("/gathering/board.do")
-	public ModelAndView BoardList() {
+	public ModelAndView BoardList(String gathering, String board) {
 		ModelAndView mav = new ModelAndView();
-		List<BoardListVO> list = service.boardList();
-		
+		List<BoardListVO> list = service.boardList(gathering,board);
 		mav.addObject("boardlist", list);
+		mav.addObject("gathering",gathering);
+		mav.addObject("board",board);
+		mav.addObject("boardlistcount",list.size());
 		mav.setViewName("gathering/board");
-		
 		return mav;
 	}
 }
