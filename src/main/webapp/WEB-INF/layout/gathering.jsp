@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/damoim/static/common/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+<link href="/damoim/static/common/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 	<tiles:insertAttribute name="top"></tiles:insertAttribute>

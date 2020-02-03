@@ -18,6 +18,7 @@
 	<resources mapping="/common/**" location="/WEB-INF/static/common/" />
 	<resources mapping="/gathering/images/**" location="/WEB-INF/gathering/images/" />
 	<resources mapping="/main/images/**" location="/WEB-INF/main/images/" />
+	<resources mapping="static/**" location="/WEB-INF/static/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/" />
