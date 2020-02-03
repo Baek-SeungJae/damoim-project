@@ -4,6 +4,5 @@ import java.util.List;
 
 public interface BoardListDAO {
 
-	List<BoardListVO> boardList();
-
+	List<BoardListVO> boardList(String gathering, String board);
 }
