@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="/damoim/static/common/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
-<link href="/damoim/static/common/mdb/css/mdb.min.css" rel="stylesheet">
+<link href="/damoim/static/common/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 	<tiles:insertAttribute name="top"></tiles:insertAttribute>
@@ -15,7 +15,5 @@
 	<tiles:insertAttribute name="content"></tiles:insertAttribute>
 	<br/><br/>
 	<tiles:insertAttribute name="footer"></tiles:insertAttribute>
-	<script type="text/javascript" src="/damoim/static/common/mdb/js/mdb.min.js"></script>
-	
 </body>
 </html>

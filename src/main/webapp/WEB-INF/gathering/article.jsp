@@ -33,7 +33,7 @@
 					</div>
 					<div class="col-xl-6"></div>
 					<div class="col-xl-2" align="right">
-						<a class="btn btn-primary" href="./board.jsp" style="color: red;">목록</a>
+						<a class="btn btn-primary" href="/damoim/gathering/board.do">목록</a>
 					</div>
 				</div>
 				<br />
@@ -57,9 +57,9 @@
 								<table>
 									<tbody>
 										<tr>
-											<td style="width: 15%;"><i class="fas fa-camera fa-5x"></i></td>
-											<td style="width: 40%; font-size: 1.1vmax; font-weight: bolder;">아연 (강아**)</td>
-											<td style="width: 60%; font-size: 1.1vmax; color: gray; text-align: left;">일반멤버</td>
+											<td style="width: 15%;"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></td>
+											<td style="width: 50%; font-size: 1.1vmax; font-weight: bolder;">&nbsp;아연 (강아**)</td>
+											<td style="width: 35%; font-size: 1.1vmax; color: gray; text-align: left;">&nbsp; 일반멤버</td>
 										</tr>
 									</tbody>
 								</table>
@@ -69,7 +69,7 @@
 						<div class="col-xl-5" align="right">
 							<p style="font-size: 0.8vmax;">
 								Http://damoim.naver.com/webclient/164121 &nbsp; &nbsp;
-								<kbd style="background-color: white; border: solid 1px; color: black; font-weight: bold; font-size: 0.9vmax;">주소복사</kbd>
+								<kbd type="button" style="background-color: white; border: none 1px; color: black; font-weight: bold; font-size: 0.9vmax;">주소복사</kbd>
 							</p>
 						</div>
 					</div>
@@ -88,7 +88,7 @@
 										<tr>
 											<td style="width: 30%;"><span>댓글 </span><span style="color: red;">5</span></td>
 											<td style="width: 30%; border-left: solid 1px gray;">조회수 89</td>
-											<td style="width: 50%; border-left: solid 1px gray;">좋아요 <a class="btn btn-primary" href="#" style="font-size: 0.9vmax; padding: 0.1rem 0.3rem;">6&nbsp;&nbsp;&nbsp;<span class="oi oi-thumb-up"></span></a></td>
+											<td style="width: 40%; border-left: solid 1px gray;">좋아요 <a class="btn btn-primary" href="#" style="font-size: 0.9vmax; padding: 0.1rem 0.3rem;">6&nbsp;&nbsp;&nbsp;<span class="oi oi-thumb-up"></span></a></td> 
 										</tr>
 									</tbody>
 								</table>
