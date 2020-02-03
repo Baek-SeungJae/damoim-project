@@ -14,4 +14,8 @@ public class GatheringController {
 	public String gatheringHome() {
 		return "gathering/home";
 	}
+	@RequestMapping("/gathering/article.do")
+	public String gatheringArticle() {
+		return "gathering/article";
+	}
 }

@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
-<link href="../common/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -22,7 +21,7 @@
 	<!-- 메인화면 시작 -->
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xl-2">왼쪽 여백</div>
+			<div class="col-xl-2"></div>
 			<!-- 왼쪽여백 끝 중앙 컨텐츠 시작 -->
 			<div class="col-xl-8">
 				<div class="row">
@@ -46,7 +45,7 @@
 							<tbody>
 								<tr>
 									<td><kbd style="background-color: red; font-weight: bold;">공지</kbd></td>
-									<td><a href="http://70.12.224.117:8088/damoim/html/article.jsp" style="color:red;">내용1</a></td>
+									<td><a href="/damoim/gathering/article.do" style="color:red;">내용1</a></td>
 									<td>작성자1</td>
 									<td>작성일1</td>
 									<td>조회수1</td>
@@ -190,7 +189,7 @@
 					<!-- 중앙컨텐츠 끝 오른쪽 여백시작 -->
 				</div>
 			</div>
-			<div class="col-xl-2">오른쪽 여백</div>
+			<div class="col-xl-2"></div>
 		</div>
 	</div>
 	<!-- 메인화면 끝 -->
