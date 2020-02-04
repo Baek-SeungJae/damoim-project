@@ -14,10 +14,10 @@ public class BoardListDAOImpl implements BoardListDAO {
 	
 	@Autowired
 	SqlSession sqlSession;
-	public List<BoardListVO> boardList(String gathering, String board) {
+	public List<BoardListVO> boardList(String gath_no, String board_bno) {
 		Map<String,String> map = new HashMap<String,String>();
-		map.put("gathering",gathering);
-		map.put("board", board);
+		map.put("gath_no",gath_no);
+		map.put("board_bno", board_bno);
 		return sqlSession.selectList("board.list.listAll",map);
 	}
 	@Override

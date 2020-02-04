@@ -35,7 +35,6 @@
 	<%
 		ArrayList<BoardListVO> list = (ArrayList<BoardListVO>) request.getAttribute("boardlist");
 		int articlecount = (int) request.getAttribute("boardlistcount");
-		
 	%>
 	<%! int pagenum; %>
 	<!-- 메인화면 시작 -->

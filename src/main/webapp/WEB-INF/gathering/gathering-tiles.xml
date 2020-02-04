@@ -5,23 +5,23 @@
 <tiles-definitions>
 	<!-- gathering관련 작업을 하기 위해 필요한 뷰만 설정 -->
 	<definition name="gathering/home" extends="gatheringTemplate">
-		<put-attribute name="menu" value="/WEB-INF/gathering/include/top.jsp"/>
+		<put-attribute name="top" value="/WEB-INF/gathering/include/top.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/gathering/home.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/gathering/include/footer.jsp"/>
 	</definition>
 	
 	<definition name="gathering/board" extends="gatheringTemplate">
-		<put-attribute name="menu" value="/WEB-INF/gathering/include/top.jsp"/>
+		<put-attribute name="top" value="/WEB-INF/gathering/include/top.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/gathering/board.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/gathering/include/footer.jsp"/>
 	</definition>
 	<definition name="gathering/article" extends="gatheringTemplate">
-		<put-attribute name="menu" value="/WEB-INF/gathering/include/top.jsp"/>
+		<put-attribute name="top" value="/WEB-INF/gathering/include/top.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/gathering/article.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/gathering/include/footer.jsp"/>
 	</definition>
 	<definition name="gathering/newarticle" extends="gatheringTemplate">
-		<put-attribute name="menu" value="/WEB-INF/gathering/include/top.jsp"/>
+		<put-attribute name="top" value="/WEB-INF/gathering/include/top.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/gathering/newarticle.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/gathering/include/footer.jsp"/>
 	</definition>

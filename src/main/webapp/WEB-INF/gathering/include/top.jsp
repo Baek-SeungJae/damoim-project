@@ -19,6 +19,7 @@
 </style>
 </head>
 <body class="">
+	<% String gath_no = (String)request.getParameter("gath_no");%>
 	<!-- 상단 head 시작 -->
 	<div class="container-fluid">
 		<div class="row">
@@ -40,8 +41,8 @@
 			<div class="col-xl-9"></div>
 			<div class="col-xl-3">
 				<ul class="nav nav-pills">
-					<li class="nav-item" style="width: 33.3%; text-align: center;"><a href="/damoim/gathering/home.do" class="nav-link">홈</a></li>
-					<li class="nav-item" style="width: 33.3%; text-align: center;"><a href="/damoim/gathering/board.do" class="nav-link">게시판</a></li>
+					<li class="nav-item" style="width: 33.3%; text-align: center;"><a href="/damoim/gathering/home.do?gath_no=<%=gath_no %>" class="nav-link">홈</a></li>
+					<li class="nav-item" style="width: 33.3%; text-align: center;"><a href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_bno=<%="B02" %>" class="nav-link">게시판</a></li>
 					<li class="nav-item" style="width: 33.3%; text-align: center;"><a href="http://70.12.230.200:8088/damoim/NewStart/main.html" class="nav-link">일정</a></li>
 				</ul>
 			</div>

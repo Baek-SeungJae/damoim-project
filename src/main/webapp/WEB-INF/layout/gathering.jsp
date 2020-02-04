@@ -10,6 +10,7 @@
 <link href="/damoim/static/common/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
+
 	<tiles:insertAttribute name="top"></tiles:insertAttribute>
 	<br/><br/>
 	<tiles:insertAttribute name="content"></tiles:insertAttribute>

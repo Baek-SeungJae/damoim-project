@@ -13,12 +13,12 @@ public class BoardController {
 	BoardListService service;
 	
 	@RequestMapping("/gathering/board.do")
-	public ModelAndView BoardList(String gathering, String board) {
+	public ModelAndView boardList(String gath_no, String board_bno) {
 		ModelAndView mav = new ModelAndView();
-		List<BoardListVO> list = service.boardList(gathering,board);
+		List<BoardListVO> list = service.boardList(gath_no,board_bno);
 		mav.addObject("boardlist", list);
-		mav.addObject("gathering",gathering);
-		mav.addObject("board",board);
+		mav.addObject("gath_no",gath_no);
+		mav.addObject("board_bno",board_bno);
 		mav.addObject("boardlistcount",list.size());
 		mav.setViewName("gathering/board");
 		return mav;
