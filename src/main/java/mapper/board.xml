@@ -6,4 +6,6 @@
   <select id="listAll" resultType="boardlist">
 	select * from board
   </select>
+  
+
 </mapper>
