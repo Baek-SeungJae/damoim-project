@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gathering.join">
+	<insert id="insert" parameterType="scheduleJoin">
+		insert into schedule_mem
+		from schedule_mem me, member m
+		values(#{sche_mem_mno}, #{sche_mem_gno}, schedule_mem_seq.nextval);
+		where mem_id = #{m.mem_id} 
+		
+		insert into schedule_mem
+		from schedule_mem me, member m
+		values(m.mem_no, ,schedule_mem_seq.nextval)
+		
+		
+	</insert>
+	
+	<select id="findbyid" resultType="String">
+		select m.*
+		from schedule_mem me, member m
+		<!-- where me.sche_mem_sno = #{} and me.sche_mem_mno = m.mem_id -->
+	</select>
+</mapper>

@@ -8,8 +8,14 @@
 	from board b, gathering g
 	where b.board_gno=g.gath_no
 		and g.gath_no=#{gath_no}
-		and b.board_bno=#{board_bno}
   </select>
   
-
+  <select id="categorySearch" resultType="boardlist" parameterType="Map">
+	select b.*
+	from board b, gathering g
+	where b.board_gno=g.gath_no
+		and g.gath_no=#{gath_no}
+		and b.board_category = #{board_category}
+  </select>
+  
 </mapper>

@@ -3,11 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+<!-- 
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+	 -->
 	<typeAliases>
 		<typeAlias type="board.list.BoardListVO" alias="boardList"/>
+		<typeAlias type="gathering.info.GatheringInfoVO" alias="gathering"/>
+		<typeAlias type="gathering.schedule.ScheduleRegisterVO" alias="scheduleRegister"/>
+		<typeAlias type="gathering.join.ScheduleJoinVO" alias="scheduleJoin"/>
 	</typeAliases>
 	<mappers>
 		<!-- src부터 인식 -->
 		<mapper resource="mapper/board.xml"/>
+		<mapper resource="mapper/gathering.xml"/>
+		<mapper resource="mapper/scheduleRegister.xml"/>
+		<mapper resource="mapper/scheduleJoin.xml"/>
 	</mappers>
 </configuration>

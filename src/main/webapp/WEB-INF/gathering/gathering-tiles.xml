@@ -25,4 +25,20 @@
 		<put-attribute name="content" value="/WEB-INF/gathering/newarticle.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/gathering/include/footer.jsp"/>
 	</definition>
+	
+	<!-- ==============================여기서부터 김성현 작업시작================================= -->
+	<definition name="gathering/sch_main" extends="gatheringTemplate">
+		<put-attribute name="menu" value="/WEB-INF/gathering/include/top.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/gathering/sch_main.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/gathering/include/footer.jsp"/>
+	</definition>
+	
+	<definition name="gathering/sch_create" extends="gatheringTemplate2">
+		<put-attribute name="top" value="/WEB-INF/gathering/include/top.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/gathering/sch_create.jsp"/>
+	</definition>
+	
+	<definition name="gathering/sch_create" extends="gatheringTemplate3">
+		<put-attribute name="content" value="/WEB-INF/gathering/sch_createFinish.jsp"/>
+	</definition>
 </tiles-definitions>

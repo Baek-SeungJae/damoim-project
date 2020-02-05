@@ -1,3 +1,4 @@
+<%@page import="gathering.info.GatheringInfoVO"%>
 <%@page import="board.list.BoardListVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -30,13 +31,36 @@
 	padding-right: 0px;
 }
 </style>
+<script type="text/javascript">
+	board_category = "${board_category}";
+	gath_no="${gath_no}";
+	$(document)
+			.ready(
+					function() {
+						if (board_category == "") {
+							board_category = "all";
+						}
+						$("#board_category").val(board_category).attr(
+								"selected", "selected");
+						$("#board_category")
+								.change(
+										function() {
+											location.href = "/damoim/gathering/board.do?gath_no="+gath_no+"&board_category="
+													+ encodeURI($(this).val())+"&pagenum=0";
+										});
+					});
+</script>
 </head>
 <body class="">
 	<%
 		ArrayList<BoardListVO> list = (ArrayList<BoardListVO>) request.getAttribute("boardlist");
+		out.write(list.size());
 		int articlecount = (int) request.getAttribute("boardlistcount");
+		String gath_no = (String) request.getParameter("gath_no");
+		int pagenum = Integer.parseInt(request.getParameter("pagenum"));
+		String category = request.getParameter("board_category");
+		//GatheringInfoVO vo = (GatheringInfoVO) request.getAttribute("vo");
 	%>
-	<%! int pagenum; %>
 	<!-- 메인화면 시작 -->
 	<div class="container-fluid">
 		<div class="row">
@@ -45,36 +69,48 @@
 			<div class="col-xl-8">
 				<div class="row">
 					<div class="col-xl-6">
-						<h1><%="자유게시판"%></h1>
+						<h1><%="게시판"%></h1>
+						<br />
+						<form>
+							<select class="form-control w-50" name="board_category"
+								id="board_category">
+								<option value="all">전체게시물</option>
+								<option value="B01">11</option>
+								<option value="B02">22</option>
+								<option value="B03">33</option>
+							</select>
+						</form>
 						<br />
 					</div>
 					<div class="col-xl-6"></div>
 					<!-- 게시물 시작 -->
 					<div class="table-responsive">
-						<table class="table" style="font-size: 1vmax;">
+						<table class="table" style="font-size: 1vmax">
 							<thead>
 								<tr>
-									<th width="10%" align="center">#</th>
-									<th width="60%">내용</th>
-									<th width="10%">작성자</th>
-									<th width="10%">작성일</th>
-									<th width="10%">조회수</th>
+									<th width="10%" style="text-align: center">분류</th>
+									<th width="55%">내용</th>
+									<th width="10%" style="text-align: center">작성자</th>
+									<th width="15%" style="text-align: center">작성일</th>
+									<th width="10%" style="text-align: center">조회수</th>
 								</tr>
 							</thead>
 							<tbody>
 								<%
-									for (int i = 0+pagenum*10; i <10+pagenum*10; i++) {
-										BoardListVO row = list.get(i);
+									if (list != null) {
+										for (int i = 0 + pagenum * 10; i < 10 + pagenum * 10; i++) {
+											BoardListVO row = list.get(i);
 								%><tr>
-									<td><%=row.getBoard_no()%></td>
+									<td style="text-align: center"><%=row.getBoard_category()%></td>
 									<td><a href="/damoim/gathering/article.do"
 										style="color: red;"><%=row.getBoard_content()%></a></td>
-									<td><%=row.getBoard_mno()%></td>
-									<td><%=row.getBoard_date()%></td>
-									<td><%=row.getBoard_hit()%></td>
+									<td style="text-align: center"><%=row.getBoard_mno()%></td>
+									<td style="text-align: center"><%=row.getBoard_date()%></td>
+									<td style="text-align: center"><%=row.getBoard_hit()%></td>
 								</tr>
 								<%
 									}
+								} 
 								%>
 							</tbody>
 						</table>
@@ -90,25 +126,34 @@
 							<%
 								if (articlecount > 100) {
 							%>
-							<li class="page-item active"><a class="page-link" href="#"> <span>«</span></a></li>
+							<li class="page-item active"><a class="page-link"
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no%>&board_category=<%=category%>&pagenum=<%=0%>">
+									<span>«</span>
+							</a></li>
 							<%
 								for (int i = 0; i < 10; i++) {
 							%>
-							<li class="page-item"><a class="page-link" href="#"><%=i + 1%></a></li>
+							<li class="page-item"><a class="page-link"
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no%>&board_category=<%=category%>&pagenum=<%=i%>"><%=i + 1%></a></li>
 							<%
 								}
 							%>
-							<li class="page-item active"><a class="page-link" href="#"> <span>»</span></a></li>
+							<li class="page-item active"><a class="page-link"
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no%>&board_category=<%=category%>&pagenum=<%=9%>">
+									<span>»</span>
+							</a></li>
 							<%
 								} else {
+									if(list!=null){
 									for (int i = 0; i < articlecount / 10; i++) {
 							%>
-							<li class="page-item"><a class="page-link" href="#"><%=i + 1%></a></li>
+							<li class="page-item"><a class="page-link"
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no%>&board_category=<%=category%>&pagenum=<%=i%>"><%=i + 1%></a></li>
 							<%
 								}
 							%>
 							<%
-								}
+								}}
 							%>
 						</ul>
 

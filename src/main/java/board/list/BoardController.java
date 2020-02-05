@@ -13,12 +13,12 @@ public class BoardController {
 	BoardListService service;
 	
 	@RequestMapping("/gathering/board.do")
-	public ModelAndView boardList(String gath_no, String board_bno) {
+	public ModelAndView boardList(String gath_no, String board_category) {
 		ModelAndView mav = new ModelAndView();
-		List<BoardListVO> list = service.boardList(gath_no,board_bno);
+		List<BoardListVO> list = service.boardList(gath_no,board_category);
 		mav.addObject("boardlist", list);
 		mav.addObject("gath_no",gath_no);
-		mav.addObject("board_bno",board_bno);
+		mav.addObject("board_category",board_category);
 		mav.addObject("boardlistcount",list.size());
 		mav.setViewName("gathering/board");
 		return mav;
@@ -27,7 +27,6 @@ public class BoardController {
 	public String insert(BoardListVO board) {
 		//System.out.println(board);
 		//int result = service.insert(board);
-		System.out.println("호출된다.");
 		return "redirect:/gathering/board.do";
 	}
 	@RequestMapping("/gathering/article.do")
