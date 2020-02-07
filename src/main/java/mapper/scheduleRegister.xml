@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gathering.schedule">
+	<insert id="insert" parameterType="String">
+		insert into schedule values(schedule_seq.nextval, #{gath_no}, #{sche_name}, #{sche_date},
+		#{sche_location}, #{sche_fee}, #{sche_limit}, #{sche_chat}, 'kim', #{sche_context})
+	</insert>
+
+	<select id="listtwo" resultType="scheduleRegister">
+		select s.sche_date, s.sche_loc, s.sche_fee, s.sche_context
+		from schedule s
+	</select>
+
+
+</mapper>

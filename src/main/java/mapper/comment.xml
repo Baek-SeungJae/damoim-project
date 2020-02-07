@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board.comment">
+  <select id="listAll" resultType="comment">
+	select b.*
+	from board b, gathering g
+	where b.board_gno=g.gath_no
+		and g.gath_no=#{gath_no}
+  </select>
+  
+  <insert id="insert" parameterType="comment">
+  	insert into board values(board_seq.nextval,#{board_title},#{board_content},#{board_gno},#{board_mno}, sysdate,'0','0',#{board_category})
+  </insert>
+  
+  
+</mapper>

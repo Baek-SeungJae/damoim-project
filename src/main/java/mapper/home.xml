@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="multi.erp.emp">
+ 레코드 하나가 emp에 매핑됨
+	parameterType 두 개 따로 받기 귀찮으므로 emp로 받음
+	<select id="login" resultType="emp" parameterType="emp">
+	select b.*
+	from board b, gathering g
+	where b.board_gno=g.gath_no
+		and g.gath_no=#{gath_no}
+		and b.board_bno=#{board_bno}
+	</select>
+</mapper> -->
