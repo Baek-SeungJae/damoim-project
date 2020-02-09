@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="damoim.test">
+  	<select id="search" resultType="gathering" parameterType="Map">
+  		select * from gathering where rtrim (gath_major,' ')=#{gath_major} or rtrim(gath_minor, ' ')=#{gath_minor}
+   	</select>
+  </mapper>
