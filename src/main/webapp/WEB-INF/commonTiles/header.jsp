@@ -33,6 +33,78 @@ h1 {
 h5 {
 	color: green;
 }
+:root{
+--primary: #FF399B;
+}
+.btn-primary {
+background-color: #FF399B;
+border-color: #FF399B;
+}
+.btn-primary.disabled, .btn-primary:disabled{
+background-color: #FF399B;
+border-color: #FF399B;
+}
+.btn-outline-primary {
+color: #FF399B;
+border-color: #FF399B;
+}
+.btn-outline-primary:hover{
+background-color: #FF399B;
+border-color: #FF399B;
+}
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+color: #FF399B;
+}
+.show > .btn-outline-primary.dropdown-toggle {
+background-color: #FF399B;
+border-color: #FF399B;
+}
+.dropdown-item.active, .dropdown-item:active {
+background-color: #FF399B;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+border-color: #FF399B;
+background-color: #FF399B;
+}
+.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
+border-color: #FF399B;
+background-color: #FF399B;
+}
+.custom-range::-webkit-slider-thumb {
+background-color: #FF399B;
+}
+.custom-range::-moz-range-thumb{
+background-color: #FF399B;
+}
+.custom-range::-ms-thumb{
+background-color: #FF399B;
+}
+.nav-pills .show > .nav-link {
+background-color: #FF399B;
+}
+.page-item.active .page-link{
+background-color: #FF399B;
+border-color: #FF399B;
+}
+.badge-primary{
+background-color: #FF399B;
+}
+.progress-bar{
+background-color: #FF399B;
+}
+.list-group-item.active{
+background-color: #FF399B;
+border-color: #FF399B;
+}
+.bg-primary{
+background-color: #FF399B !important;
+}
+.border-primary{
+border-color: #FF399B !important;
+}
+.text-primary{
+color: #FF399B !important;
+}
 </style>
 </head>
 

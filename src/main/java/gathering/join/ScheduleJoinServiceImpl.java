@@ -16,8 +16,8 @@ public class ScheduleJoinServiceImpl implements ScheduleJoinService {
 	ScheduleJoinDAO dao;
 	
 	@Override
-	public int register(String id, String gath_no) {
-		return dao.insert(id, gath_no);
+	public int register(String id, String gath_no, String sche_no) {
+		return dao.insert(id, gath_no, sche_no);
 	}
 
 	@Override

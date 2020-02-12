@@ -17,9 +17,9 @@
 		<typeAlias type="member.MemberVO" alias="member"/>
 		<typeAlias type="board.comment.BoardCommentVO" alias="comment"/>
 		<typeAlias type="gathering.info.GatheringMemberVO" alias="gatheringmember"/>
-		<typeAlias type="board.list.ImageVO" alias="image"/>
 		<typeAlias type="board.comment.BoardCommentLikeVO" alias="commentlike"/>
-		
+		<typeAlias type="image.ImageVO" alias="image"/>
+		<typeAlias type="moim.list.MoimListVO" alias="moimList"/>
 	</typeAliases>
 	<mappers>
 		<!-- src부터 인식 -->
@@ -31,5 +31,7 @@
 		<mapper resource="mapper/comment.xml"/>
 		<mapper resource="mapper/home.xml"/>
 		<mapper resource="mapper/search.xml"/>
+		<mapper resource="mapper/image.xml"/>
+		<mapper resource="mapper/moim.xml"/>
 	</mappers>
 </configuration>

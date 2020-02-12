@@ -15,6 +15,11 @@
 		<put-attribute name="content" value="/WEB-INF/gathering/board.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/gathering/include/footer.jsp"/>
 	</definition>
+	<definition name="gathering/boardsearch" extends="gatheringTemplate">
+		<put-attribute name="top" value="/WEB-INF/gathering/include/top.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/gathering/boardsearch.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/gathering/include/footer.jsp"/>
+	</definition>
 	<definition name="gathering/article" extends="gatheringTemplate">
 		<put-attribute name="top" value="/WEB-INF/gathering/include/top.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/gathering/article.jsp"/>
@@ -51,6 +56,11 @@
 	<definition name="gathering/memberDetail" extends="gatheringTemplate">
 		<put-attribute name="top" value="/WEB-INF/gathering/include/top.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/gathering/sch_memberDetail.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/gathering/include/footer.jsp"/>
+	</definition>
+	<definition name="gathering/moim" extends="gatheringTemplate">
+		<put-attribute name="top" value="/WEB-INF/gathering/include/top.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/gathering/khrmoim.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/gathering/include/footer.jsp"/>
 	</definition>
 </tiles-definitions>

@@ -1,10 +1,12 @@
 package gathering.schedule;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import member.MemberVO;
 
 @Service
 public class ScheduleRegisterServiceImpl implements ScheduleRegisterService {
@@ -24,17 +26,36 @@ public class ScheduleRegisterServiceImpl implements ScheduleRegisterService {
 		return list;
 	}
 
-	@Override
+	/*@Override
 	public List<Date> calendar(String gath_no) {
 		List<Date> result = null;
 		result = dao.calendar(gath_no);
 		return result;
-	}
+	}*/
 
 	@Override
 	public List<ScheduleRegisterVO> moimListAll(String gath_no) {
 		List<ScheduleRegisterVO> list=null;
 		list = dao.moimListAll(gath_no);
+		return list;
+	}
+
+	public int moimDelete(String sche_no, String mem_id) {
+		int result = dao.moimDelete(sche_no, mem_id);
+		return result;
+	}
+
+	@Override
+	public List<ScheduleRegisterVO> moimListAllAjax(String mydate, String gath_no) {
+		List<ScheduleRegisterVO> list = null;
+		list = dao.moimListAllAjax(mydate, gath_no);
+		return list;
+	}
+
+	@Override
+	public List<MemberVO> moimListAllAjax2(String mydate, String gath_no) {
+		List<MemberVO> list = null;
+		list = dao.moimListAllAjax2(mydate, gath_no);
 		return list;
 	}
 

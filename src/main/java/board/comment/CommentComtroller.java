@@ -20,19 +20,28 @@ public class CommentComtroller {
 		int result = commentservice.insert(comment);
 		return "redirect:/gathering/article.do?gath_no=" + gath_no + "&board_no=" + board_no + "&pagenum=0";
 	}
-
+	@RequestMapping("/gathering/article/commentdelete.do")
+	public String delete(String b_comm_no, String gath_no, String board_no) {
+		int result = commentservice.deleteone(b_comm_no);
+		return "redirect:/gathering/article.do?gath_no=" + gath_no + "&board_no=" + board_no + "&pagenum=0";
+	}
+	
 	@RequestMapping("/gathering/comment/like.do")
 	public String like(String gath_no, String board_no, String comment_no, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		MemberVO vo = (MemberVO) session.getAttribute("user");
 		if (vo != null) {
+			System.out.println(1);
 			BoardCommentLikeVO like = commentservice.likesearch(comment_no, vo.getMem_id());
 			if (like == null) {
-				commentservice.likeinsert(like);
+				commentservice.likeinsert(comment_no, vo.getMem_id());
 			} else {
+				System.out.println(3);
 				commentservice.likedelete(like);
 			}
 		}
-		return "redirect:/gathering/article.do?gath_no=" + gath_no + "&board_no=" + board_no + "&pagenum=0";
+		System.out.println(4);
+		
+		return "redirect:/gathering/article.do?gath_no="+gath_no+"&board_no="+board_no+"&pagenum=0";
 	}
 }

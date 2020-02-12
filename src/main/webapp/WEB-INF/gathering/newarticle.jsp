@@ -9,6 +9,7 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
 	crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -33,6 +34,8 @@
 	padding-right: 0px;
 }
 </style>
+
+
 </head>
 <body class="">
 	<% MemberVO user = (MemberVO) session.getAttribute("user"); %>
@@ -54,14 +57,14 @@
 				<% } %>
 					<select class="form-control w-50" name="board_category"
 						id="board_category">
-						<option value="B01">11</option>
-						<option value="B02">22</option>
-						<option value="B03">33</option>
+						<option value="B01">자유게시판</option>
+						<option value="B02">공지사항</option>
+						<option value="B03">질문과답변</option>
 					</select> <input type="hidden" name="board_gno"
 						value="<%=request.getParameter("gath_no")%>"> <input
 						type="hidden" name="board_mno" value="<%=user.getMem_id()%>">
 					<br /> 
-						<input type="text" class="form-control" name="board_title" placeholder="제목을 입력해주세요."> 
+						<input class="form-control" name="board_title" placeholder="제목을 입력해주세요."> 
 					<br />
 					<div class="form-group">
 						<textarea id="summernote" name="board_content"></textarea>
@@ -72,32 +75,15 @@
 							disableDragAndDrop: true,
 							tabsize : 2,
 							height : 500,
-							callbacks:{
-								onImageUpload: function(files) {
-					           	 sendFile(files[0]);
-					        	}
-							}
-						});
-						function sendFile(file) {
-						    data = new FormData();
-						    data.append("file", file);
-						    $.ajax({
-						        data: data,
-						        type: "POST",
-						        url: "GetFile.aspx",
-						        cache: false,
-						        enctype: 'multipart/form-data',
-						        contentType: false,
-						        processData: false,
-						        success: function(url) {
-						        	$('#summernote').summernote('insertimage',url);
-						        }
-						    });
-						}
+							focus : true,
+							
+							});
 					</script>
 					<br />
 					<div class="row">
-						<div class="col-xl-10"></div>
+						<div class="col-xl-10">
+							
+						</div>
 						<div class="col-xl-2">
 							<% if(state.equals("0")){ %>
 								<button type="submit" class="btn btn-primary w-100">작성완료</button>
@@ -107,6 +93,7 @@
 						</div>
 					</div>
 				</form>
+				
 			</div>
 
 	<% } else { %>

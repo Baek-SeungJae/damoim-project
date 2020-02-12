@@ -22,15 +22,23 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		return dao.insert(comment);
 	}
 	@Override
-	public BoardCommentLikeVO likesearch(String commnet_like_cno, String comment_like_mno){
-		return dao.likesearch(commnet_like_cno,comment_like_mno);
+	public int delete(String board_no) {
+		return dao.delete(board_no);
+	}
+	@Override
+	public int deleteone(String b_comm_no) {
+		return dao.deleteone(b_comm_no);
+	}
+	@Override
+	public BoardCommentLikeVO likesearch(String comment_like_cno, String comment_like_mno){
+		return dao.likesearch(comment_like_cno,comment_like_mno);
 	}
 	@Override
 	public int likedelete(BoardCommentLikeVO like) {
 		return dao.likedelete(like);
 	}
 	@Override
-	public int likeinsert(BoardCommentLikeVO like) {
-		return dao.likeinsert(like);
+	public int likeinsert(String comment_like_cno, String comment_like_mno) {
+		return dao.likeinsert(comment_like_cno, comment_like_mno);
 	}
 }

@@ -10,23 +10,32 @@
 		and c.b_comm_mno=m.mem_id
 		and c.b_comm_bno=#{board_no}
   </select>
-  
+
   <insert id="insert" parameterType="comment">
-  	insert into BOARD_COMMENT values(comment_seq.nextval,#{b_comm_content},#{b_comm_mno}, sysdate,'0',#{b_comm_bno},'0','0')
+  	insert into BOARD_COMMENT values(comment_seq.nextval,#{b_comm_content},#{b_comm_mno}, sysdate,#{b_comm_bno},'0','0')
   </insert>
-  
-  <select id="likesearch" parameterType="Map">
+  <delete id="delete" parameterType="String">
+  	delete
+  	from board_comment
+  	where b_comm_bno=#{board_no}
+  </delete>
+  <delete id="deleteone" parameterType="String">
+  	delete
+  	from board_comment
+  	where b_comm_no=#{b_comm_no}
+  </delete>
+  <select id="likesearch" parameterType="Map" resultType="commentlike">
   	select *
   	from board_comment_like
   	where comment_like_cno=#{comment_like_cno}
   		and comment_like_mno=#{comment_like_mno}
   </select>
-  <insert id="likeinsert" parameterType="commentlike">
-  	insert into BOARD_COMMNET_LIKE values(#{comment_like_cno},#{comment_like_mno})
+  <insert id="likeinsert" parameterType="Map">
+  	insert into BOARD_COMMNET_LIKE values(#{comment_like_cno}, #{comment_like_mno})
   </insert>
   <delete id="likedelete">
   	delete
-  	from board
+  	from board_comment_like
   	where comment_like_cno=#{comment_like_cno}
   		and comment_like_mno=#{comment_like_mno}
   </delete>

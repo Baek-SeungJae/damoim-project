@@ -11,22 +11,9 @@ public class BoardCommentVO {
 	private int b_comm_depth;		//뎁스
 	private String b_comm_parent;	//부모댓글번호
 	private String b_comm_nickname;
-	private int b_comm_like;		//좋아요
 	public BoardCommentVO() {}
 	
 	
-	public BoardCommentVO(String b_comm_no, String b_comm_content, String b_comm_mno, Date b_comm_date, int b_comm_like,
-			String b_comm_bno, int b_comm_depth, String b_comm_parent) {
-		super();
-		this.b_comm_no = b_comm_no;
-		this.b_comm_content = b_comm_content;
-		this.b_comm_mno = b_comm_mno;
-		this.b_comm_date = b_comm_date;
-		this.b_comm_like = b_comm_like;
-		this.b_comm_bno = b_comm_bno;
-		this.b_comm_depth = b_comm_depth;
-		this.b_comm_parent = b_comm_parent;
-	}
 	
 
 	public String getB_comm_nickname() {
@@ -58,12 +45,6 @@ public class BoardCommentVO {
 	}
 	public void setB_comm_mno(String b_comm_mno) {
 		this.b_comm_mno = b_comm_mno;
-	}
-	public int getB_comm_like() {
-		return b_comm_like;
-	}
-	public void setB_comm_like(int b_comm_like) {
-		this.b_comm_like = b_comm_like;
 	}
 	public String getB_comm_bno() {
 		return b_comm_bno;

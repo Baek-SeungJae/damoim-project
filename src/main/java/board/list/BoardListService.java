@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface BoardListService {
 	List<BoardListVO> boardList(String gath_no, String board_category);
+	List<BoardListVO> boardsearchList(String gath_no, String date, String tag, String search);
 	int insert(BoardListVO board);
 	BoardListVO detailView(String board_no);
 	int profileUpload(String gath_no, String board_no, MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception ;

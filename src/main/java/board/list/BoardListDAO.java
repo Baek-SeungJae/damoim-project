@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface BoardListDAO {
 
 	List<BoardListVO> boardList(String gath_no, String board_category);
+	List<BoardListVO> boardsearchList(String gath_no, String date, String tag, String search);
 	int insert(BoardListVO board);
 	List<BoardListVO> category(String gath_no, String board_category);
 	BoardListVO detailView(String board_no);

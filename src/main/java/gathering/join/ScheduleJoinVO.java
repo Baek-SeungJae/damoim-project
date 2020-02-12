@@ -3,13 +3,13 @@ package gathering.join;
 public class ScheduleJoinVO {
 	String sche_mem_mno;	//참석버튼을 누른 멤버 번호
 	String sche_mem_gno;	//어떤 모임을 참석할지, 해당 모임의 번호(ex. A, B, C, D)
-	int sche_mem_sno;	//일정번호. 모임생성될 때마다 1씩 증가
+	String sche_mem_sno;	//일정번호. 모임생성될 때마다 1씩 증가
 	
 	public ScheduleJoinVO() {
 		
 		
 	}
-	public ScheduleJoinVO(String sche_mem_mno, String sche_mem_gno, int sche_mem_sno) {
+	public ScheduleJoinVO(String sche_mem_mno, String sche_mem_gno, String sche_mem_sno) {
 		super();
 		this.sche_mem_mno = sche_mem_mno;
 		this.sche_mem_gno = sche_mem_gno;
@@ -34,10 +34,10 @@ public class ScheduleJoinVO {
 	public void setSche_mem_gno(String sche_mem_gno) {
 		this.sche_mem_gno = sche_mem_gno;
 	}
-	public int getSche_mem_sno() {
+	public String getSche_mem_sno() {
 		return sche_mem_sno;
 	}
-	public void setSche_mem_sno(int sche_mem_sno) {
+	public void setSche_mem_sno(String sche_mem_sno) {
 		this.sche_mem_sno = sche_mem_sno;
 	}
 	

@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import board.list.BoardListService;
 import board.list.BoardListVO;
+import image.ImageService;
+import image.ImageVO;
 import member.MemberVO;
 
 @Controller
@@ -20,6 +22,9 @@ public class GatheringController {
 	GatheringInfoService service;
 	@Autowired
 	BoardListService boardservice;
+	@Autowired
+	ImageService imageservice;
+	
 	@RequestMapping("/gathering/home.do")
 	public ModelAndView gatheringHome(String gath_no, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -28,6 +33,11 @@ public class GatheringController {
 		GatheringInfoVO gathering = service.read(gath_no);
 		List<BoardListVO> boardlist = boardservice.boardList(gathering.getGath_no(), "all");
 		//List<GatheringMemberVO> memberlist = service.gatheringmembersearch(gath_no);
+		List<ImageVO> imglist = imageservice.searchlistimage(gath_no, "gathering");
+		mav.addObject("imglist",imglist);
+		List<ImageVO> imgtitle = imageservice.searchlistimage(gath_no, "title");
+		mav.addObject("imgtitle", imgtitle);
+		System.out.println(imglist);
 		if(vo!=null) {
 			GatheringMemberVO memcheck = service.memberCheckOfGathering(vo.getMem_id(), gath_no);
 			if(memcheck!=null) {

@@ -32,7 +32,13 @@ public class BoardListServiceImpl implements BoardListService {
 		}
 		return list;
 	}
-
+	@Override
+	public List<BoardListVO> boardsearchList(String gath_no, String date, String tag, String search) {
+		return dao.boardsearchList(gath_no, date, tag, search);
+	}
+	
+	
+	
 	@Override
 	public int insert(BoardListVO board) {
 		return dao.insert(board);

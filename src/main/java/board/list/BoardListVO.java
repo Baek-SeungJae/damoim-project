@@ -13,6 +13,7 @@ public class BoardListVO {
 	private String board_category;		//게시판이름
 	private String board_name;
 	private String board_nickname;
+	private String comm_count;
 	public BoardListVO() {}
 	
 	public BoardListVO(String board_no, String board_title, String board_content, String board_gno, String board_mno,
@@ -36,6 +37,14 @@ public class BoardListVO {
 				+ "]";
 	}
 	
+	public String getComm_count() {
+		return comm_count;
+	}
+
+	public void setComm_count(String comm_count) {
+		this.comm_count = comm_count;
+	}
+
 	public String getBoard_name() {
 		return board_name;
 	}

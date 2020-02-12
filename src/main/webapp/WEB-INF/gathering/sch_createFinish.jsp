@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -201,8 +202,8 @@ button {
 
 .btn-success {
 	color: #fff;
-	background-color: #3ac47d;
-	border-color: #3ac47d;
+	background-color: #FF399B;
+	border-color: #FF399B;
 }
 
 .btn {

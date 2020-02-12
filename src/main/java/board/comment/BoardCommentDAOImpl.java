@@ -21,9 +21,17 @@ public class BoardCommentDAOImpl implements BoardCommentDAO {
 		return sqlSession.insert("board.comment.insert",comment);
 	}
 	@Override
-	public BoardCommentLikeVO likesearch(String commnet_like_cno, String comment_like_mno) {
+	public int delete(String board_no) {
+		return sqlSession.delete("board.comment.delete", board_no);
+	}
+	@Override
+	public int deleteone(String b_comm_no) {
+		return sqlSession.delete("board.comment.deleteone", b_comm_no);
+	}
+	@Override
+	public BoardCommentLikeVO likesearch(String comment_like_cno, String comment_like_mno) {
 		Map<String,String> map = new HashMap<String,String>();
-		map.put("commnet_like_cno", commnet_like_cno);
+		map.put("comment_like_cno", comment_like_cno);
 		map.put("comment_like_mno", comment_like_mno);
 		return sqlSession.selectOne("board.comment.likesearch", map);
 	}
@@ -32,7 +40,10 @@ public class BoardCommentDAOImpl implements BoardCommentDAO {
 		return sqlSession.delete("board.comment.likedelete", like);
 	}
 	@Override
-	public int likeinsert(BoardCommentLikeVO like) {
-		return sqlSession.insert("board.comment.likedelete", like);
+	public int likeinsert(String comment_like_cno, String comment_like_mno) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("comment_like_cno", comment_like_cno);
+		map.put("comment_like_mno", comment_like_mno);
+		return sqlSession.insert("board.comment.likedelete", map);
 	}
 }

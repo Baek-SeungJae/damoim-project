@@ -1,3 +1,4 @@
+<%@page import="image.ImageVO"%>
 <%@page import="member.MemberVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="board.comment.BoardCommentVO"%>
@@ -11,15 +12,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<style type="text/css">+
 
-<style type="text/css">
-.container-fluid{
-	padding-left: 0px;
-	padding-right: 0px;
-}
 </style>
 </head>
 <body class="">
@@ -29,10 +26,12 @@
 	<% int listsize = commentlist.size();%>
 	<% int commentcount = (int)request.getAttribute("commentcount") ; %>
 	<% int pagenum = Integer.parseInt(request.getParameter("pagenum")); %>
-	<% String board_no = (String)request.getParameter("board_no");%>
+	<% String board_no = (String)request.getAttribute("board_no");%>
 	<% MemberVO user = (MemberVO)session.getAttribute("user"); %>
 	<% boolean memchk = (boolean)request.getAttribute("memchk"); %>
+	<% List<ImageVO> img = (List<ImageVO>)request.getAttribute("img"); %>
 	<!-- 메인화면 시작 -->
+	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xl-2"></div>
@@ -47,14 +46,46 @@
 					<div class="col-xl-2">
 						<a class="btn btn-primary btn-block" href="/damoim/gathering/articledelete.do?gath_no=<%=gath_no%>&board_no=<%=board_no%>">삭제</a>
 					</div>
-				<% }}else{ %>
-					<div class="col-xl-4"></div>
-				<%} %>
+					<div class="col-xl-2"></div>
+					
+				<% } else{ %>
 					<div class="col-xl-6"></div>
+					<%}} else {%>
+					<div class="col-xl-6"></div>
+					<%} %>
+					<div class="col-xl-4"></div>
 					<div class="col-xl-2" align="right">
 						<a class="btn btn-primary" href="/damoim/gathering/board.do?gath_no=<%=gath_no%>&pagenum=0&board_category=all">목록</a>
 					</div>
+					
 				</div>
+				<%if(user!=null){ 
+					if(user.getMem_id().equals(board.getBoard_mno())){ %>
+				<div class="row p-2">
+					<form id="FILE_FORM" method="post" enctype="multipart/form-data" action="">
+					사진업로드: <input type="file" name="file" id="file" class="border rounded">
+							<a class="btn border rounded" href="javascript:uploadFile();">전송</a>
+					 </form>
+					 <script type="text/javascript">
+						function uploadFile(){
+							var form = $('#FILE_FORM')[0];
+							var formData = new FormData(form);
+							alert("함수");
+							$.ajax({
+								url:"/damoim/imageupload.do?type=board&gath_no=${gath_no}&value=${board_no}",
+								type:"POST",
+								processData:false,
+								contentType:false,	
+								data: formData,
+								success:function(result){
+									alert("업로드성공");
+								}
+							});
+						}
+					</script>
+				</div>
+				<%}
+					}%>
 				<br />
 				<div class="container-fluid" style="border: solid 1px black; padding: 3% 3%;">
 					<div class="row">
@@ -96,31 +127,24 @@
 							<%=board.getBoard_content() %>
 						</div>
 						<br/><br/>
+						<% for(int i=0; i<img.size(); i++){ %>
+							<a class="w-25 p-2" href="/damoim/gathering/boardimages/<%=img.get(i).getImage_name() %>"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=img.get(i).getImage_name()%>"></a>
+						<%} %>
 					</div>
 					<div class="row">
-						
-						<div class="col-xl-6" align="left">
+						<div class="col-xl-3" align="left">
 							<div class="table-responsive">
 								<table style="width: inherit;">
 									<tbody align="center" style="font-size: 0.9vmax;">
 										<tr>
 											<td style="width: 20%;"><span>댓글 </span><span style="color: red;"><%=listsize %></span></td>
 											<td style="width: 30%; border-left: solid 1px gray;">조회수 <%= board.getBoard_hit() %> </td>
-											<td style="width: 15%; border-left: solid 1px gray;">좋아요</td>
-											<td style="width: 35%; text-align:left;">
-											<a class="btn btn-primary disabled" href="#" style="font-size: 0.9vmax; padding: 0.1rem 0.3rem;">
-												<%=board.getBoard_like() %>&nbsp;&nbsp;&nbsp;<span class="oi oi-thumb-up"></span>
-											</a></td>
 										</tr>
 									</tbody>
 								</table>
-								
 							</div>
 						</div>
-						<div class="col-xl-4"></div>
-						<div class="col-xl-2" align="right">
-							<a class="btn btn-outline-light text-dark" href="#" style="font-size: 0.8vmax;">신고</a>
-						</div>
+						<div class="col-xl-9"></div>
 					</div>
 				</div>
 				<br />
@@ -151,10 +175,16 @@
 						<div class="col-xl-3">
 							<table style="width: inherit; font-size: 0.9vmax; text-align: right;">
 								<tr>
-									<td style="padding: 1%;">신고</td>
+									<td style="padding: 1%;"></td>
 								</tr>
 								<tr>
-									<td style="padding: 1%;">좋아요 <a class="btn btn-primary" href="#" style="font-size: 0.9vmax; padding: 0.1rem 0.3rem;">6&nbsp;&nbsp;&nbsp;<span class="oi oi-thumb-up"></span></a></td>
+								<% if(row.getB_comm_mno().equals(user.getMem_id())){ %>
+									<td>
+									 <a class="btn btn-primary" href="/damoim/gathering/article/commentdelete.do?gath_no=<%=gath_no%>&board_no=<%=board_no%>&b_comm_no=<%=row.getB_comm_no()%>" style="font-size: 0.9vmax; padding: 0.1rem 0.3rem;">삭제</a>
+									</td>
+								<%}else{ %>
+									<td></td>
+									<%} %>
 								</tr>
 							</table>
 						</div>
@@ -179,10 +209,16 @@
 						<div class="col-xl-3">
 							<table style="width: inherit; font-size: 0.9vmax; text-align: right;">
 								<tr>
-									<td style="padding: 1%;">신고</td>
+									<td style="padding: 1%;"></td>
 								</tr>
 								<tr>
-									<td style="padding: 1%;">좋아요 <a class="btn btn-primary" href="#" style="font-size: 0.9vmax; padding: 0.1rem 0.3rem;">6&nbsp;&nbsp;&nbsp;<span class="oi oi-thumb-up"></span></a></td>
+								<% if(row.getB_comm_mno().equals(user.getMem_id())){ %>
+									<td>
+									 <a class="btn btn-primary" href="/damoim/gathering/article/commentdelete.do?gath_no=<%=gath_no%>&board_no=<%=board_no%>&b_comm_no=<%=row.getB_comm_no()%>" style="font-size: 0.9vmax; padding: 0.1rem 0.3rem;">삭제</a>
+									</td>
+								<%}else{ %>
+									<td></td>
+									<%} %>
 								</tr>
 							</table>
 						</div>

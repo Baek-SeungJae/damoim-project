@@ -2,6 +2,7 @@
 <%@page import="member.MemberVO"%>
 <%@page import="gathering.join.ScheduleJoinVO"%>
 <%@page import="java.util.List"%>
+<%@page import="java.sql.*"%>
 <%@page import="gathering.schedule.ScheduleRegisterVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -19,15 +20,13 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
-<link rel="stylesheet"
-	href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+<link rel="stylesheet" href="/damoim/static/common/damoim.css">
 <style>
 @font-face {
 	font-family: 'NanumGothic';
 	src: url('fonts/NanumGothic.eot');
-	src: url('fonts/NanumGothic.eot?#iefix') format(‘embedded-opentype’),
-		('fonts/NanumGothic.woff') format(‘woff’),
-		url('fonts/NanumGothic.ttf') format('truetype'),
+	src: url('fonts/NanumGothic.eot?#iefix') format(‘embedded-opentype’),('fonts/NanumGothic.woff')
+		format(‘woff’), url('fonts/NanumGothic.ttf') format('truetype'),
 		url('fonts/NanumGothic.svg') format('svg');
 	src: local(※), url(NanumGothic.woff) format(‘woff’);
 }
@@ -46,7 +45,7 @@ body {
 	margin-top: 5px;
 	font-size: 58px;
 	font-weight: bolder;
-	color: #E76642;
+	color: #FF399B;
 }
 
 .table-header_sub {
@@ -60,8 +59,8 @@ body {
 .date-header {
 	width: 80%;
 	margin: 0 auto;
-	font-size: 32px;
-	font-weight: 600;
+	font-size: 34px;
+	font-weight: 550;
 	line-height: 26px;
 	letter-spacing: 0;
 	margin-bottom: 18px;
@@ -71,8 +70,8 @@ body {
 .date-header_sub {
 	width: 80%;
 	margin: 0 auto;
-	font-size: 24px;
-	font-weight: 300;
+	font-size: 26px;
+	font-weight: 360;
 	padding-left: 30px;
 }
 
@@ -182,13 +181,12 @@ body {
 	border-style: outset;
 	border-width: 2px;
 	box-shadow: 3px 3px 3px 3px #999;
-	background: repeating-linear-gradient(-45deg, #444, #444 10px, #888 0, #888 20px);
+	background-color: #F8F8F8;
 }
 
 .card-container {
 	margin-top: 20px;
 	width: 100%;
-	height: 33%;
 	max-width: 1340px;
 	margin: 0 auto;
 	box-sizing: border-box;
@@ -196,267 +194,77 @@ body {
 }
 
 .btn-join {
-	display: flex;
+	cursor:pointer;
+	display: block;
 	box-sizing: border-box;
 	text-align: center;
 	height: 100px;
-	font-size: 29px;
-	font-weight: 500;
-	padding-left: 10px;
+	font-size: 28px;
+	font-weight: 330;
 	width: 120%;
 	height: 120px;
 	border-radius: 8px;
+	margin-right:18px;
+	background-color:#F8F8F8;
+	color:#333;
+	/* transition:all 0.9s, color 0.15; */
+	transition: color .10s, background-color .15s, border-color .15s,
+		box-shadow .15s;
 }
-
+.btn-join:hover{color:##F8F8F8;}
+.hover1:hover{
+	box-shadow: 200px 0 5px 5px rgba(0,0,0,0.3) inset;
+}
 .fas {
 	width: 40px;
 	heigth: 40px;
 }
-
-.container-calendar {
-	margin: 0;
-	/* background-color: #010712;
-	background-image:
-		url(https://static.pexels.com/photos/1526/dark-blur-blurred-gradient.jpg);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat; */
-	height: 29%;
-	width: 100%;
-}
-
-.container-cal {
-	width: 100%;
-	height: 100%;
-	position: relative;
-	perspective: 1000px;
-	margin: 0 auto;
-	/* left: calc(15% - 2px);
-	top: calc(10vh - 20px); */
-}
-
-.card_cal {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	transform-style: preserve-3d;
-	transition: transform 1s ease;
-	cursor: pointer;
-}
-
-.back, .front {
-	border-radius: 6px;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	backface-visibility: hidden;
-}
-
-.contentfront {
-	width: 100%;
-	height: 102%;
-	float: left;
-	transform: translatez(60px);
-	backface-visibility: hidden;
-	transform-style: preserve-3d;
-}
-
-.contentback {
-	width: 100%;
-	height: 100%;
-	float: left;
-	transform: translatez(-60px);
-	backface-visibility: hidden;
-	transform-style: preserve-3d;
-}
-
-.back {
-	transform: rotateY(180deg);
-	background-color: #232227;
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	-o-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-
-.front {
-	text-transform: uppercase;
-	background-color: #232227;
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	-o-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-
-.date {
-	height: 79.5%;
-	width: 20%;
-	float: right;
-	background-color: #E76642;
-	border-radius: 0 0 6px 0;
-	text-align: right;
-	padding: 10px 30px;
-	box-sizing: border-box;
-	transform-style: preserve-3d;
-}
-
-.datecont {
-	height: 100%;
-	transform: translatez(60px) scale(.9);
-}
-
-#date {
-	font-size: 80px;
-	color: #ECECE7;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 500;
-	float: right;
-}
-
-#day {
-	float: right;
-	font-size: 30px;
-	color: #232227;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 600;
-}
-
-#month {
-	float: right;
-	font-size: 22.5px;
-	color: #232227;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 420;
-}
-
-.date i {
-	color: #ECECE7;
-	position: absolute;
-	bottom: 10px;
-	right: 0;
-}
-
-.date i:hover {
-	color: #232227;
-	transition: .3s ease;
-}
-
-.month {
-	height: 100px;
-	width: 75%;
-	float: left;
-	padding: 20px 30px;
-	box-sizing: border-box;
-	margin: 0 auto;
-	margin-left: 8px;
-}
-
-.month table {
-	width: 107%;
-	height: 60%;
-	text-align: center;
-}
-
-.orangeTr {
-	color: #E76642;
-}
-
-.whiteTr {
-	color: #ECECE7;
-}
-
-.whiteTr th:hover {
-	color: #E76642;
-	transition: .3s ease;
-}
-
-.month tr {
-	height: 84px;
-}
-
-.month th {
-	width: 14%;
-	font-size: 32px;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 510;
-}
-
-.flipped {
-	transform: rotateY(-180deg);
-	/*height:400px;
-  width:200px;
-  left:calc(50% - 100px);
-  top:calc(50vh - 200px);*/
-}
-
-.backcontainer {
-	backface-visibility: hidden;
-	transform-style: preserve-3d;
-	width: calc(100% - 60px);
-	height: calc(100% - 40px);
-	float: left;
-	margin-left: 30px;
-	margin-top: 20px;
-	border-left: solid lightgray 5px;
-	background-color: lightgray;
-	transform: translatez(-60px) scale();
+.fas fa-map-marker-alt{
+	color:#F6871B;
 }
 
 #create_btn {
 	text-align: center;
 	width: 100%;
-	height:40px;
+	height: 40px;
 	border-radius: 5px 5px 5px 5px;
 	cursor: default;
-	background-color: white;
+	background-color: #F8F8F8;
 	border: solid 1.2px;
 	margin-bottom: 25px;
 	font-size: 26px;
 	box-shadow: 2px 2px 2px 2px #999;
 	cursor: pointer;
 }
-#create_btn_cal{
+
+#create_btn_cal {
 	text-align: center;
-	width: 80%;
-	height:40px;
+	width: 70%;
+	height: 40px;
 	border-radius: 5px 5px 6px 0;
 	cursor: default;
-	background-color: white;
+	background-color: #F8F8F8;
 	border: solid 1.2px;
 	margin-bottom: 25px;
 	font-size: 26px;
 	box-shadow: 2px 2px 2px 2px #999;
 	cursor: pointer;
-}
-
-a.create_link:active {
-	width: 200px;
-	height: 100px;
-	background-color: #FFF;
-	cursor: default;
-}
-
-.create_button_text {
-	width: 100px;
-	height: 60px;
-	color: #ECECE7;
-	font-size: 27px;
-	font-style: inherit;
-	color: #ECECE7;
 }
 
 a:link {
-	text-decoration: none;
+	text-decoration: none; color:#black;
 }
 
 a:visited {
-	text-decoration: none;
+	text-decoration: none; color:#black;
 }
 
 a:hover {
-	text-decoration: none;
+	text-decoration: none; color:#black;
 }
-
+a:active{
+	text-decoration: none; color:#black;
+}
 .year {
 	width: 100%;
 	margin: 0 auto;
@@ -616,10 +424,11 @@ ul.myList li {
 	/* float: left; */
 	list-style: none;
 }
+
 .btn-secondary {
 	color: #fff;
-	background-color: #3AC47D;
-	border-color: #3AC47D;
+	background-color: #FF399B;
+	border-color: #FF399B;
 	width: 200px;
 	height: 41px;
 	float: right;
@@ -652,41 +461,68 @@ ul.myList li {
 </style>
 </head>
 <body class="" onload="startTime()">
-	<% List<ScheduleRegisterVO> moimlist = (List<ScheduleRegisterVO>)request.getAttribute("moim"); %> <!-- 모임 리스트 -->
-	<% List<MemberVO> ranklist = (List<MemberVO>)request.getAttribute("list"); %> <!-- 멤버 랭킹 리스트 -->
-	
-	<% GatheringInfoVO gathering =(GatheringInfoVO)request.getAttribute("gathering");%> <!-- 모임정보 받아오는 -->
-	<% MemberVO member = (MemberVO)request.getAttribute("member"); %> <!-- 멤버 정보(mem_id 받아오는) -->
-	
-	<% MemberVO user = (MemberVO)session.getAttribute("user"); %> <!-- 세션 받아오는 -->
-	<% if(user!=null)request.setAttribute("sche_mem_mno", user.getMem_id());  %>
+	<%
+		List<ScheduleRegisterVO> moimlist = (List<ScheduleRegisterVO>) request.getAttribute("moim");
+	%>
+	<!-- 모임 리스트 -->
+	<%
+		List<MemberVO> ranklist = (List<MemberVO>) request.getAttribute("list");
+	%>
+	<!-- 멤버 랭킹 리스트 -->
 
+	<%
+		GatheringInfoVO gathering = (GatheringInfoVO) request.getAttribute("gathering");
+	%>
+	<!-- 모임정보 받아오는 -->
+	<%
+		MemberVO member = (MemberVO) request.getAttribute("member");
+	%>
+	<!-- 멤버 정보(mem_id 받아오는) -->
+
+	<%
+		MemberVO user = (MemberVO) session.getAttribute("user");
+	%>
+	<!-- 세션 받아오는 -->
+	<%
+		if (user != null)
+			request.setAttribute("sche_mem_mno", user.getMem_id());
+	%>
+	
 	<!-- 메인화면 시작 -->
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xl-2">왼쪽 여백</div>
+			<div class="col-xl-2"></div>
 			<!-- 왼쪽여백 끝 중앙 컨텐츠 시작 -->
+
 			<div class="col-xl-8">
 				<h1 class="table-header">
 					THIS <span class="table-header_sub">EVENT</span>
 				</h1>
 				<div class="row">
 					<div class="col-xl-9">
-					<a href="/damoim/gathering/sch_calendar.do?gath_no=<%=gathering.getGath_no() %>"
-							onclick="window.open(this.href, '_blank', 'width=1400px,height=800px,toolbars=no,scrollbars=no'); return false;"><button
+						<a
+							href="/damoim/gathering/sch_calendar.do?gath_no=<%=gathering.getGath_no()%>"
+							onclick="window.open(this.href, '_blank', 'width=1270px,height=800px,toolbars=no,scrollbars=no'); return false;"><button
 								id="create_btn_cal" type="submit">~~~~~~달력보시려면클릭하세요~~~~~</button></a>
 					</div>
 					<div class="col-xl-3">
 
-						<% //로그인 성공한 사용자에게 보여줄 컨텐츠
-					if(user!=null){ %>
-						<a href="/damoim/gathering/sch_create.do?gath_no=<%=gathering.getGath_no() %>"
-							onclick="window.open(this.href, '_blank', 'width=1150px,height=750px,toolbars=no,scrollbars=no'); return false;"><button
+						<%
+							//로그인 성공한 사용자에게 보여줄 컨텐츠
+							if (user != null) {
+						%>
+						<a
+							href="/damoim/gathering/sch_create.do?gath_no=<%=gathering.getGath_no()%>"
+							onclick="window.open(this.href, '_blank', 'width=1350px,height=870px,toolbars=no,scrollbars=no'); return false;"><button
 								id="create_btn" type="submit">모임생성</button></a>
-						<% //로그인 안한 사용자에게 보여줄 컨텐츠
-							}else{ %> <a href="/damoim/member/login.do">
-							<button id="create_btn" type="submit">login먼저하셈ㅋ</button></a>
-							<% } %>
+						<%
+							//로그인 안한 사용자에게 보여줄 컨텐츠
+							} else {
+						%>
+
+						<%
+							}
+						%>
 
 					</div>
 				</div>
@@ -698,50 +534,67 @@ ul.myList li {
 						UPCOMING <span class="table-header_sub">EVENT</span>
 					</h1>
 					<div>
+					<%if(user!=null){ %>
 						<a
-										href="/damoim/gathering/sch_moimAll.do?gath_no=<%=gathering.getGath_no() %>"
-										onclick="window.open(this.href, '_blank', 'width=1500px,height=1000px,toolbars=no,scrollbars=no'); return false;">
-										<button type="submit" class="btn btn-secondary">전체모임보기</button></a>
+							href="/damoim/gathering/sch_moimAll.do?gath_no=<%=gathering.getGath_no()%>"
+							onclick="window.open(this.href, '_blank', 'width=1850px,height=930px,toolbars=no,scrollbars=no'); return false;">
+							<button type="submit" class="btn btn-secondary">전체모임보기</button>
+						</a>
+					<%} else {%>
+						<a href="/damoim/member/login.do">
+							<button type="submit" class="btn btn-secondary">전체모임보기</button>
+						</a>
+					<% } %>
 					</div>
 				</div>
-				<form action="/damoim/gathering/sch_join.do" method="post">
-						<input type="hidden" name="gath_no" value="<%= gathering.getGath_no() %>"/>
-					<div class="card-container">
-						
-						<br />
+
+				<br />
+				<%
+					if (moimlist.size() != 0) {
+						for (int i = 0; i < 2; i++) {
+				%>
+				<div class="card-container">
+					<form action="/damoim/gathering/sch_join.do" method="post">
+
 						<%
-						if(moimlist.size()!=0){
-						for(int i=0; i<2; i++){
-							ScheduleRegisterVO row = moimlist.get(i);
+							if (i > moimlist.size() - 1) {
+										break;
+									}
+									ScheduleRegisterVO row = moimlist.get(i);
 						%>
-						
+						<input type="hidden" name="gath_no"
+							value="<%=gathering.getGath_no()%>" /> <input type="hidden"
+							name="sche_no" value="<%=row.getSche_no()%>">
 						<div class="card-wrap">
 							<div class="card">
 								<div class="event"
 									style="visibility: visible; animation-name: slideInUp;">
 									<h2 class="date-header">
-											<%= row.getSche_date()%> <span class="date-header_sub"> <%=row.getSche_date() %></span>
-										</h2>
+										<%=row.getSche_date()%>
+										<span class="date-header_sub"> <%=row.getSche_time()%></span>
+									</h2>
 									<div class="place-header">
 										<div>
-											<a href="http://www.google.com" target="_blank"> <i
-												class="fas fa-map-marker-alt"></i> <%=row.getSche_loc() %>
-											</a><span class="place-header_sub"><%=row.getSche_fee() %>원</span>
+											<a
+												href="/damoim/gathering/kakaomap.do?sche_loc=<%=row.getSche_loc()%>"
+												target="_blank"
+												onclick="window.open(this.href, '_blank', 'width=1150px,height=700px,toolbars=no,scrollbars=no'); return false;">
+												<i class="fas fa-map-marker-alt"></i> <%=row.getSche_loc()%>
+											</a><span class="place-header_sub"><i class="fas fa-coins"></i><%=row.getSche_fee()%>원</span>
 										</div>
 
 										<br /> <span style="font-size: 20px; font-weight: 300;">
-											<%=row.getSche_context() %></span>
-											
-										
-
+											<%=row.getSche_context()%></span>
 										<div class="row">
 											<div class="col-xl-9"></div>
 											<div class="col-xl-3">
-												
-												
-												<a href="혜란님 페이지 주소"><button type="submit"
-														class="btn-join" >참석하기~</button></a>
-														
+											<%if(user!=null){ %>
+												<a href="/damoim/gathering/moim.do?gath_no=<%=gathering.getGath_no() %>&sche_no=<%=row.getSche_no()%>"><button type="submit"
+														class="btn-join hover1">참석하기</button></a>
+											<%}else{ %>
+												<a href="/damoim/member/login.do"><button type="button"
+															class="btn-join hover1">참석하기</button></a>
+											<%} %>
 											</div>
 										</div>
 									</div>
@@ -749,73 +602,95 @@ ul.myList li {
 							</div>
 						</div>
 						<br />
-							<% 	
-									}
-						}
-								%>
-						
-					</div>
-				</form>
-				<div>
-					<h1 class="table-header">
-						우수 <span class="table-header_sub">참석왕</span>
-					</h1>
+					</form>
 				</div>
-			
-				<form action="/gathering/sch_rank.do" method="post">
-				<div class="rank-bottom">
-					<div class="rank">
-						<div class="rank-header">
-							<% MemberVO rowlist = ranklist.get(0); %>
-							<div class="rank-icon">
-								<div class="icon">
-									<a href="http://www.google.com" target="_blank"><img
-										src="<%= rowlist.getMem_profile() %>"
-										class="human1"></a>
-								</div>
-							</div>
+				<%
+					}
+					} else {
+				%>
+				<br> <br> <br> <br> <br> <br>
+				<%
+					}
+				%>
+				<div class="container">
+					<div>
+						<h1 class="table-header">
+							우수 <span class="table-header_sub">참석왕</span>
+						</h1>
+					</div>
 
-							<div class="rank-header-main">
-								<h5 class="rank-main-header"><%=rowlist.getMem_name() %></h5>
-								<h6 class="rank-header-main-sub"><%=rowlist.getMem_msg() %></h6>
-							</div>
-						</div>
-						
-						<div class="rank-main">
-							<h6 class="rank-main-title">활동 우수자</h6>
-							<hr />
-							<ul class="myList">
-							<%
-							if(ranklist.size()!=0){
-							for(int i=1; i<6; i++){
-								rowlist = ranklist.get(i);
-							
-							%>
-								<li>
-									<div class="row">
-										<div class="col-md-4">
+					<%
+						if (ranklist.size() != 0) {
+					%>
+					<form action="/gathering/sch_rank.do" method="post">
+						<div class="rank-bottom">
+							<div class="rank">
+								<div class="rank-header">
+									<%
+										MemberVO rowlist = ranklist.get(0);
+									%>
+									<div class="rank-icon">
+										<div class="icon">
 											<a href="http://www.google.com" target="_blank"><img
-												src="<%=rowlist.getMem_profile() %>"
-												class="human2"></a>
-										</div>
-										<div class="col-md-8" id="mypro">
-											<h4><%=rowlist.getMem_name() %></h4>
-											<h5><%=rowlist.getMem_msg() %></h5>
+												src="<%=rowlist.getMem_profile()%>" class="human1"></a>
 										</div>
 									</div>
-								</li>
-								<br/>
-								<% }} %>
-								<br/>
-							</ul>
+
+									<div class="rank-header-main">
+										<h5 class="rank-main-header"><%=rowlist.getMem_name()%></h5>
+										<h6 class="rank-header-main-sub"><%=rowlist.getMem_msg()%></h6>
+									</div>
+								</div>
+
+								<div class="rank-main">
+									<h6 class="rank-main-title">활동 우수자</h6>
+									<hr />
+									<ul class="myList">
+										<%
+											if (ranklist.size() != 0) {
+													for (int i = 1; i < 6; i++) {
+														if (i > ranklist.size() - 1) {
+															break;
+														}
+														rowlist = ranklist.get(i);
+										%>
+										<li>
+											<div class="row">
+												<div class="col-md-4">
+													<a href="google.com" target="_blank"><img
+														src="<%=rowlist.getMem_profile()%>" class="human2"></a>
+												</div>
+												<div class="col-md-5" id="mypro">
+													<h4><%=rowlist.getMem_name()%></h4>
+													<h5><%=rowlist.getMem_msg()%></h5>
+												</div>
+												<div class="col-md-3" id="rankrankrank"></div>
+											</div>
+										</li>
+										<br />
+										<%
+											}
+												}
+										%>
+										<br />
+									</ul>
+								</div>
+								<div class="rank-footer"></div>
+							</div>
 						</div>
-						<div class="rank-footer"></div>
-					</div>
+					</form>
+					<%
+						} else {
+					%>
+
+					</br> </br> </br> </br>
+					<%
+						}
+					%>
 				</div>
-				</form>
 			</div>
 			<!-- 중앙컨텐츠 끝 오른쪽 여백시작 -->
-			<div class="col-xl-2">오른쪽 여백</div>
+			<div class="col-xl-2"></div>
 		</div>
 	</div>
 	<!-- 메인화면 끝 -->
@@ -826,10 +701,10 @@ ul.myList li {
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
 		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
 		crossorigin="anonymous"></script>
-	<script
+<!-- 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous"></script> -->
 </body>
 
 </html>
