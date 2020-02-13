@@ -35,6 +35,31 @@
 			value="/WEB-INF/member/reg2.jsp" />
 	</definition>
 	
+	<definition name="emailCheck" extends="mainTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/member/emailCeck.jsp"/>
+	</definition>
+	
+	<definition name="reg3" extends="mainTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/member/reg3.jsp" />
+	</definition>
+	
+	<definition name="reg-inter" extends="mainTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/member/reg-inter.jsp" />
+	</definition>
+	
+	<definition name="reg4" extends="mainTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/member/reg5.jsp" />
+	</definition>
+	
+	<definition name="reg5" extends="mainTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/member/reg5.jsp" />
+	</definition>
+	
 	<definition name="mypage2" extends="mainTemplate">
 		<put-attribute name="content"
 			value="/WEB-INF/member/mypage2.jsp" />

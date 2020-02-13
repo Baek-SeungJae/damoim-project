@@ -1,22 +1,54 @@
 package member;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import business.businessService;
+import business.businessVO;
+import interest.interestService;
+import interest.interest_majorVO;
+import interest.interest_minorVO;
+import interest.member_interestVO;
+import job.jobService;
+import job.jobVO;
+import location.locationService;
+import location.locationVO;
 
 @Controller
 public class MemberController {
 	@Autowired
 	MemberService service;
+	@Autowired
+	locationService loc_service;
+	@Autowired
+	businessService busi_service;
+	@Autowired
+	jobService job_service;
+	@Autowired
+	interestService inter_service; 
 	
 	// 로그인 페이지를 보기 위한 요청
 	@RequestMapping(value="/member/login.do", method=RequestMethod.GET)
-	public String loginView() {
-		return "login";
+	public ModelAndView loginView() {
+		// fail 초기화
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("fail", false);
+		mav.setViewName("login");
+		return mav;
 	}
 	
 	// 로그인 처리를 위한 요청 (submit)
@@ -47,12 +79,13 @@ public class MemberController {
 			// 2. 세션에 데이터 공유
 			ses.setAttribute("user", user);
 			// redirect로 해야함
+			mav.addObject("fail", false);
 			viewName = "redirect:/main/home";
 		}else {
 			//로그인 실패
+			mav.addObject("fail", true);
 			viewName = "login";
 		}
-		//mav.addObject("user", user); //기본이 request에 저장
 		mav.setViewName(viewName);
 		return mav;
 	}
@@ -68,86 +101,195 @@ public class MemberController {
 		return "redirect:/main/home";
 	}
 	
+	
+	// ================= 회원가입================
 	@RequestMapping("/member/reg.do")
 	public String reg1View() {
-		// main-tiles.xml의 definition에 정의된 뷰 이름
 		return "reg";
 	}
-	
-	@RequestMapping("/member/reg2.do")
-	public String reg2View() {
-		// main-tiles.xml의 definition에 정의된 뷰 이름
-		return "reg2";
+	// 아이디 중복체크
+	@RequestMapping(value="/member/idCheck.do", 
+			method=RequestMethod.GET,
+			produces="application/text; charset=utf-8")
+	public @ResponseBody String idCheck(String id) {
+		boolean state = service.idCheck(id);
+		String result = "";
+		if(state) { //이미 사용자가 입력한 아이디가  db에 저장되어 있다는 의미
+			result = "이미 존재하는 아이디 입니다.";
+		}else {
+			result = "사용가능한 아이디";
+		}
+		return result;
 	}
 	
-	
-	
-	/*System.out.println("category=> "+category);
-	ModelAndView mav = new ModelAndView();
-	// 서블릿 작업 = 스프링 내부에서 작업하기 때문에 포멧만 바뀐것
-	// 1. 요청정보 추출
-	// 2. 비지니스메소드 호출
-	List<BoardVO> list = service.boardList(category);
-	System.out.println(list);
-	
-	// 3. 데이터 공유 - jsp페이지에서 응답뷰 만들 때 사용
-	//		=>기본값: request에 저장
-	//		(기본이 request scope에 저장- request.setAttribute와 같음)
-	mav.addObject("boardlist", list);
-	mav.addObject("category", category);
-	// 4. 뷰의 이름을 등록
-	mav.setViewName("board/list"); //tiles에 등록하는 이름과 일치해야 함
-	
-	// 5. 요청재지정(기본작업이 forward로 리턴)
-	return mav;*/
-	
-	
-	@RequestMapping(value="/member/passCheck.do", method=RequestMethod.POST)
-	public String passCheck(HttpServletRequest request) {
-		// 이미 있으면 넣어주고, 없으면 null 리턴
-		String pass = request.getParameter("pass");
-		HttpSession session = request.getSession(false);
+	// 닉네임 중복체크
+	@RequestMapping(value="/member/nicknameCheck.do", 
+			method=RequestMethod.GET,
+			produces="application/text; charset=utf-8")
+	public @ResponseBody String nickCheck(String nickname) {
+		boolean state = service.nickCheck(nickname);
 		String result = "";
-		// null 체크
-		if(session != null) {
-			MemberVO user = (MemberVO)session.getAttribute("user");
-			if(user.getMem_pass().equals(pass)) { 
-				//입력한 비밀번호가 session의 비밀번호와 같다면 마이페이지 이동
-				result = "mypage2";
-			}else {
-				// 비밀번호 안 맞으면 다시 이동
-				result = "redirect:member/mypage";
-			}
-		}else { 
-			result = "redirect:/main/home";
+		if(state) { //이미 사용자가 입력한 닉네임이  db에 저장되어 있다는 의미
+			result = "이미 존재하는 닉네임 입니다.";
+		}else {
+			result = "사용가능한 닉네임";
 		}
 		return result;
 	}
 	
 	
-	@RequestMapping("member/mypage")
-	public String mypage() {
-		return "mypage";
+	@RequestMapping("/member/reg2.do")
+	public String reg2View() {
+		return "reg2";
 	}
 	
-	@RequestMapping("/member/guide")
-	public String guideView() {
-		return "guide";
+	@RequestMapping(value="/member/reg3.do", method=RequestMethod.POST)
+	public ModelAndView reg3View(String mem_id, String mem_pass, String mem_name,
+				String mem_nickname, String year, String month, String day, 
+				String mem_phone, HttpServletRequest request) {
+		// 1. 요청정보 추출
+		ModelAndView mav = new ModelAndView();
+		// 2. 비지니스 메소드 호출
+		String stringMem_birth = year+"-"+month+"-"+day;
+		Date mem_birth = Date.valueOf(stringMem_birth);
+		MemberVO user = new MemberVO(mem_id, mem_pass, mem_name,
+							mem_nickname, mem_birth, mem_phone);
+		//service.insert(user);
+		HttpSession ses = request.getSession();
+		ses.setAttribute("reg", user);
+		System.out.println("회원가입 1: "+user);
+		
+		// 3. 데이터 공유 
+		mav.addObject("user", user);
+		
+		List<locationVO> location = loc_service.list();
+		mav.addObject("location", location);
+		List<businessVO> business = busi_service.list();
+		mav.addObject("business", business);
+		List<jobVO> job = job_service.list();
+		mav.addObject("job", job);
+		// 관심사
+		
+		mav.setViewName("reg3");
+		
+		return mav;
 	}
 	
 	
-	/*@Autowired
-	//MemberService service;
+	// 관심사
+	@RequestMapping(value ="/member/inter.do", method=RequestMethod.POST)
+	public ModelAndView interestView(String mem_home, 
+			String mem_office, String mem_neighbor,
+			String mem_business, String mem_job, String mem_gender, 
+			HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession(false);
+		String result = "";
+		// null 체크
+		if(session != null) {
+			MemberVO user = (MemberVO)session.getAttribute("reg"); 
+			System.out.println("관심사 페이지: " + user);
+    		user.setMem_home(mem_home);
+    		user.setMem_office(mem_office);
+    		user.setMem_neighbor(mem_neighbor);
+    		user.setMem_business(mem_business);
+    		user.setMem_job(mem_job);
+    		user.setMem_gender(mem_gender);
+    	
+    		session.setAttribute("reg", user);
+    		// 3. 데이터 공유 
+    		mav.addObject("user", user);
+    	
+    		List<interest_majorVO> majorlist = inter_service.majorlist();
+    		mav.addObject("majorlist", majorlist);
+    	
+    		result = "reg-inter";
+		}else {
+			result = "redirect:/main/home";
+		}
+		mav.setViewName(result);
+		return mav;
+	}
+
 	
-	@RequestMapping("/login")
-	public String loginView() {
-		return "login";
+	@RequestMapping(value ="/member/reg5.do", method=RequestMethod.POST)
+	public ModelAndView reg5View(String[] mem_mjno, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession(false);
+		String result = "";
+		// null 체크
+		if(session != null) {
+			MemberVO user = (MemberVO)session.getAttribute("reg"); 
+			System.out.println("가입완료: " + user);
+			// 회원 db에 insert
+			service.insert(user);
+			// ("mem_mjno")를 member_interest테이블에 저장
+			/*List<Map<String, String>> maplist = new ArrayList<Map<String,String>>();
+			Map<String, String> map = new HashMap<String, String>();
+			inter_service.insert(id, mem_mjno);*/
+			
+			int size = mem_mjno.length;
+			String id = user.getMem_id();
+			inter_service.insert(id, mem_mjno);
+			
+    		result = "reg5";
+		}else {
+			result = "redirect:/main/home";
+		}
+		
+		//세션 종료!!
+		if(session != null) {
+			session.invalidate();
+		}
+		mav.setViewName(result);
+		return mav;
 	}
 	
 	
-	@RequestMapping("/reg")
-	public String regView() {
-		return "reg";
-	}
-	*/
+	
+	
+	// =================마이페이지========================
+		@RequestMapping(value="/member/passCheck.do", method=RequestMethod.POST)
+		public ModelAndView passCheck(HttpServletRequest request) {
+			ModelAndView mav = new ModelAndView();
+			// 이미 있으면 넣어주고, 없으면 null 리턴
+			String pass = request.getParameter("pass");
+			HttpSession session = request.getSession(false);
+			String result = "";
+			// null 체크
+			if(session != null) {
+				MemberVO user = (MemberVO)session.getAttribute("user");
+				if(user.getMem_pass().equals(pass)) { 
+					mav.addObject("fail", false);
+					//입력한 비밀번호가 session의 비밀번호와 같다면 마이페이지 이동
+					result = "mypage2";
+				}else {
+					// 비밀번호 안 맞으면 다시 이동
+					mav.addObject("fail", true);
+					result = "mypage";
+				}
+			}else { 
+				result = "redirect:/main/home";
+			}
+			mav.setViewName(result);
+			return mav;
+		}
+		
+		@RequestMapping(value ="member/mypage", method=RequestMethod.GET)
+		public ModelAndView mypage() {
+			// fail 초기화
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("fail", false);
+			mav.setViewName("mypage");
+			return mav;
+		}
+		
+		// =================가이드===================
+		@RequestMapping("/member/guide")
+		public String guideView() {
+			return "guide";
+		}
+		
+		
+	
 }

@@ -57,8 +57,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-3 pl-5"><a class="btn btn-secondary" href="#">&lt; 홈으로</a></div>
-        <div class="col-md-3 pl-5"><a class="btn btn-secondary" href="#">로그인 &gt;</a></div>
+        <div class="col-md-3 pl-5"><a class="btn btn-secondary" href="/damoim/main/home">&lt; 홈으로</a></div>
+        <div class="col-md-3 pl-5"><a class="btn btn-secondary" href="/damoim/member/login.do">로그인 &gt;</a></div>
         <div class="col-md-3"></div>
       </div>
     </div>

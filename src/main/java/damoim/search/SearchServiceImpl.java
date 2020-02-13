@@ -15,9 +15,9 @@ public class SearchServiceImpl implements SearchService{
 	@Qualifier("searchDao")
 	SearchDAO dao;
 	
-	public List<GatheringInfoVO> searchList(String gath_major, String gath_minor) {
-		System.out.println("서치 서비스"+gath_major+"////"+gath_minor);
-		List<GatheringInfoVO> list = dao.searchList(gath_major, gath_minor);
+	public List<GatheringInfoVO> searchList(String gath_major) {
+		System.out.println("서치 서비스"+gath_major);
+		List<GatheringInfoVO> list = dao.searchList(gath_major);
 		
 		System.out.println("서비스 : " + list.size());
 		return list;

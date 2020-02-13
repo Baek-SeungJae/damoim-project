@@ -1,3 +1,9 @@
+<%@page import="member.MemberVO"%>
+<%@page import="interest.interest_majorVO"%>
+<%@page import="job.jobVO"%>
+<%@page import="business.businessVO"%>
+<%@page import="java.util.List"%>
+<%@page import="location.locationVO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -8,10 +14,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <style>
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; cursor: pointer; }
+.autocomplete-selected { background: blue; color: white; }
+.autocomplete-suggestions strong { font-weight: bold; color: orange; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+</style>
+  
+  <script>
+  $(document).ready(function() {
+	  		var availableTags = [
+	    	 <% List<locationVO> list = (List<locationVO>)request.getAttribute("location"); 
+	    		int size = list.size();
+	    		for(int i=1; i<size-1; ++i){
+	    			locationVO row = list.get(i); %>
+	    			"<%=row.getLoc_name()%>",
+	    		<%}
+	    		locationVO row = list.get(size-1);%>
+	    		"<%=row.getLoc_name()%>"
+			];
+	   
+	  		 $(".tags").autocomplete({
+	  		    source: availableTags,
+	  		 	autoFocus: true
+	  		  });
+	  		 
+	  		$(".tags").on("keydown", function(){
+	  		    if(event.keyCode == 13) {
+	  		      if($(".tags").val().length==0) {
+	  		          event.preventDefault();
+	  		          return false;
+	  		      }
+	  		    }
+	  		 });
+	  		
+  } ); 
+  
+  
+  
+  </script>
 </head>
 
+<!-- ajax 아님 -->
 <body>
-  <div class="py-5">
+	<!-- business, job -->
+	<% List<businessVO> busi_list = (List<businessVO>)request.getAttribute("business"); 
+		List<jobVO> job_list = (List<jobVO>)request.getAttribute("job");
+		MemberVO user = (MemberVO)request.getAttribute("user");
+	%>
+ <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12" style="">
@@ -25,7 +82,7 @@
       </div>
     </div>
   </div>
-  <div class="py-5" >
+  <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -34,19 +91,19 @@
       </div>
     </div>
   </div>
+  <form action="/damoim/member/inter.do" method="post">
   <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <p class="lead text-right">● 집</p>
+          <div class="col-md-12">
+            <p class="lead text-right">집</p>
+          </div>
         </div>
         <div class="col-md-4">
-          <div class="btn-group">
-            <button class="btn dropdown-toggle btn-light" data-toggle="dropdown">선택</button>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="#">서울</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">경기<br></a><a class="dropdown-item" href="#">인천</a><a class="dropdown-item" href="#">ㅇㅁㅇ</a>
-            </div>
+          <div class="ui-widget">
+            <label for="tags">검색: </label>
+            <input required="required" class="tags" name="mem_home">
           </div>
         </div>
         <div class="col-md-4" style=""></div>
@@ -58,16 +115,31 @@
       <div class="row">
         <div class="col-md-4">
           <div class="col-md-12">
-            <p class="lead text-right">● 직장</p>
+            <p class="lead text-right">직장</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="btn-group">
-            <button class="btn dropdown-toggle btn-light" data-toggle="dropdown">선택</button>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="#">서울</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">경기<br></a><a class="dropdown-item" href="#">인천</a><a class="dropdown-item" href="#">ㅇㅁㅇ</a>
-            </div>
+          <div class="ui-widget">
+            <label for="tags">검색: </label>
+            <input required="required" class="tags" name="mem_office">
+          </div>
+        </div>
+        <div class="col-md-4" style=""></div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5" >
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="col-md-12">
+            <p class="lead text-right">관심지역</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="ui-widget">
+            <label for="tags">검색: </label>
+            <input required="required" class="tags" name="mem_neighbor">
           </div>
         </div>
         <div class="col-md-4" style=""></div>
@@ -79,38 +151,17 @@
       <div class="row">
         <div class="col-md-4">
           <div class="col-md-12">
-            <p class="lead text-right">● 관심지역</p>
+            <p class="lead text-right">직업</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="btn-group">
-            <button class="btn dropdown-toggle btn-light" data-toggle="dropdown">선택</button>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="#">서울</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">경기<br></a><a class="dropdown-item" href="#">인천</a><a class="dropdown-item" href="#">ㅇㅁㅇ</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4" style=""></div>
-      </div>
-    </div>
-  </div>
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="col-md-12">
-            <p class="lead text-right">● 직업</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="btn-group">
-            <button class="btn dropdown-toggle btn-light" data-toggle="dropdown"> 선택</button>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">의료/건강/제약</a><a class="dropdown-item" href="#">IT/포털/인터넷</a><a class="dropdown-item" href="#">교육업</a>
-            </div>
-          </div>
+          <select required="required" id="business" name="mem_business">
+          <% int size1 = busi_list.size(); 
+          	for(int i=0; i<size1; ++i){
+          		businessVO business = busi_list.get(i); %>
+          		<option value=<%= business.getBusi_no()%>><%= business.getBusi_name()%></option>
+          	<% } %>
+           </select>
         </div>
         <div class="col-md-4" style=""></div>
       </div>
@@ -121,29 +172,53 @@
       <div class="row">
         <div class="col-md-4">
           <div class="col-md-12">
-            <p class="lead text-right">● 성별</p>
+            <p class="lead text-right">직무</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <select required="required" id="job" name="mem_job">
+            <% int size2 = job_list.size();
+          	for(int i=0; i<size2; ++i){
+          		jobVO job = job_list.get(i); %>
+          		<option value=<%= job.getJob_no()%>><%= job.getJob_name()%></option>
+          	<% } %>
+          </select>
+        </div>
+        <div class="col-md-4" style=""></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="col-md-12">
+            <p class="lead text-right" contenteditable="true">성별</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-check form-check-inline"> <label class="form-check-label">
-              <input class="form-check-input" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions"> 남성 </label> </div>
+              <input required="required" class="form-check-input" type="radio" value="m" id="inlineRadio1" name="mem_gender"> 남성 </label> </div>
           <div class="form-check form-check-inline"> <label class="form-check-label">
-              <input class="form-check-input" type="radio" value="option1" id="inlineRadio1" name="inlineRadioOptions"> 여성 </label> </div>
+              <input required="required" class="form-check-input" type="radio" value="f" id="inlineRadio1" name="mem_gender"> 여성 </label> </div>
         </div>
         <div class="col-md-4" style=""></div>
       </div>
     </div>
   </div>
+ <%--  <!-- id 넘기기 -->
+  <div><input type="hidden" name="mem_id" value=<%= user.getMem_id() %>/></div> --%>
   <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-4 pl-5"><a class="btn btn-secondary" href='http://70.12.115.55:8088/serverweb/webproject/reg4.jsp'><b>가입하기</b></a></div>
+        <div class="col-md-4 pl-5"><button type="submit" class="btn btn-secondary" ><b>가입하기</b></button></div>
         <div class="col-md-4" style=""></div>
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  </form>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	@Qualifier("memDao")
 	MemberDAO dao;
-	
+		
 	@Override
 	public MemberVO login(MemberVO loginUser) {
 		MemberVO user = dao.login(loginUser);
@@ -20,9 +20,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int insert(MemberVO user, MultipartFile file, String realpath, String filename) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insert(MemberVO user) {
+		return dao.insert(user);
 	}
 
 	@Override
@@ -46,6 +45,10 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO read(String id) {
 		return dao.read(id);
 	}
+	
+	public MemberVO memread(String id) {
+		return dao.memread(id);
+	}
 
 	@Override
 	public ArrayList<MemberVO> search(String column, String search, String pass) {
@@ -64,5 +67,23 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	@Override
+	public boolean idCheck(String id) {
+		return dao.idCheck(id);
+	}
+	
+
+	@Override
+	public boolean nickCheck(String nickname) {
+		return dao.nickCheck(nickname);
+	}
+
+	@Override
+	public void updateAuthstatus(MemberVO user) {
+		
+	}
+
 
 }

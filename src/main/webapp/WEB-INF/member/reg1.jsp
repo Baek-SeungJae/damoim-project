@@ -91,7 +91,7 @@
       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4 pl-5"><a id="next" class="btn btn-secondary" ><b class="">다 음</b></a></div>
-        <div class="col-md-4"><a class="btn btn-warning btn-block" href="#"><i class="fa fa-download fa-fw"></i>카카오톡으로 회원가입</a></div>
+        <div class="col-md-4"></div>
       </div>
     </div>
   </div>
@@ -99,7 +99,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8"></div>
-        <div class="col-md-4"><a class="btn btn-primary btn-block" href="#"><i class="fa fa-download fa-fw"></i>&nbsp;네이버로 회원가입</a></div>
+        <div class="col-md-4"><div>
       </div>
     </div>
   </div>
@@ -107,7 +107,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8"></div>
-        <div class="col-md-4"><a class="btn btn-danger btn-block" href="#"><i class="fa fa-download fa-fw"></i>이메일로 회원가입</a></div>
+        <div class="col-md-4"></div>
       </div>
       <div class="row">
         <div class="col-md-12 py-5"></div>

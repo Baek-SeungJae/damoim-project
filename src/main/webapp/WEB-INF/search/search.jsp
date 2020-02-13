@@ -1,3 +1,4 @@
+<%@page import="interest.interest_majorVO"%>
 <%@page import="gathering.info.GatheringInfoVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -14,20 +15,13 @@
 </head>
 <body>
 	<%List<GatheringInfoVO> searchlist = (List<GatheringInfoVO>)request.getAttribute("searchList"); %>
+	<% List<interest_majorVO> majorlist = (List<interest_majorVO>) request.getAttribute("majorlist");%> 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<form class="form-inline" action="/damoim/search/search.do" method="post">
 					<div class="input-group">
-						<input type="text" class="form-control" name="gath_major" placeholder="대분류">
-						<div class="input-group-append">
-							<button class="btn btn-primary" type="submit">
-								<i class="fa fa-search"></i>
-							</button>
-						</div>
-					</div>
-					<div class="input-group">
-						<input type="text" class="form-control" name="gath_minor" placeholder="소분류">
+						<input type="text" class="form-control" name="gath_major" placeholder="검색어 입력 또는 선택">
 						<div class="input-group-append">
 							<button class="btn btn-primary" type="submit">
 								<i class="fa fa-search"></i>
@@ -35,6 +29,36 @@
 						</div>
 					</div>
 				</form>
+<%-- 		<%
+			int size = majorlist.size();
+			int start = 0;
+			for (int i = start; i < size; ++i) {
+		%>
+		<div class="my-2">
+			<div class="container">
+				<div class="row">
+					<%
+						for (int j = 0; j < 3; ++j) {
+								if(start == size){
+									break;
+								}
+								interest_majorVO major = majorlist.get(start);
+								++start;
+					%>
+					<div class="col-md-4">
+						<label><input type="checkbox" name="mem_mjno"
+							value=<%=major.getMajor_mjno()%>> <%=major.getMajor_name()%></label>
+					</div>
+					<%
+						}
+					%>
+				</div>
+			</div>
+		</div>
+		<%
+			}
+		%> --%>
+	
 				<div class="py-5 bg-primary">
 					<div class="container">
 						<div class="row">

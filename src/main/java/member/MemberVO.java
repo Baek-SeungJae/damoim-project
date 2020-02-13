@@ -18,15 +18,33 @@ public class MemberVO {
 	private String mem_job;
 	private String mem_msg;
 	private String mem_profile;
-	private String mem_count; // 소모임의 일정 참석에서 사용
+	private String mem_count;
+	private String mem_email;
+	private String mem_phone;
+	private String mem_authkey;
+	private int mem_authstatus;
 	
 	public MemberVO() {
 		
 	}
 	
+	// insert용 생성자(회원가입 페이지1)
+	public MemberVO(String mem_id, String mem_pass, String mem_name, String mem_nickname, Date mem_birth,
+			 String mem_phone) {
+		super();
+		this.mem_id = mem_id;
+		this.mem_pass = mem_pass;
+		this.mem_name = mem_name;
+		this.mem_nickname = mem_nickname;
+		this.mem_birth = mem_birth;
+		this.mem_phone = mem_phone;
+	}
+	
+
 	public MemberVO(String mem_id, String mem_pass, String mem_name, String mem_nickname, int mem_age, Date mem_birth,
 			String mem_gender, String mem_home, String mem_office, String mem_neighbor, int mem_agegroup,
-			String mem_business, String mem_job, String mem_msg, String mem_profile, String mem_count) {
+			String mem_business, String mem_job, String mem_msg, String mem_profile, String mem_count, String mem_email,
+			String mem_phone, String mem_authkey, int mem_authstatus) {
 		super();
 		this.mem_id = mem_id;
 		this.mem_pass = mem_pass;
@@ -44,7 +62,12 @@ public class MemberVO {
 		this.mem_msg = mem_msg;
 		this.mem_profile = mem_profile;
 		this.mem_count = mem_count;
+		this.mem_email = mem_email;
+		this.mem_phone = mem_phone;
+		this.mem_authkey = mem_authkey;
+		this.mem_authstatus = mem_authstatus;
 	}
+
 
 	@Override
 	public String toString() {
@@ -52,7 +75,9 @@ public class MemberVO {
 				+ mem_nickname + ", mem_age=" + mem_age + ", mem_birth=" + mem_birth + ", mem_gender=" + mem_gender
 				+ ", mem_home=" + mem_home + ", mem_office=" + mem_office + ", mem_neighbor=" + mem_neighbor
 				+ ", mem_agegroup=" + mem_agegroup + ", mem_business=" + mem_business + ", mem_job=" + mem_job
-				+ ", mem_msg=" + mem_msg + ", mem_profile=" + mem_profile + ", mem_count=" + mem_count + "]";
+				+ ", mem_msg=" + mem_msg + ", mem_profile=" + mem_profile + ", mem_count=" + mem_count + ", mem_email="
+				+ mem_email + ", mem_phone=" + mem_phone + ", mem_authkey=" + mem_authkey + ", mem_authstatus="
+				+ mem_authstatus + "]";
 	}
 
 	public String getMem_id() {
@@ -182,6 +207,37 @@ public class MemberVO {
 	public void setMem_count(String mem_count) {
 		this.mem_count = mem_count;
 	}
-	
+
+	public String getMem_email() {
+		return mem_email;
+	}
+
+	public void setMem_email(String mem_email) {
+		this.mem_email = mem_email;
+	}
+
+	public String getMem_phone() {
+		return mem_phone;
+	}
+
+	public void setMem_phone(String mem_phone) {
+		this.mem_phone = mem_phone;
+	}
+
+	public String getMem_authkey() {
+		return mem_authkey;
+	}
+
+	public void setMem_authkey(String mem_authkey) {
+		this.mem_authkey = mem_authkey;
+	}
+
+	public int getMem_authstatus() {
+		return mem_authstatus;
+	}
+
+	public void setMem_authstatus(int mem_authstatus) {
+		this.mem_authstatus = mem_authstatus;
+	}
 	
 }

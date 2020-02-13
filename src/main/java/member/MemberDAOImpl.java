@@ -24,8 +24,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int insert(MemberVO user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("member.insert", user);
 	}
 
 	@Override
@@ -43,6 +42,10 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberVO read(String id) {
 		return sqlSession.selectOne("gathering.join.memberDetail",id);
+	}
+	
+	public MemberVO memread(String id) {
+		return sqlSession.selectOne("member.read", id);
 	}
 
 	@Override
@@ -73,5 +76,40 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public boolean idCheck(String id) {
+		boolean result = false;
+		MemberVO user=  sqlSession.selectOne("member.idcheck",id);
+		if(user!=null) {
+			result = true;
+		}
+		return result;
+	}
+	
+	@Override
+	public boolean nickCheck(String nickname) {
+		boolean result = false;
+		MemberVO user=  sqlSession.selectOne("member.nickcheck",nickname);
+		if(user!=null) {
+			result = true;
+		}
+		return result;
+	}
+	
+	// =================== 메일 ========================
+	@Override
+	public void create(MemberVO user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateAuthkey(MemberVO user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }

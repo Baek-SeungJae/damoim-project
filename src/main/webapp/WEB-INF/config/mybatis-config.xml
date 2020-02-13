@@ -20,6 +20,14 @@
 		<typeAlias type="board.comment.BoardCommentLikeVO" alias="commentlike"/>
 		<typeAlias type="image.ImageVO" alias="image"/>
 		<typeAlias type="moim.list.MoimListVO" alias="moimList"/>
+		
+		<typeAlias type="damoim.myhome.mylist.MyListVO" alias="mylist"/>
+		<typeAlias type="location.locationVO" alias="location"/>
+		<typeAlias type="business.businessVO" alias="business"/>
+		<typeAlias type="job.jobVO" alias="job"/>
+		<typeAlias type="interest.interest_minorVO" alias="interest_minor"/>
+		<typeAlias type="interest.interest_majorVO" alias="interest_major"/>
+		<typeAlias type="interest.member_interestVO" alias="member_interest"/>
 	</typeAliases>
 	<mappers>
 		<!-- src부터 인식 -->
@@ -33,5 +41,13 @@
 		<mapper resource="mapper/search.xml"/>
 		<mapper resource="mapper/image.xml"/>
 		<mapper resource="mapper/moim.xml"/>
+		
+		<mapper resource="mapper/mylist.xml"/>
+		<mapper resource="mapper/location.xml"/>
+		<mapper resource="mapper/business.xml"/>
+		<mapper resource="mapper/job.xml"/>
+		<mapper resource="mapper/interest_major.xml"/>
+		<mapper resource="mapper/interest_minor.xml"/>
+		<mapper resource="mapper/member_interest.xml"/>
 	</mappers>
 </configuration>

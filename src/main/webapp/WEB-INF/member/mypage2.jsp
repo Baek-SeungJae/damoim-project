@@ -1,3 +1,4 @@
+<%@page import="member.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -11,6 +12,9 @@
 </head>
 
 <body>
+<%	MemberVO user = (MemberVO)session.getAttribute("user"); 
+%>
+
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -37,7 +41,7 @@
             <img class="img-fluid rounded-circle w-75 mx-auto mt-3" src="politeCat.PNG" alt="Card image">
             <div class="card-body">
               <h4 class="card-title">프로필</h4>
-              <p class="text-primary"><b>Hello Web Programming World!</b></p>
+              <p><input type="text" value=<%= user.getMem_msg() %> class="text-primary"><b></b></p>
             </div>
           </div>
         </div>

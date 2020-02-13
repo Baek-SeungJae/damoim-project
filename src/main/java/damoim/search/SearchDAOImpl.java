@@ -17,14 +17,9 @@ public class SearchDAOImpl implements SearchDAO {
 	SqlSession sqlSession;
 
 	@Override
-	public List<GatheringInfoVO> searchList(String gath_major, String gath_minor) {
-		System.out.println("서치 다오"+gath_major+"////"+gath_minor);
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("gath_major", gath_major);
-		map.put("gath_minor", gath_minor);
-		System.out.println(map);
-		System.out.println(gath_major);
-		List<GatheringInfoVO> list = sqlSession.selectList("damoim.test.search", gath_major);
+	public List<GatheringInfoVO> searchList(String gath_major) {
+		System.out.println("서치 다오"+gath_major);
+		List<GatheringInfoVO> list = sqlSession.selectList("damoim.search.search", gath_major);
 
 		System.out.println("dao : " + list.size());
 		return list;

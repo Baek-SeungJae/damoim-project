@@ -3,8 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="damoim.test">
+  <mapper namespace="damoim.search">
   	<select id="search" resultType="gathering" parameterType="Map">
-  		select * from gathering where rtrim (gath_major,' ')=#{gath_major} or rtrim(gath_minor, ' ')=#{gath_minor}
+  		select * from gathering
+  		  where gath_major=#{gath_major} 
    	</select>
   </mapper>

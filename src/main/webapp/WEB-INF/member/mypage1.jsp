@@ -10,7 +10,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
 	<script type="text/javascript">
+	
 		$(document).ready(function() {
+			<% 
+			boolean check = (boolean)request.getAttribute("fail");	
+			if(check == true) { %> alert("비밀번호가 잘못되었습니다.");
+			<% 	} %>
+			
 			/* 동적컨텐츠에 이벤트 붙이기-on */
 			buttonAble = document.getElementById("sub");
 			$("#passCheck").on("keyup",function(){

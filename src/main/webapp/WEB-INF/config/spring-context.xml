@@ -79,4 +79,8 @@
 	<context:component-scan base-package="damoim" />
 	<context:component-scan base-package="image" />
 	<context:component-scan base-package="moim" />
+	<context:component-scan base-package="job" />
+	<context:component-scan base-package="business" />
+	<context:component-scan base-package="location" />
+	<context:component-scan base-package="interest" />
 </beans:beans>
