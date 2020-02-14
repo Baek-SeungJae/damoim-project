@@ -22,9 +22,7 @@
 			where image_gno=#{search}
 			and tag='title'
 		</if>
-		
 	</select>
-	
 	<select id="searchlist" parameterType="Map" resultType="image">
 		select * from images
 		<if test="tag=='member' and search!=''">
@@ -43,4 +41,6 @@
 		</if>
 		order by image_date desc
 	</select>
+
+	
 </mapper>

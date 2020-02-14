@@ -29,10 +29,9 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12" align="center">
 				<h1 class="display-2">
-					<a href="/damoim/main/home.do"><img alt=""
-						src="../static/images/damoimlogo.png">다모임</a>
+					<a href="/damoim/main/home.do"><img alt="" src="../static/images/damoimlogo.png">다모임</a>
 				</h1>
 			</div>
 		</div>
@@ -60,9 +59,7 @@
 			<!-- logout과 프로필사진은 로그인이 된 후에만 처리되어야 한다.  -->
 			<div class="col-md-2"></div>
 			<div class="col-md-2" align="right">
-				<a href="/damoim/member/mypage"><img class="img-circle"
-					src="/member/images/<%=user.getMem_profile()%>" width=50px;
-					height=30px;></a>
+				<a href="/damoim/member/mypage"><img class="rounded-circle" src="/damoim/member/memimg/<%=user.getMem_profile()%>" width="40px" height="40px"></a>
 			</div>
 			<div class="col-md-2">
 				<a href="/damoim/member/logout.do">로그아웃</a>

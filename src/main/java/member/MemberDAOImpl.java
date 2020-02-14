@@ -1,6 +1,8 @@
 package member;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,20 +98,14 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return result;
 	}
-	
-	// =================== 메일 ========================
 	@Override
-	public void create(MemberVO user) {
-		// TODO Auto-generated method stub
-		
+	public int profileupdate(String mem_profile, String mem_id) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("mem_profile", mem_profile);
+		map.put("mem_id", mem_id);
+		return sqlSession.update("member.profileupdate", map);
 	}
-
-	@Override
-	public void updateAuthkey(MemberVO user) {
-		// TODO Auto-generated method stub
 		
-	}
-
 
 
 }

@@ -26,6 +26,7 @@ import gathering.info.GatheringMemberVO;
 import gathering.schedule.member.ScheMemService;
 import image.ImageService;
 import image.ImageVO;
+import member.MemberService;
 import member.MemberVO;
 @Controller
 public class BoardController {
@@ -43,6 +44,9 @@ public class BoardController {
 	
 	@Autowired
 	ImageService imageservice;
+	
+	@Autowired
+	MemberService memberservice;
 	
 	@RequestMapping("/gathering/board.do")
 	public ModelAndView boardList(String gath_no, String board_category,HttpServletRequest request) {
@@ -208,8 +212,10 @@ public class BoardController {
 	            File file = multi.getFile(file1);
 	            // 그 파일 객체의 크기를 알아냄
 	            fileSize = file.length();
-	            if(type.equals("member"))
+	            if(type.equals("member")) {
 	            	imageservice.insertimage(fileName1, "null", value, "null", "member");
+	            	memberservice.profileupdate(fileName1, value);
+	            }
 	            else if(type.equals("board"))
 	            	imageservice.insertimage(fileName1, gath_no, "null", value, "board");
 	            else if(type.equals("gathering"))

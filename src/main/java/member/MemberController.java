@@ -259,6 +259,7 @@ public class MemberController {
 			// null 체크
 			if(session != null) {
 				MemberVO user = (MemberVO)session.getAttribute("user");
+				mav.addObject("userid", user.getMem_id());
 				if(user.getMem_pass().equals(pass)) { 
 					mav.addObject("fail", false);
 					//입력한 비밀번호가 session의 비밀번호와 같다면 마이페이지 이동
@@ -271,6 +272,7 @@ public class MemberController {
 			}else { 
 				result = "redirect:/main/home";
 			}
+			
 			mav.setViewName(result);
 			return mav;
 		}
@@ -289,7 +291,5 @@ public class MemberController {
 		public String guideView() {
 			return "guide";
 		}
-		
-		
 	
 }

@@ -30,7 +30,9 @@
 		<put-attribute name="content" value="/WEB-INF/gathering/newarticle.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/gathering/include/footer.jsp"/>
 	</definition>
-	
+	<definition name="gathering/newgathering" extends="gatheringTemplate3">
+		<put-attribute name="content" value="/WEB-INF/gathering/newgathering.jsp"/>
+	</definition>
 	<!-- ==============================여기서부터 김성현 작업시작================================= -->
 	<definition name="gathering/sch_main" extends="gatheringTemplate2">
 		<put-attribute name="menu" value="/WEB-INF/gathering/include/top.jsp"/>

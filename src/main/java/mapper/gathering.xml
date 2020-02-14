@@ -23,4 +23,7 @@
 		and gm.gath_mem_gno=#{gath_no}
 		and gm.gath_mem_mno=#{mem_id}
 	</select>
+	<insert id="makegathering">
+		insert into gathering values('G'||GATH_NO.nextval,#{gath_name},#{gath_info},'',sysdate,#{gath_major},'',#{gath_chat},#{gath_loc},#{gath_master});
+	</insert>
 </mapper>

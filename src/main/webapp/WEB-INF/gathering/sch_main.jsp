@@ -38,6 +38,7 @@ body {
 .card {
 	width: 85%;
 	margin: 0 auto;
+	
 }
 
 .table-header {
@@ -45,7 +46,8 @@ body {
 	margin-top: 5px;
 	font-size: 58px;
 	font-weight: bolder;
-	color: #FF399B;
+	/* color: #FF75A7; */
+	/* color: #FF399B; */
 }
 
 .table-header_sub {
@@ -69,7 +71,7 @@ body {
 
 .date-header_sub {
 	width: 80%;
-	margin: 0 auto;
+	margin: 0 auto; 
 	font-size: 26px;
 	font-weight: 360;
 	padding-left: 30px;
@@ -97,18 +99,26 @@ body {
 
 .rank-header {
 	height: 235px;
-	background-color: #343A40;
-	color: white;
+	/* background-color: #ADADAD; */
+	color: black;
 	text-align: center;
-	border-radius: 5px;
-	border-width: 2px;
-	border-style: outset;
+	/* border-radius: 5px; */
+	border-width: 1px;
+	/* border-style: outset; */
+	background-image: url("/damoim/gathering/images/rank7.jpg");
+	background-size:cover;
+	background-position: center;
+	border:5px solid transparent;
 }
 
 .rank-main-header {
 	margin-top: 5px;
-	font-size: 27px;
-	font-weight: bolder;
+	font-size: 35px;
+	font-weight: 690;
+}
+.rank-header-main-sub{
+	font-size: 25px;
+	font-weight: 490; 
 }
 
 .rank-icon {
@@ -116,18 +126,22 @@ body {
 }
 
 .rank-main {
-	background-color: #A3A3A3;
+	/* background-color: #D3D3D3; */
 	color: black;
 	text-align: left;
-	border-radius: 6px;
-	border-width: 3px;
-	border-style: outset;
+	/* border-radius: 6px; */
+	border-width: 2px;
+	/* border-style: outset; */
+	background-image: url("/damoim/gathering/images/rank7.jpg");
+	background-size:cover;
+	background-position: center;
+	border:5px solid transparent;
 }
 
 .rank-footer {
-	height: 70px;
+	/* height: 30px;
 	text-align: center;
-	background-color: #E3E3E3;
+	background-color: #F8F8F8; */
 }
 
 .btn-icon {
@@ -138,17 +152,26 @@ body {
 .rank-bottom {
 	border-radius: 6px;
 	width: 90%;
-	background-color: #E3E3E3;
+	/* background-color: #F8F8F8; */
 	margin: 0 auto;
 	box-shadow: 2px 2px 2px 2px #999;
-	background-color: #E3E3E3;
+	background-image: url("/damoim/gathering/images/rank4.jpeg");
 }
 
 .rank-main-title {
-	padding-top: 20px;
-	margin-left: 10px;
-	font-size: 19px;
+	margin-right: 90px;
+	/* font-size: 22px;
+	font-weight: 500; */
+	text-align: right;
 }
+.rank-main-title-head{
+	margin-right: 77px;
+	/* font-size: 22px;
+	font-weight: 500; */
+	text-align: right;
+}
+
+
 
 .list {
 	font-weight: 500;
@@ -167,11 +190,12 @@ body {
 	border-radius: 10px;
 	border-style: outset;
 	border-width: 1.5px;
-	background-color: lightgray;
+	/* background-color: lightgray; */
+	background-color: #EFEFEF;
 }
 
 .card-wrap {
-	width: 85%;
+	width: 88%;
 	margin: 0 auto;
 	display: flex;
 	-webkit-box-orient: vertical;
@@ -182,6 +206,7 @@ body {
 	border-width: 2px;
 	box-shadow: 3px 3px 3px 3px #999;
 	background-color: #F8F8F8;
+	background-image: url("/damoim/gathering/images/card.jpeg");
 }
 
 .card-container {
@@ -191,6 +216,7 @@ body {
 	margin: 0 auto;
 	box-sizing: border-box;
 	max-width: 1340px;
+	
 }
 
 .btn-join {
@@ -205,15 +231,15 @@ body {
 	height: 120px;
 	border-radius: 8px;
 	margin-right:18px;
-	background-color:#F8F8F8;
+	background-color:white;
 	color:#333;
 	/* transition:all 0.9s, color 0.15; */
 	transition: color .10s, background-color .15s, border-color .15s,
 		box-shadow .15s;
 }
-.btn-join:hover{color:##F8F8F8;}
+.btn-join:hover{color:white;}
 .hover1:hover{
-	box-shadow: 200px 0 5px 5px rgba(0,0,0,0.3) inset;
+	box-shadow: 200px 0 0 0 rgba(0,0,0,0.27) inset;
 }
 .fas {
 	width: 40px;
@@ -265,128 +291,6 @@ a:hover {
 a:active{
 	text-decoration: none; color:#black;
 }
-.year {
-	width: 100%;
-	margin: 0 auto;
-	height: 130px;
-	background-color: #FF8B51;
-	text-align: center;
-	border-radius: 6px 6px 0 0;
-}
-
-.calrow {
-	font-size: 40px;
-	padding-top: 21px;
-	border-radius: 6px 6px 0 0;
-}
-
-#btnPrev, #btnNext {
-	width: 70px;
-	height: 60px;
-	font-size: 40px;
-	font-weight: 500;
-	background-color: lightgray;
-}
-
-.menubar {
-	border: none;
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-	font: 67.5% "Lucida Sans Unicode", "Bitstream Vera Sans",
-		"Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica,
-		sans-serif;
-	font-size: 28px;
-	font-weight: 700;
-	color: white;
-	padding-left: 20px;
-	margin-top: 10px;
-}
-
-.menubar ul {
-	background: #FF8B51;
-	height: 50px;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.menubar li {
-	float: left;
-	padding: 0px;
-}
-
-.menubar li a {
-	background: #FF8B51;
-	color: white;
-	display: block;
-	font-size: 39px;
-	font-weight: 450;
-	line-height: 50px;
-	margin: 0px;
-	margin-top: 5px;
-	padding: 0px 25px;
-	text-align: center;
-	text-decoration: none;
-}
-
-.menubar li a:hover, .menubar ul li:hover a {
-	background: rgb(71, 71, 71);
-	color: #FFFFFF;
-	text-decoration: none;
-}
-
-.menubar li ul {
-	background: #FF8B51;
-	display: none; /* 평상시에는 드랍메뉴가 안보이게 하기 */
-	height: auto;
-	padding: 0px;
-	margin: 0px;
-	border: 0px;
-	position: absolute;
-	width: 200px;
-	z-index: 200;
-	/*top:1em;
-/*left:0;*/
-}
-
-.menubar li:hover ul {
-	display: block; /* 마우스 커서 올리면 드랍메뉴 보이게 하기 */
-}
-
-.menubar li li {
-	background: rgb(109, 109, 109);
-	display: block;
-	float: none;
-	margin: 0px;
-	padding: 0px;
-	width: 200px;
-}
-
-.menubar li:hover li a {
-	background: none;
-}
-
-.menubar li ul a {
-	display: block;
-	height: 50px;
-	font-size: 14px;
-	font-style: normal;
-	margin: 0px;
-	padding: 0px 10px 0px 15px;
-	text-align: left;
-}
-
-.menubar li ul a:hover, .menubar li ul li:hover a {
-	background: rgb(71, 71, 71);
-	border: 0px;
-	color: #ffffff;
-	text-decoration: none;
-}
-
-.menubar p {
-	clear: left;
-}
 
 .menubar_top {
 	border-radius: 6px 6px 0 0;
@@ -395,15 +299,6 @@ a:active{
 	background-color: #232227;
 	float: right;
 }
-
-.human1 {
-	width: 25.5%;
-}
-
-.human2 {
-	width: 50%;
-}
-
 .col-md-6 {
 	float: left;
 }
@@ -411,8 +306,15 @@ a:active{
 #mypro {
 	text-align: left;
 	width: 500px;
-	margin-top: 32px;
 	margin-left: 0px;
+}
+#mypro_name{
+	font-size: 30px;
+	font-weight: 690;
+}
+#mypro_msg{
+	font-size: 24px;
+	font-weight: 490;
 }
 
 .rank-list {
@@ -427,12 +329,13 @@ ul.myList li {
 
 .btn-secondary {
 	color: #fff;
-	background-color: #FF399B;
-	border-color: #FF399B;
+	/* background-color: #FF399B; */
+	/* border-color: #FF399B; */
+	border-color:#FF75A7;
 	width: 200px;
 	height: 41px;
 	float: right;
-	box-shadow: 0 0.125rem 0.625rem rgba(58, 196, 125, 0.4), 0 0.0625rem
+	box-shadow: 0 0.125rem 0.625rem rgba(122, 90, 125, 600), 0 0.0625rem
 		0.125rem rgba(58, 196, 125, 0.5);
 	padding: .5rem 2rem;
 	line-height: 1.5;
@@ -453,10 +356,18 @@ ul.myList li {
 	font-size: 1.25rem;
 	line-height: 1;
 	border-radius: .3rem;
-	transition: color .15s, background-color .15s, border-color .15s,
-		box-shadow .15s;
-	margin-right: 80px;
+	transition: color .25s, background-color .35s, border-color .25s,
+		box-shadow .35s;
+	margin-right: 65px;
 	margin-bottom: 5px;
+}
+#rank_count{
+	margin-top:10px;
+	text-align: center;
+	margin-left:55px;
+	font-size:34px;
+	font-weight: 700;
+	color:#FCD40A;
 }
 </style>
 </head>
@@ -495,14 +406,14 @@ ul.myList li {
 			<!-- 왼쪽여백 끝 중앙 컨텐츠 시작 -->
 
 			<div class="col-xl-8">
-				<h1 class="table-header">
+				<h1 class="table-header" style="color: #FF75A7;">
 					THIS <span class="table-header_sub">EVENT</span>
 				</h1>
 				<div class="row">
 					<div class="col-xl-9">
 						<a
 							href="/damoim/gathering/sch_calendar.do?gath_no=<%=gathering.getGath_no()%>"
-							onclick="window.open(this.href, '_blank', 'width=1270px,height=800px,toolbars=no,scrollbars=no'); return false;"><button
+							onclick="window.open(this.href, '_blank','width=1270px,height=800px,toolbars=no,scrollbars=no, left=300, top=80'); return false;"><button
 								id="create_btn_cal" type="submit">~~~~~~달력보시려면클릭하세요~~~~~</button></a>
 					</div>
 					<div class="col-xl-3">
@@ -513,7 +424,7 @@ ul.myList li {
 						%>
 						<a
 							href="/damoim/gathering/sch_create.do?gath_no=<%=gathering.getGath_no()%>"
-							onclick="window.open(this.href, '_blank', 'width=1350px,height=870px,toolbars=no,scrollbars=no'); return false;"><button
+							onclick="window.open(this.href, '_blank', 'width=1350px,height=870px,toolbars=no,scrollbars=no, left=270, top=50'); return false;"><button
 								id="create_btn" type="submit">모임생성</button></a>
 						<%
 							//로그인 안한 사용자에게 보여줄 컨텐츠
@@ -529,26 +440,27 @@ ul.myList li {
 
 				<br />
 
-				<div>
-					<h1 class="table-header">
+					<h1 class="table-header" style="color: #FF75A7;">
 						UPCOMING <span class="table-header_sub">EVENT</span>
 					</h1>
-					<div>
+				<div>
+					<div style="padding-bottom: 9px; margin-bottom: 6px;">
 					<%if(user!=null){ %>
 						<a
 							href="/damoim/gathering/sch_moimAll.do?gath_no=<%=gathering.getGath_no()%>"
-							onclick="window.open(this.href, '_blank', 'width=1850px,height=930px,toolbars=no,scrollbars=no'); return false;">
-							<button type="submit" class="btn btn-secondary">전체모임보기</button>
+							onclick="window.open(this.href, '_blank', 'width=1850px,height=930px,toolbars=no,scrollbars=no, left=27'); return false;">
+							<button type="submit" class="btn btn-secondary" style="background-color:#FF75A7;">전체모임보기</button>
 						</a>
 					<%} else {%>
 						<a href="/damoim/member/login.do">
-							<button type="submit" class="btn btn-secondary">전체모임보기</button>
+							<button type="submit" class="btn btn-secondary" style="background-color:#FF75A7;">전체모임보기</button>
 						</a>
 					<% } %>
 					</div>
 				</div>
 
 				<br />
+				
 				<%
 					if (moimlist.size() != 0) {
 						for (int i = 0; i < 2; i++) {
@@ -578,7 +490,8 @@ ul.myList li {
 											<a
 												href="/damoim/gathering/kakaomap.do?sche_loc=<%=row.getSche_loc()%>"
 												target="_blank"
-												onclick="window.open(this.href, '_blank', 'width=1150px,height=700px,toolbars=no,scrollbars=no'); return false;">
+												onclick="window.open(this.href, '_blank', 'width=1150px,height=700px,toolbars=no,scrollbars=no, left=370, top=80'); return false;"
+												style="color:#FF75A7;">
 												<i class="fas fa-map-marker-alt"></i> <%=row.getSche_loc()%>
 											</a><span class="place-header_sub"><i class="fas fa-coins"></i><%=row.getSche_fee()%>원</span>
 										</div>
@@ -612,12 +525,10 @@ ul.myList li {
 				<%
 					}
 				%>
+				<h1 class="table-header" style="color: #FF75A7;">
+					우수 <span class="table-header_sub">참석왕</span><i class="fas fa-crown"></i>
+				</h1>
 				<div class="container">
-					<div>
-						<h1 class="table-header">
-							우수 <span class="table-header_sub">참석왕</span>
-						</h1>
-					</div>
 
 					<%
 						if (ranklist.size() != 0) {
@@ -637,14 +548,15 @@ ul.myList li {
 									</div>
 
 									<div class="rank-header-main">
-										<h5 class="rank-main-header"><%=rowlist.getMem_name()%></h5>
-										<h6 class="rank-header-main-sub"><%=rowlist.getMem_msg()%></h6>
+										<p class="rank-main-header"><%=rowlist.getMem_name()%></p>
+										<p class="rank-header-main-sub"><%=rowlist.getMem_msg()%></p>
 									</div>
 								</div>
 
 								<div class="rank-main">
-									<h6 class="rank-main-title">활동 우수자</h6>
-									<hr />
+									<!-- <h6 class="rank-main-title" style="color: red;">활동 우수자</h6> -->
+									<p class="rank-main-title-head">참석 횟수</p>
+									<p class="rank-main-title"><i class="far fa-hand-point-down fa-3x" ></i></p>
 									<ul class="myList">
 										<%
 											if (ranklist.size() != 0) {
@@ -656,15 +568,17 @@ ul.myList li {
 										%>
 										<li>
 											<div class="row">
-												<div class="col-md-4">
+												<div class="col-md-3">
 													<a href="google.com" target="_blank"><img
 														src="<%=rowlist.getMem_profile()%>" class="human2"></a>
 												</div>
-												<div class="col-md-5" id="mypro">
-													<h4><%=rowlist.getMem_name()%></h4>
-													<h5><%=rowlist.getMem_msg()%></h5>
+												<div class="col-md-6" id="mypro">
+													<p id="mypro_name"><%=rowlist.getMem_name()%></p>
+													<p id="mypro_msg"><%=rowlist.getMem_msg()%></p>
 												</div>
-												<div class="col-md-3" id="rankrankrank"></div>
+												<div class="col-md-x3">
+													<div id="rank_count"><%=rowlist.getMem_count() %></div>
+												</div>
 											</div>
 										</li>
 										<br />
@@ -675,7 +589,7 @@ ul.myList li {
 										<br />
 									</ul>
 								</div>
-								<div class="rank-footer"></div>
+								<!-- <div class="rank-footer"></div> -->
 							</div>
 						</div>
 					</form>

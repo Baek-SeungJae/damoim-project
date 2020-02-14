@@ -38,8 +38,8 @@
 					<table class="table" style="font-size: 1vmax">
 						<thead>
 							<tr>
-								<th width="10%">#</th>
-								<th width="50%">제목</th>
+								<th width="15%">카테고리</th>
+								<th width="45%">제목</th>
 								<th width="15%">작성자</th>
 								<th width="15%">작성일</th>
 								<th width="10%">조회수</th>
@@ -89,19 +89,26 @@
 				<hr style="width: 100%; border-color: #ff399b;" />
 				<br />
 				<br />
-				
 				<%if(imglist.size()>=8){ %>
 				<div class="row" style="margin-bottom: 3%;">
 					<%for(int i=0; i<4; i++){ %>
 					<div class="col-xl-3">
-						<a href="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name() %>"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%if(user!=null){ %>
+						<a href="/damoim/gathering/article.do?gath_no=<%=gath_no %>&board_no=<%=imglist.get(i).getImage_bno()%>&pagenum=0"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%} else {%>
+						<a href="/damoim/member/login.do"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%} %>
 					</div>
 					<%} %>
 				</div>
 				<div class="row" style="margin-bottom: 3%;">
 					<%for(int i=4; i<8; i++){ %>
 					<div class="col-xl-3">
-						<a href="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name() %>"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%if(user!=null){ %>
+						<a href="/damoim/gathering/article.do?gath_no=<%=gath_no %>&board_no=<%=imglist.get(i).getImage_bno()%>&pagenum=0"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%} else {%>
+						<a href="/damoim/member/login.do"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%} %>
 					</div>
 					<%} %>
 				</div>
@@ -109,14 +116,22 @@
 				<div class="row" style="margin-bottom: 3%;">
 					<%for(int i=0; i<4; i++){ %>
 					<div class="col-xl-3">
-						<a href="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name() %>"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%if(user!=null){ %>
+						<a href="/damoim/gathering/article.do?gath_no=<%=gath_no %>&board_no=<%=imglist.get(i).getImage_bno()%>&pagenum=0"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%} else {%>
+						<a href="/damoim/member/login.do"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%} %>
 					</div>
 					<%} %>
 				</div>
 				<div class="row" style="margin-bottom: 3%;">
 					<%for(int i=4; i<imglist.size(); i++){ %>
 					<div class="col-xl-3">
-						<a href="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name() %>"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%if(user!=null){ %>
+						<a href="/damoim/gathering/article.do?gath_no=<%=gath_no %>&board_no=<%=imglist.get(i).getImage_bno()%>&pagenum=0"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%} else {%>
+						<a href="/damoim/member/login.do"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%} %>
 					</div>
 					<%} %>
 				</div>
@@ -124,7 +139,11 @@
 				<div class="row" style="margin-bottom: 3%;">
 					<%for(int i=0; i<imglist.size(); i++){ %>
 					<div class="col-xl-3">
-						<a href="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name() %>"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%if(user!=null){ %>
+						<a href="/damoim/gathering/article.do?gath_no=<%=gath_no %>&board_no=<%=imglist.get(i).getImage_bno()%>&pagenum=0"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%} else {%>
+						<a href="/damoim/member/login.do"><img class="img-thumbnail" src="/damoim/gathering/boardimages/<%=imglist.get(i).getImage_name()%>"></a>
+						<%} %>
 					</div>
 					<%} %>
 				</div>

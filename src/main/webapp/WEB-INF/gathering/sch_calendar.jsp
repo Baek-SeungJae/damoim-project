@@ -147,15 +147,12 @@ jQuery UI 라이브러리 js파일
 			    				mydata2="";
 			    				for(i=0; i<data.length;i++){
 			    					mydata2 = mydata2 +
-			    					"<tr><td class='mem_profile'>"+data[i].mem_profile+"</td>"+
-			    					"<td class='mem_name'>"+data[i].mem_name+"</td>"+
+			    					"<tr><td class='mem_profile' style='width:20%''>"+data[i].mem_profile+"</td>"+
+			    					"<td class='mem_info' style='width:10%''><div class='mem_name'>"+data[i].mem_name+"</div>"+
+			    					"<div class='mem_age'>"+data[i].mem_age+"</div></td>"+
 			    					"<td></td>"+
-			    					"<td class='mem_nickname'>"+data[i].mem_nickname+"</td></tr>"
+			    					"<td class='mem_grade' style='width:20%''>"+date[i].gath_grade+"</td></tr>"
 			    					
-			    					/* mydata2 = mydata2 +
-			    					"<div class='row'><div class='col-xl-3'>"+data[i].mem_profile+"</div>"+
-			    					"<div class='col-xl-6'>"+data[i].mem_name+"</div>"+
-			    					"<div class='col-xl-3'>"+data[i].mem_nickname+"</div></div>" */
 			    				}
 			    				$("#mydatalist2").empty();
 			    				$("#mydatalist2").append(mydata2);
@@ -234,20 +231,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 table{
 	border: solid 1px;
-	width: 100%;
-	font-size:22px;
-	/* text-align: left; */
+	width: 97%;
+	margin:0 auto;
 	border-radius: 5px;
-	background-color: #F1F3F4;
+	background-color: #F8F8F8;
+	/* border-collapse: separate;*/
+	border-spacing: 2px 2px; 
+
 }
-/* .container{
-	border: solid 1px;
-	width: 100%;
-	font-size:22px;
-	text-align: left;
-	border-radius: 5px;
-	background-color: #F1F3F4;
-} */
+.mydatalist{
+	background-image: url("/damoim/gathering/images/cal.jpeg");
+}
 .moimInfo{
 	font-size: 30px;
 	margin-left:13px;
@@ -260,14 +254,17 @@ table{
 }
 .sche_name{
 	text-align:center;
-	font-size:30px;
-	font-weight:600;
+	font-size:31px;
+	font-weight:520;
 	margin-left: 6px;
+	border-radius: 3px;
 }
 .sche_date{
+	font-size:22px;
 	margin-left: 6px;
 }
 .sche_loc{
+	font-size:22px;
 	margin-left: 6px;
 }
 .sche_context{
@@ -276,72 +273,33 @@ table{
 }
 .sche_master{
 	float: right;
+	font-size:22px;
 	margin-right: 6px;
 }
 .mem_profile{
-
+	text-align:center;
+	margin:0 auto;
+}
+.mem_info{
+	text-align: center;
+	font-size: 24px;
 }
 .mem_member{
-
+	text-align: center;
+	font-size: 24px;
 }
-.mem_nickname{
-
+.mem_age{
+	text-align: center;
+	font-size: 24px;
+}
+.mem_grade{
+	color: #007FFF;
+	border-color:black;
+	font-size:27px;
 }
 </style>
-<!-- <script type="text/javascript">
-	var dtNow = new Date();
-
-
-	// 월이나 년이 바뀔때의 이벤트
-	function EvtChangeMonthYear(Year, Month) {
-		$(".ui-datepicker-current-day")
-				.attr("style", "background-color:#ff0000;"); // 선택된 날자에 테두리를 만든다.
-		var arrSplit = ($("#datepicker").val()).split("/"); // 선택된 날자를 배열로 받음
-
-		var vDt = new Date();
-		var Day = getStrDay(vDt.getDate());
-		var dtMin = new Date(Year, Month - 1, 1);
-
-		dtMin = new Date(Year, Month - 1, 1 - dtMin.getDay()); // 달력의 최초 날자를 구하기 위해
-		var strMin = dtMin.getFullYear() + "-"
-				+ getStrMonth(dtMin.getMonth() + 1) + "-"
-				+ getStrDay(dtMin.getDate());
-		var dtMax = new Date(new Date(Year, Month, 1) - 86400000);
-
-		var dtMax = new Date(Year, Month - 1, dtMax.getDate() + 6
-				- dtMax.getDay()); // 달력의 마지막 날자를 구하기 위해
-		var strMax = dtMax.getFullYear() + "-"
-				+ getStrMonth(dtMax.getMonth() + 1) + "-"
-				+ getStrDay(dtMax.getDate());
-
-		//        var strUrl = "/Lab/NDailyCheck/GetDailyMonthsAjx";
-		//        var vLabNo = "@LabNo";
-		//        var selCheckGubun = $("#CheckGubunVal").val();
-
-		//        $.ajax({
-		//            type: 'POST',
-		//            async: true,    //비동기
-		//            dataType: "json",
-		//            url: strUrl,
-		//            data: { LabNo: vLabNo, CheckGubun: selCheckGubun, dtMinDay: strMin, dtMaxDay: strMax },
-		//            success: function (data) {   // 통신이 성공적으로 이루어졌을 때 이 함수를 타게 된다.
-		//                MathMonths(data, strMin);
-		//            },
-		//            complete: function (data) {   // 통신이 실패했어도 완료가 되었을 때 이 함수를 타게 된다.
-		//            },
-		//            error: function (xhr, status, error) {
-		//                alert("통신에러 → " + xhr.responseText + ":" + error);
-		//            }
-		//        });
-	}
-
-</script> -->
-
 </head>
 <body>
-<%-- <form action="/damoim/gathering/ajax_gatheringlist.do" method="post">
-<input type="hidden" name="gath_no" value="<%= gathering.getGath_no()%>">
-</form> --%>
 	<div>
 		<div type="date" id="datepicker"></div>
 		</br>
@@ -357,21 +315,19 @@ table{
 		<div class="people">참석자 명단</div>
 		<table id="mydatalist2" rules="rows">
 			<tr>
-				<td class="mem_profile"></td>
-				<td class="mem_member"></td>
-				<td></td>
-				<td class="mem_nickname"></td>
+				<td class="mem_profile" style="width:20%"></td>
+				<td class="mem_info" style="width:10%">
+					<div class="mem_member">
+						
+					</div>
+					<div class="mem_age">
+						
+					</div>
+				</td>
+				<td style="width:50%"></td>
+				<td class="mem_grade" style="width:20%"></td>
 			</tr>
 		</table>
-		<!-- <div class="container" id="mydatalist2">
-			<div class="row">
-				<div class="col-xl-3"></div>
-				<div class="col-xl-6"></div>
-				<div class="col-xl-3"></div>
-			</div>
-		</div> -->
-
-
 	</div>
 </body>
 </html>

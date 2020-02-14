@@ -13,11 +13,10 @@ public interface MemberDAO {
 	MemberVO login(MemberVO loginUser);
 	boolean passCheck(String pass);
 	MemberVO findById(String id);
-	void create(MemberVO user);
 	boolean idCheck(String id);
-	void updateAuthkey(MemberVO user);
 	boolean nickCheck(String nickname);
 	public MemberVO memread(String id);
+	public int profileupdate(String mem_profile, String mem_id);
 }
 
 

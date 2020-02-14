@@ -16,4 +16,5 @@ public interface MemberService {
 	boolean nickCheck(String nickname);
 	void updateAuthstatus(MemberVO user);
 	int insert(MemberVO user);
+	public int profileupdate(String mem_profile, String mem_id);
 }

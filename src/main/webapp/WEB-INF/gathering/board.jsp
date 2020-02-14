@@ -71,9 +71,9 @@
 						<br /> <select class="form-control w-50" name="board_category"
 							id="board_category">
 							<option value="all">전체게시물</option>
-							<option value="B01">11</option>
-							<option value="B02">22</option>
-							<option value="B03">33</option>
+							<option value="자유게시판">자유게시판</option>
+							<option value="공지사항">공지사항</option>
+							<option value="질문과답변">질문과답변</option>
 						</select> <br />
 					</div>
 					<div class="col-xl-6"></div>
@@ -100,12 +100,7 @@
 											BoardListVO row = list.get(i);
 											String path = "";
 											if (user != null) {
-												if (memchk) {
-													path = "/damoim/gathering/article.do?gath_no=" + gath_no + "&board_no=" + row.getBoard_no()
-															+ "&pagenum=0";
-												} else {
-													path = "";
-												}
+												path = "/damoim/gathering/article.do?gath_no=" + gath_no + "&board_no=" + row.getBoard_no()+ "&pagenum=0";
 											} else {
 												path = "/damoim/member/login.do";
 											}

@@ -54,171 +54,124 @@
 				<div class="py-3">
 					<div class="container">
 						<div class="row">
-							<div class="col-md-4 border border-dark col-6" style="">
+							<div class="col-md-3 border border-light col-6">
 								<h4 class="my-3">
 									<%=moim.getSche_date()%>
 								</h4>
 							</div>
-							<div class="col-md-4 border border-dark col-6" style="">
-								<h4 class="my-3"></h4>
-								<div class="row border-top border-dark">
-									<div class="col-md-6 border-right border-dark">
-										<h4 class="my-3">
-											<%=moim.getSche_loc()%>
-										</h4>
-									</div>
-									<div class="col-md-6">
-										<h4 class="my-3">
-											<%=moim.getSche_fee()%>
-										</h4>
-									</div>
-								</div>
+							<div class="col-md-2 border border-light col-6" style="">
+								<h4 class="my-3">
+									<%=moim.getSche_time()%>
+								</h4>
 							</div>
-							<div
-								class="col-6 p-3 col-md-4 border-top border-bottom border-right border-dark"
-								style="">
-								<h4 class="my-3">참가</h4>
+							<div class="col-md-5 border border-light col-6" style="">
+								<h4 class="my-3">
+									<%=moim.getSche_loc()%>
+								</h4>
+							</div>
+							<div class="col-md-2 border border-light col-6" style="">
+								<h4 class="my-3">
+									<%=moim.getSche_fee()%>
+								</h4>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="py-0 align-items-center w-100">
-					<div class="container">
+				<div class="col-md-3">
+					<div class="container col-md-6">
 						<div class="row">
-							<div class="col-md-12">
-								<div class="card text-center"></div>
+							<div class="w-100 align-items-center col-md-12" style="">
+								<div id="map" style="width: 700px; height: 400px;"></div>
+								<script type="text/javascript"
+									src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5013996650a9ed2ec46c144fe8297133"></script>
+								<script>
+														 var mapContainer = document
+															.getElementById('map'), // 지도를 표시할 div 
+																mapOption = {
+																	center : new kakao.maps.LatLng(
+																			<%=moim.getSche_lat()%>,
+																			<%=moim.getSche_lng()%>), // 지도의 중심좌표
+																	level : 3
+																// 지도의 확대 레벨
+																};
+
+																var map = new kakao.maps.Map(
+																		mapContainer,
+																		mapOption); // 지도를 생성합니다
+
+																// 마커가 표시될 위치입니다 
+																var markerPosition = new kakao.maps.LatLng(
+																			<%=moim.getSche_lat()%>,
+																			<%=moim.getSche_lng()%>);
+
+																// 마커를 생성합니다
+																var marker = new kakao.maps.Marker(
+																		{
+																			position : markerPosition
+																		});
+																marker.setMap(map);
+																
+																var iwContent = '<div style="padding:5px;"><%=moim.getSche_loc()%>
+									</div>', iwPosition = new kakao.maps.LatLng(
+								<%=moim.getSche_lat()%>
+									,
+								<%=moim.getSche_lng()%>
+									); //인포윈도우 표시 위치입니다
+
+									// 인포윈도우를 생성합니다
+									var infowindow = new kakao.maps.InfoWindow(
+											{
+												position : iwPosition,
+												content : iwContent
+											});
+
+									// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+									infowindow.open(map, marker);
+								</script>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="section">
+
+				<br />
+				<div class="col-md-12">
 					<div class="row">
-						<div class="col-12 col-md-8 offset-md-2">
-							<div class="page-header mb-5">
-								<h2 id="colours">
-									참석인원(<%=list.size()%>)
-								</h2>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12 col-lg-10 offset-lg-1">
-							<div class="row">
-								<%
-									if (list.size() != 0) {
-										for (int i = 0; i < list.size(); i++) {
-										MemberVO row = list.get(i);
-								%>
-								<!-- 			        primary -->
-								<div class="col-12 col-sm-12 col-lg-4">
-									<div class="card no-hover color">
-										<div class="card-body d-flex flex-column align-items-center">
-											
-											<a href="/damoim/gathering/info.do"> <img
-													src="/damoim/gathering/images/lorde.png" alt=""
-													class="img-fluid rounded-circle shadow-lg">
-											</a>
-											
-											<div class="title" style=""><%=list.get(i).getMem_name() %>
-											</div>
-											
-											
-										</div>
-									</div>
-								</div>
-								<%}} %>
-							</div>
-						</div>
+						<script type="text/JavaScript">
+							function text_copy() {
+								var doc = document.createElement('textarea');
+								doc.textContent = document
+										.getElementById("pagelink").textContent;
+								document.body.append(doc);
+								doc.select();
+								document.execCommand('copy');
+								doc.remove();
+								alert('소스가 저장되었습니다. 붙여넣기 하시면 됩니다.');
+							}
+						</script>
+						<script type="text/javascript"></script>
+						<textarea name="pagelink" cols="70" rows="1" id="pagelink"><%=moim.getSche_chat()%></textarea>
+						<input name="button" type="button" onclick="text_copy();"
+							value="복사하기">
 					</div>
 				</div>
-									
-										<br/>
-										<div class="col-md-12">
-											<div >
-												<div class="row" >
-													<script type="text/JavaScript">
-														function text_copy() {
-															var doc = document
-																	.createElement('textarea');
-															doc.textContent = document
-																	.getElementById("pagelink").textContent;
-															document.body
-																	.append(doc);
-															doc.select();
-															document
-																	.execCommand('copy');
-															doc.remove();
-															alert('소스가 저장되었습니다. 붙여넣기 하시면 됩니다.');
-														}
-													</script>
-													<script type="text/javascript"></script>
-													<textarea name="pagelink" cols="70" rows="1" id="pagelink"><%=moim.getSche_chat() %></textarea>
-													<input name="button" type="button" onclick="text_copy();"
-														value="복사하기">
-												</div>
-											</div>
-										</div>
-											<br/>
-									<div class=""></div>
-										<div class="col-md-3">
-											<div class="container col-md-6">
-												<div class="row">
-													<div class="w-100 align-items-center col-md-12" style="">
-														<div id="map"  style="width: 700px; height: 400px;"></div>
-														<script type="text/javascript"
-															src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5013996650a9ed2ec46c144fe8297133"></script>
-														<script>
-														var mapContainer = document
-														.getElementById('map'), // 지도를 표시할 div 
-															mapOption = {
-																center : new kakao.maps.LatLng(
-																		<%=moim.getSche_lat()%>,
-																		<%=moim.getSche_lng()%>), // 지도의 중심좌표
-																level : 3
-															// 지도의 확대 레벨
-															};
+				<br />
 
-															var map = new kakao.maps.Map(
-																	mapContainer,
-																	mapOption); // 지도를 생성합니다
 
-															// 마커가 표시될 위치입니다 
-															var markerPosition = new kakao.maps.LatLng(
-																	<%=moim.getSche_lat()%>,
-																	<%=moim.getSche_lng()%>);
-
-															// 마커를 생성합니다
-															var marker = new kakao.maps.Marker(
-																	{
-																		position : markerPosition
-																	});
-
-															// 마커가 지도 위에 표시되도록 설정합니다
-															marker.setMap(map);
-
-															// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-															// marker.setMap(null);
-														</script>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-3"></div>
-										<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-											integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-											crossorigin="anonymous" style=""></script>
-										<script
-											src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-											integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-											crossorigin="anonymous" style=""></script>
-										<script
-											src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-											integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-											crossorigin="anonymous" style=""></script>
-									</div>
-									<div class="col-md-2"></div>
-								</div>
-							</div>
+				<div class="col-md-3"></div>
+				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+					integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+					crossorigin="anonymous" style=""></script>
+				<script
+					src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+					integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+					crossorigin="anonymous" style=""></script>
+				<script
+					src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+					integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+					crossorigin="anonymous" style=""></script>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
 </body>
-
 </html>

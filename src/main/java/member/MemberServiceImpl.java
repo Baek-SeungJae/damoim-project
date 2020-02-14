@@ -84,6 +84,9 @@ public class MemberServiceImpl implements MemberService {
 	public void updateAuthstatus(MemberVO user) {
 		
 	}
-
+	@Override
+	public int profileupdate(String mem_profile, String mem_id) {
+		return dao.profileupdate(mem_profile, mem_id);
+	}
 
 }

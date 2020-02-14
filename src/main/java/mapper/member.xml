@@ -57,4 +57,9 @@
 	'',
 	0)
 	</insert>
+	<update id="profileupdate" parameterType="Map">
+	update member
+	set mem_profile = #{mem_profile}
+	where mem_id = #{mem_id}
+	</update>
 </mapper>

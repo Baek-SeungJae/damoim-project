@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import board.list.BoardListService;
@@ -51,6 +53,26 @@ public class GatheringController {
 		mav.addObject("gathering", gathering);
 		mav.addObject("boardlist", boardlist);
 		mav.setViewName("gathering/home");
+		return mav;
+	}
+	@RequestMapping("/gathering/newgathering.do")
+	public ModelAndView newgathering(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO)session.getAttribute("user");
+		
+		mav.setViewName("gathering/newgathering");
+		return mav;
+	}
+	
+	@RequestMapping(value="/gathering/makegathering.do", method=RequestMethod.POST)
+	public ModelAndView makegathering(GatheringInfoVO gathering, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO)session.getAttribute("user");
+		
+		System.out.println(gathering);
+		mav.setViewName("redirect:/gathering/newgathering.do");
 		return mav;
 	}
 }
