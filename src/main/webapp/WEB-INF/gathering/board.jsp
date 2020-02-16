@@ -150,24 +150,24 @@
 							<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
 							<li class="page-item <%if (pagenum == 0) {%><%="active"%><%}%>"><a
 								class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=0%>">1</a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=0%>">1</a>
 							</li>
 							<li class="page-item <%if (pagenum == 1) {%><%="active"%><%}%>"><a
 								class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=1%>">2</a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=1%>">2</a>
 							</li>
 							<li class="page-item <%if (pagenum == 2) {%><%="active"%><%}%>"><a
 								class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=2%>">3</a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=2%>">3</a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=3%>">4</a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=3%>">4</a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=4%>">5</a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=4%>">5</a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=5%>">Next</a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=5%>">Next</a>
 							</li>
 						</ul>
 						<%
@@ -175,34 +175,34 @@
 						%>
 						<ul class="pagination justify-content-center">
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=pagenum - 3%>">Previous</a></li>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=pagenum - 3%>">Previous</a></li>
 							<li
 								class="page-item <%if (pagenum == (int) Math.ceil(listsize / 10.0) - 5) {%><%="active"%><%}%>"><a
 								class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 5%>"><%=(int) Math.ceil(listsize / 10.0) - 4%></a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 5%>"><%=(int) Math.ceil(listsize / 10.0) - 4%></a>
 							</li>
 							<li
 								class="page-item <%if (pagenum == (int) Math.ceil(listsize / 10.0) - 4) {%><%="active"%><%}%>"><a
 								class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 4%>"><%=(int) Math.ceil(listsize / 10.0) - 3%></a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 4%>"><%=(int) Math.ceil(listsize / 10.0) - 3%></a>
 							</li>
 							<li
 								class="page-item <%if (pagenum == (int) Math.ceil(listsize / 10.0) - 3) {%><%="active"%><%}%>"><a
 								class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 3%>"><%=(int) Math.ceil(listsize / 10.0) - 2%></a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 3%>"><%=(int) Math.ceil(listsize / 10.0) - 2%></a>
 							</li>
 							<li
 								class="page-item <%if (pagenum == (int) Math.ceil(listsize / 10.0) - 2) {%><%="active"%><%}%>"><a
 								class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 2%>"><%=(int) Math.ceil(listsize / 10.0) - 1%></a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 2%>"><%=(int) Math.ceil(listsize / 10.0) - 1%></a>
 							</li>
 							<li
 								class="page-item <%if (pagenum == (int) Math.ceil(listsize / 10.0) - 1) {%><%="active"%><%}%>"><a
 								class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 1%>"><%=(int) Math.ceil(listsize / 10.0)%></a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 1%>"><%=(int) Math.ceil(listsize / 10.0)%></a>
 							</li>
 							<li class="page-item disabled"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=5%>">Next</a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=5%>">Next</a>
 							</li>
 						</ul>
 						<%
@@ -210,24 +210,24 @@
 						%>
 						<ul class="pagination justify-content-center">
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=pagenum - 3%>">Previous</a></li>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=pagenum - 3%>">Previous</a></li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=pagenum - 2%>"><%=pagenum - 1%></a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=pagenum - 2%>"><%=pagenum - 1%></a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=pagenum - 1%>"><%=pagenum%></a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=pagenum - 1%>"><%=pagenum%></a>
 							</li>
 							<li class="page-item active"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=pagenum%>"><%=pagenum + 1%></a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=pagenum%>"><%=pagenum + 1%></a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=pagenum + 1%>"><%=pagenum + 2%></a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=pagenum + 1%>"><%=pagenum + 2%></a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=pagenum + 2%>"><%=pagenum + 3%></a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=pagenum + 2%>"><%=pagenum + 3%></a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=pagenum + 3%>">Next</a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=pagenum + 3%>">Next</a>
 							</li>
 						</ul>
 						<%
@@ -240,7 +240,7 @@
 							%>
 							<li class="page-item <%if (pagenum == i) {%><%="active"%><%}%>"><a
 								class="page-link"
-								href="/damoim/gathering/board.do?gath_no=G001&board_category=<%=category%>&pagenum=<%=i%>"><%=i + 1%></a>
+								href="/damoim/gathering/board.do?gath_no=<%=gath_no %>&board_category=<%=category%>&pagenum=<%=i%>"><%=i + 1%></a>
 							</li>
 							<%
 								}

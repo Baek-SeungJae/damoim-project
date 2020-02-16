@@ -50,7 +50,7 @@
 	#{mem_business},
 	#{mem_job},
 	'',
-	'',
+	'null',
 	'',
 	'',
 	#{mem_phone},

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import gathering.info.GatheringInfoVO;
+import member.MemberVO;
 
 @Repository("homeDao")
 public class HomeDAOImpl implements HomeDAO {
@@ -42,7 +43,40 @@ public class HomeDAOImpl implements HomeDAO {
 
 	@Override
 	public List<GatheringInfoVO> recommendList() {
-		return sqlSession.selectList("home.recommendList");
+		String[] catelist = { "I24",
+				"I11",
+				"I3",
+				"I13",
+				"I14",
+				"I9",
+				"I19",
+				"I19",
+				"I22",
+				"I21",
+				"I10",
+				"I1",
+				"I4",
+				"I5",
+				"I20",
+				"I2",
+				"I5",
+				"I8",
+				"I23",
+				"I12",
+				"I16",
+				"I7",
+				"I18",
+				"I23"};
+
+
+	    // Math.ramdom이용
+	    double randomValue = Math.random();
+	    int ran = (int)(randomValue * catelist.length);
+
+	    String category = catelist[ran];
+
+		String major = category;
+		return sqlSession.selectList("home.recommendList", major);
 	}
 
 

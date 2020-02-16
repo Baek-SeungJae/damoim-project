@@ -57,9 +57,9 @@
 				<% } %>
 					<select class="form-control w-50" name="board_category"
 						id="board_category">
-						<option value="B01">자유게시판</option>
-						<option value="B02">공지사항</option>
-						<option value="B03">질문과답변</option>
+						<option value="자유게시판">자유게시판</option>
+						<option value="공지사항">공지사항</option>
+						<option value="질문과답변">질문과답변</option>
 					</select> <input type="hidden" name="board_gno"
 						value="<%=request.getParameter("gath_no")%>"> <input
 						type="hidden" name="board_mno" value="<%=user.getMem_id()%>">

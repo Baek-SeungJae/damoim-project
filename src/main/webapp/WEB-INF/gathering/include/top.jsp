@@ -29,15 +29,6 @@
 	<!-- 상단 head 시작 -->
 	<div class="container-fluid">
 		<div class="row">
-			<%
-				if (user != null) {
-			%>
-			<p><%=user.getMem_id()%></p>
-			<br />
-			<p><%=memchk%></p>
-			<%
-				}
-			%>
 			<div class="col-xl-12">
 				<h5 class="">
 					<a href="/damoim/main/home"><img id=minilogo
@@ -67,6 +58,17 @@
 			href="/damoim/gathering/sch_main.do?gath_no=<%=gath_no%>"
 			class="nav-link">일정</a></li>
 	</ul>
+	<%if(!memchk){ %>
+	<div class="row">
+		<div class="col-xl-12" align="right">
+			<%if(user!=null){ %>
+			<a class="btn btn-primary btn-block" href="/damoim/gathering/join.do?gath_no=<%=gath_no%>">가입하기</a>
+			<%} else{ %>
+			<a class="btn btn-primary btn-block" href="/damoim/member/login.do">가입하기</a>
+			<% } %>
+		</div>
+	</div>
+	<%} %>
 	<br />
 	<%if(imgtitle.size()!=0){ %>
 	<div class="container-fluid">
@@ -92,7 +94,7 @@
 						</div>
 						<div class="carousel-item ">
 							<img class="d-block img-fluid w-100"
-								src="/damoim/gathering/images/<%=imgtitle.get(0).getImage_name()%>">
+								src="/damoim/gathering/images/<%=imgtitle.get(1).getImage_name()%>">
 							<div class="carousel-caption">
 								<h5 class="m-0"></h5>
 								<p></p>
@@ -100,7 +102,7 @@
 						</div>
 						<div class="carousel-item">
 							<img class="d-block img-fluid w-100"
-								src="/damoim/gathering/images/<%=imgtitle.get(0).getImage_name()%>">
+								src="/damoim/gathering/images/<%=imgtitle.get(2).getImage_name()%>">
 							<div class="carousel-caption">
 								<h5 class="m-0"></h5>
 								<p></p>

@@ -42,10 +42,11 @@
 				// 처음 접속한 사용자에게 보여줄 컨텐츠
 				if (user == null) {
 			%>
-			<div class="col-md-2">
-				<img alt="" src="./images/saramicon.jpeg" width=50px; height=30px;>
-			</div>
-			<div class="col-md-2" align="right">
+			<!-- <div class="col-md-2" align="right">
+				<img align="right" alt="" src="../static/images/saramicon.jpeg" width=50px; height=30px;>
+			</div> -->
+			<div class="col-md-4" align="right">
+				<img alt="" src="../static/images/saramicon.jpeg" width=50px; height=30px;>
 				<a href="/damoim/member/login.do">로그인</a>
 			</div>
 			<div class="col-md-2">
@@ -61,13 +62,11 @@
 			<div class="col-md-2" align="right">
 				<a href="/damoim/member/mypage"><img class="rounded-circle" src="/damoim/member/memimg/<%=user.getMem_profile()%>" width="40px" height="40px"></a>
 			</div>
+			
 			<div class="col-md-2">
 				<a href="/damoim/member/logout.do">로그아웃</a>
 			</div>
-
-			<%
-				}
-			%>
+			<% } %>
 		</div>
 		<div class="row">
 			<div class="col-md-1"></div>
@@ -75,25 +74,34 @@
 			<ul class="nav nav-pills">
 			<li class="nav-item"><a href="/damoim/main/home.do"
 				class="active nav-link">홈</a></li>
-			<%  // 처음 접속한 사용자에게 보여줄 컨텐츠
+		<%-- 	<%  // 처음 접속한 사용자에게 보여줄 컨텐츠
 						if(user == null){ %>
 			<li class="nav-item"><a class="nav-link" href="#">별점순</a></li>
 			<%	// 로그인 성공한 사용자에게 보여줄 컨텐츠
 						}else{ %>
 			<li class="nav-item"><a class="nav-link"
 				href="/damoim/myhome/myhome.do">내모임</a></li>
-			<%} %>
+			<%} %> --%>
 
-			<li class="nav-item"><a href="#" class="nav-link disabled">조회수순</a>
+			<li></li>
+			<li class="nav-item">
+			<%if(user!=null){ %>
+			<a href="/damoim/myhome/myhome.do" class="active nav-link">내모임</a>
+			<%}else{ %>
+			<a href="#" class="active nav-link">내모임</a>
+			<% } %>
 			</li>
-			<li class="nav-item"><a href="#" class="nav-link disabled">회원수순</a>
-			</li>
-			<li class="nav-item"><a href="#" class="nav-link disabled">회원수순</a>
+			<li></li>
+			<%if(user!=null){ %>
+			<li class="nav-item"><a href="/damoim/member/mypage" class="active nav-link">마이페이지</a>
+			<%}else{ %>
+			<a href="#" class="active nav-link">마이페이지</a>
+			<% } %>
 			</li>
 		</ul>
 			</div>
 			<div class="col-md-2">
-			<form class="form-inline" action="/damoim/search/search.do">
+			<form class="form-inline" action="/damoim/search/searchchk.do" method="post">
 				<div class="input-group">
 					<button class="btn btn-primary" type="submit">
 						<i class="fa fa-search"></i>

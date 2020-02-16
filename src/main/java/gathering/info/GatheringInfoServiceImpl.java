@@ -23,4 +23,8 @@ public class GatheringInfoServiceImpl implements GatheringInfoService {
 	public GatheringMemberVO memberCheckOfGathering(String mem_id, String gath_no) {
 		return dao.memberCheckOfGathering(mem_id, gath_no);
 	}
+	@Override
+	public int join(String mem_id, String gath_no) {
+		return dao.join(mem_id, gath_no);
+	}
 }

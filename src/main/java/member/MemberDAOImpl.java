@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.sound.midi.Soundbank;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -58,8 +60,8 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int update(MemberVO user) {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("업데이트");
+		return sqlSession.update("member.update", user);
 	}
 
 

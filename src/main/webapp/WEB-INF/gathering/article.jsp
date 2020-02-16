@@ -70,7 +70,6 @@
 						function uploadFile(){
 							var form = $('#FILE_FORM')[0];
 							var formData = new FormData(form);
-							alert("함수");
 							$.ajax({
 								url:"/damoim/imageupload.do?type=board&gath_no=${gath_no}&value=${board_no}",
 								type:"POST",
@@ -78,7 +77,6 @@
 								contentType:false,	
 								data: formData,
 								success:function(result){
-									alert("업로드성공");
 								}
 							});
 						}
@@ -229,7 +227,7 @@
 					<% if(user!=null){ %>
 						<div class="mx-auto p-4 col-xl-12">
 							<form method="post" action="/damoim/gathering/article/comment.do">
-								<input type="hidden" name="b_comm_mno" value="<%="M000200"%>">
+								<input type="hidden" name="b_comm_mno" value="<%=user.getMem_id()%>">
 								<input type="hidden" name="b_comm_bno" value="<%=board.getBoard_no()%>">
 								<input type="hidden" name="gath_no" value="<%=gath_no%>">
 								<input type="hidden" name="board_no" value="<%=board_no%>">

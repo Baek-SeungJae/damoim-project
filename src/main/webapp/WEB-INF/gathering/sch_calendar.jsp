@@ -104,7 +104,7 @@ jQuery UI 라이브러리 js파일
 			            var day=arr[2];
 			            
 			            mydate = year+month+day;
-			            alert(mydate+" 선택되었습니다(mydate)");
+			            alert(mydate+"로 선택되었습니다");
 			            /* //요일 가져오기
 			            //데이터를 먼저 가져오고 (숫자로 넘어옴)
 			            var date=new Date($("#datepicker").datepicker({dateFormat:"yy-mm-dd"}).val());
@@ -146,12 +146,23 @@ jQuery UI 라이브러리 js파일
 			    			success:function(data){
 			    				mydata2="";
 			    				for(i=0; i<data.length;i++){
-			    					mydata2 = mydata2 +
-			    					"<tr><td class='mem_profile' style='width:20%''>"+data[i].mem_profile+"</td>"+
-			    					"<td class='mem_info' style='width:10%''><div class='mem_name'>"+data[i].mem_name+"</div>"+
-			    					"<div class='mem_age'>"+data[i].mem_age+"</div></td>"+
-			    					"<td></td>"+
-			    					"<td class='mem_grade' style='width:20%''>"+date[i].gath_grade+"</td></tr>"
+			    					
+			    					if(data[i].gath_grade == "운영자"){
+				    					mydata2 = mydata2 +
+				    					"<tr><td class='mem_profile' style='width:20%''><img alt='' style='width:35%' src='/damoim/member/memimg/"+data[i].mem_profile+"'></td>"+
+				    					"<td class='mem_info' style='width:10%''><div class='mem_name'>"+data[i].mem_name+"</div>"+
+				    					"<div class='mem_age'>"+data[i].mem_age+"</div></td>"+
+				    					"<td></td>"+
+				    					"<td class='mem_grade' style='width:20%; color:#007FFF; border-color:black;'>"+" "+"</td></tr>"
+			    					}else {
+			    						mydata2 = mydata2 +
+			    						"<tr><td class='mem_profile' style='width:20%''><img alt='' style='width:35%' src='/damoim/member/memimg/"+data[i].mem_profile+"'></td>"+
+				    					"<td class='mem_info' style='width:10%''><div class='mem_name'>"+data[i].mem_name+"</div>"+
+				    					"<div class='mem_age'>"+data[i].mem_age+"</div></td>"+
+				    					"<td></td>"+
+				    					"<td class='mem_grade' style='width:20%; color:black, border-color:black;'>"+" "+"</td></tr>"
+			    						
+			    					}
 			    					
 			    				}
 			    				$("#mydatalist2").empty();
@@ -279,6 +290,7 @@ table{
 .mem_profile{
 	text-align:center;
 	margin:0 auto;
+	
 }
 .mem_info{
 	text-align: center;
@@ -293,7 +305,6 @@ table{
 	font-size: 24px;
 }
 .mem_grade{
-	color: #007FFF;
 	border-color:black;
 	font-size:27px;
 }
@@ -315,7 +326,7 @@ table{
 		<div class="people">참석자 명단</div>
 		<table id="mydatalist2" rules="rows">
 			<tr>
-				<td class="mem_profile" style="width:20%"></td>
+				<td class="mem_profile" style="width:20%"><img alt="" style="width:15" src="/damoim/member/memimg/"></td>
 				<td class="mem_info" style="width:10%">
 					<div class="mem_member">
 						

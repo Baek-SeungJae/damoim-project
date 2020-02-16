@@ -25,7 +25,6 @@
 	<% MemberVO user = (MemberVO)session.getAttribute("user"); %>
 	<% boolean memchk = (boolean)request.getAttribute("memchk"); %>
 	<% List<ImageVO> imglist= (List<ImageVO>)request.getAttribute("imglist"); %>
-
 	<!-- 메인화면 시작 -->
 	<div class="container-fluid">
 		<div class="row">
@@ -65,7 +64,7 @@
 								%><tr>
 									<td><%=row.getBoard_category()%></td>
 									<td><a href="<%=path %>"
-										style="color: red;"><%=row.getBoard_title()%></a></td>
+										style="color: black;"><%=row.getBoard_title()%><span style="color: red; font-weight:bold;">&nbsp;[<%=row.getComm_count() %>]</span></a></td>
 									<td><%=row.getBoard_nickname()%></td>
 									<td><%=row.getBoard_date()%></td>
 									<td><%=row.getBoard_hit()%></td>

@@ -26,4 +26,7 @@
 	<insert id="makegathering">
 		insert into gathering values('G'||GATH_NO.nextval,#{gath_name},#{gath_info},'',sysdate,#{gath_major},'',#{gath_chat},#{gath_loc},#{gath_master});
 	</insert>
+	<insert id="join" parameterType="Map">
+		insert into gathering_member values(#{gath_no},#{mem_id},sysdate,'일반회원')
+	</insert>
 </mapper>

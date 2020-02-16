@@ -6,35 +6,42 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/damoim/static/common/damoim.css">
+<style type="text/css">
+	#footer{
+		background-color: #0f0f14;
+		color: white;
+	}
+</style>
+	
 
 </head>
 <body>
-<div class="py-3">
-		<div class="container">
+<div class="py-3" id="footer">
+		<div class="container" style="background-color:#0f0f14; color:white;" >
 			<div class="row">
 				<div class="col-lg-3 col-6 p-3">
 					<h5>
-						<b>Main</b>
+						<p style="color: green;"><b>Main</b></p>
 					</h5>
 					<ul class="list-unstyled">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Features</a></li>
-						<li><a href="#">Pricing</a></li>
+						<li style="color:white;">Home</li>
+						<li style="color:white;">Features</li>
+						<li style="color:white;">Pricing</li>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-6 p-3">
 					<h5>
-						<b>Others</b>
+						<p style="color: green;"><b>Others</b></p>
 					</h5>
 					<ul class="list-unstyled">
-						<li><a href="#">FAQ</a></li>
-						<li><a href="#">Resources</a></li>
-						<li><a href="#">Career</a></li>
+						<li style="color:white;">FAQ</li>
+						<li style="color:white;">Resources</li>
+						<li style="color:white;">Career</li>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6 p-3">
 					<h5>
-						<b>About</b>
+						<p style="color: green;"><b>About</b></p>
 					</h5>
 					<p class="mb-0">
 						서울특별시 강남구 테헤란로 212 멀티캠퍼스 역삼 15층 1501호<br>메일: aaa@hongmail.net<br>전화:
@@ -43,7 +50,7 @@
 				</div>
 				<div class="col-lg-3 col-md-6 p-3">
 					<h5>
-						<b>Follow us</b>
+						<p style="color: green;"><b>Follow us</b></p>
 					</h5>
 					<div class="row">
 						<div class="col-md-4 pl-4" style="">

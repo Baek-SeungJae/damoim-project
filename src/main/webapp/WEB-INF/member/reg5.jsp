@@ -30,7 +30,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-4 pl-5"><img class="img-fluid d-block w-75 pl-4" src="regFin.png"></div>
+        <div class="col-md-4 pl-5"></div>
         <div class="col-md-4"></div>
       </div>
     </div>

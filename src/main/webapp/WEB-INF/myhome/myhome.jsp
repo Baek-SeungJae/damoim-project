@@ -134,7 +134,6 @@
 							<hr>
 							<ul class="pl-3">
 								<li><%=con.getGath_info()%></li>
-								<li><%=con.getGath_info()%></li>
 							</ul>
 							<a class="btn btn-primary mt-3" href="/damoim/gathering/home.do?gath_no=<%=con.getGath_no()%>">참여하기</a>
 						</div>

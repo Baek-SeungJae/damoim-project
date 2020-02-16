@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import gathering.info.GatheringInfoVO;
+import member.MemberVO;
 
 @Service
 public class HomeServiceImpl implements HomeService{
@@ -32,6 +33,7 @@ public class HomeServiceImpl implements HomeService{
 		list = dao.loginRecommendList(mem_home);
 		return list;
 	}
+	
 	
 	/*@Override
 	public List<GatheringInfoVO> loginRecommendList(String mem_home, ) {

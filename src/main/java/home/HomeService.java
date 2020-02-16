@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import gathering.info.GatheringInfoVO;
+import member.MemberVO;
 
 interface HomeService {
 
@@ -15,5 +16,6 @@ interface HomeService {
 	List<GatheringInfoVO> recommendList();
 
 	List<GatheringInfoVO> myList();
+	
 
 }

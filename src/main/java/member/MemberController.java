@@ -286,6 +286,35 @@ public class MemberController {
 			return mav;
 		}
 		
+
+		@RequestMapping(value="/member/update.do", method=RequestMethod.POST)
+		public ModelAndView update(String mem_msg, String mem_nickname,
+				String mem_phone, String mem_email, HttpServletRequest request) {
+			ModelAndView mav = new ModelAndView();
+			// 이미 있으면 넣어주고, 없으면 null 리턴
+			HttpSession session = request.getSession(false);
+			String result = "";
+			// null 체크
+			if(session != null) {
+				MemberVO user = (MemberVO)session.getAttribute("user");
+				user.setMem_msg(mem_msg);
+				user.setMem_nickname(mem_nickname);
+				user.setMem_phone(mem_phone);
+				user.setMem_email(mem_email);
+				service.update(user);
+				result = "redirect:/member/mypage2";
+			}else { 
+				result = "redirect:/main/home";
+			}
+			mav.setViewName(result);
+			return mav;
+		}
+		
+		@RequestMapping("member/mypage2")
+		public String mypage2(HttpServletRequest request) {
+			return "mypage2";
+		}
+		
 		// =================가이드===================
 		@RequestMapping("/member/guide")
 		public String guideView() {

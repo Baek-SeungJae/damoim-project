@@ -109,16 +109,17 @@ body {
 	background-size:cover;
 	background-position: center;
 	border:5px solid transparent;
+	margin-bottom: 10px;
 }
 
 .rank-main-header {
-	margin-top: 5px;
-	font-size: 35px;
-	font-weight: 690;
+	margin-top:6px;
+	font-size: 38px;
+	font-weight: 700;
 }
 .rank-header-main-sub{
-	font-size: 25px;
-	font-weight: 490; 
+	font-size: 32px;
+	font-weight: 500; 
 }
 
 .rank-icon {
@@ -251,13 +252,14 @@ body {
 
 #create_btn {
 	text-align: center;
-	width: 100%;
+	width: 70%;
 	height: 40px;
 	border-radius: 5px 5px 5px 5px;
 	cursor: default;
 	background-color: #F8F8F8;
 	border: solid 1.2px;
 	margin-bottom: 25px;
+	margin-left:70px;
 	font-size: 26px;
 	box-shadow: 2px 2px 2px 2px #999;
 	cursor: pointer;
@@ -265,13 +267,14 @@ body {
 
 #create_btn_cal {
 	text-align: center;
-	width: 70%;
+	width: 90%;
 	height: 40px;
-	border-radius: 5px 5px 6px 0;
+	border-radius: 5px 5px 5px 5px;
 	cursor: default;
 	background-color: #F8F8F8;
 	border: solid 1.2px;
 	margin-bottom: 25px;
+	margin-left:70px;
 	font-size: 26px;
 	box-shadow: 2px 2px 2px 2px #999;
 	cursor: pointer;
@@ -307,14 +310,15 @@ a:active{
 	text-align: left;
 	width: 500px;
 	margin-left: 0px;
+	margin-top: 15px;
 }
 #mypro_name{
-	font-size: 30px;
-	font-weight: 690;
+	font-size: 32px;
+	font-weight: 700;
 }
 #mypro_msg{
-	font-size: 24px;
-	font-weight: 490;
+	font-size: 27px;
+	font-weight: 500;
 }
 
 .rank-list {
@@ -365,9 +369,18 @@ ul.myList li {
 	margin-top:10px;
 	text-align: center;
 	margin-left:55px;
-	font-size:34px;
-	font-weight: 700;
-	color:#FCD40A;
+	font-size:40px;
+	font-weight: 800;
+	color:black;
+}
+
+.human1{
+	width:14%;
+}
+.human2{
+	width:85%;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
 }
 </style>
 </head>
@@ -410,13 +423,13 @@ ul.myList li {
 					THIS <span class="table-header_sub">EVENT</span>
 				</h1>
 				<div class="row">
-					<div class="col-xl-9">
+					<div class="col-xl-7">
 						<a
 							href="/damoim/gathering/sch_calendar.do?gath_no=<%=gathering.getGath_no()%>"
 							onclick="window.open(this.href, '_blank','width=1270px,height=800px,toolbars=no,scrollbars=no, left=300, top=80'); return false;"><button
-								id="create_btn_cal" type="submit">~~~~~~달력보시려면클릭하세요~~~~~</button></a>
+								id="create_btn_cal" type="submit">클릭해서 일정을 확인하세요.</button></a>
 					</div>
-					<div class="col-xl-3">
+					<div class="col-xl-5">
 
 						<%
 							//로그인 성공한 사용자에게 보여줄 컨텐츠
@@ -542,8 +555,7 @@ ul.myList li {
 									%>
 									<div class="rank-icon">
 										<div class="icon">
-											<a href="http://www.google.com" target="_blank"><img
-												src="<%=rowlist.getMem_profile()%>" class="human1"></a>
+											<img src="/damoim/member/memimg/<%=rowlist.getMem_profile()%>" class="human1">
 										</div>
 									</div>
 
@@ -569,8 +581,7 @@ ul.myList li {
 										<li>
 											<div class="row">
 												<div class="col-md-3">
-													<a href="google.com" target="_blank"><img
-														src="<%=rowlist.getMem_profile()%>" class="human2"></a>
+													<img src="/damoim/member/memimg/<%=rowlist.getMem_profile()%>" class="human2">
 												</div>
 												<div class="col-md-6" id="mypro">
 													<p id="mypro_name"><%=rowlist.getMem_name()%></p>

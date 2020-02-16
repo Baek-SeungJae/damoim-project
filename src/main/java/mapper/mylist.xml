@@ -8,14 +8,14 @@
   		select DISTINCT  g.gath_name, b.board_title, b.board_date,  b.board_gno, b.board_mno, g.gath_no
 			from gathering g, board b
 			where  b.board_mno=#{mem_id} and g.gath_no=b.board_gno
-			order by b.board_date
+			order by b.board_date DESC
 	</select>
   
 	<select id="myschedulelist" resultType="mylist" parameterType="String">
 		select DISTINCT g.gath_name, s.sche_name, s.sche_date, g.gath_no
 		from gathering g, schedule s, gathering_member gm
 		where gm.gath_mem_mno=#{mem_id} and g.gath_no=s.sche_gno
-        order by s.sche_date 
+        order by s.sche_date DESC
 	</select>  
 	
 	<select id="recommend" resultType="mylist" parameterType="String">

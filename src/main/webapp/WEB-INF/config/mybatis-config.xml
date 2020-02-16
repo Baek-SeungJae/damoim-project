@@ -28,6 +28,7 @@
 		<typeAlias type="interest.interest_minorVO" alias="interest_minor"/>
 		<typeAlias type="interest.interest_majorVO" alias="interest_major"/>
 		<typeAlias type="interest.member_interestVO" alias="member_interest"/>
+		<typeAlias type="damoim.search.SearchVO" alias="search"/>
 	</typeAliases>
 	<mappers>
 		<!-- src부터 인식 -->

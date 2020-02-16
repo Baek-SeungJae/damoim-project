@@ -3,6 +3,7 @@ package home;
 import java.util.List;
 
 import gathering.info.GatheringInfoVO;
+import member.MemberVO;
 
 public interface HomeDAO {
 
@@ -13,5 +14,6 @@ public interface HomeDAO {
 	List<GatheringInfoVO> recommendList();
 
 	List<GatheringInfoVO> myList();
+
 
 }

@@ -4,7 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="home">
 	<!-- topList, loginRecommendList, recommendList -->
+	<!-- 회원수순  -->
+	<select id="topList" resultType="gathering">
+		 select *
+ from gathering
+ where gath_no in (
+ select g.gath_no
+ from gathering g, gathering_member gm
+ where g.gath_no = gm.gath_mem_gno
+ group by g.gath_no)
+		<!-- <![CDATA[
+				and rownum <= 5
+				]]> -->
+	</select>
 	
+	
+	<!-- 
 	<select id="topList" resultType="gathering">
 		select g.*
 		from (
@@ -14,7 +29,7 @@
 		<![CDATA[
 				where rownum <= 5
 				]]>
-	</select>
+	</select> -->
 	
 	<select id="myList" resultType="gathering">
 		select g.*
@@ -28,13 +43,13 @@
 	</select>
 
 	
-	<!-- 연결 시험용  -->
-	<select id="recommendList" resultType="gathering">
+	<!-- 추천(카테고리별)  -->
+	<select id="recommendList" resultType="gathering" parameterType="String">
 		select g.*
 		from (
 			select *
 			from gathering
-			order by gath_opendate desc) g
+			where gath_major=#{major}) g
 		<![CDATA[
 				where rownum <= 5
 				]]>

@@ -85,48 +85,48 @@
 								<script type="text/javascript"
 									src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5013996650a9ed2ec46c144fe8297133"></script>
 								<script>
-														 var mapContainer = document
-															.getElementById('map'), // 지도를 표시할 div 
-																mapOption = {
-																	center : new kakao.maps.LatLng(
-																			<%=moim.getSche_lat()%>,
-																			<%=moim.getSche_lng()%>), // 지도의 중심좌표
-																	level : 3
-																// 지도의 확대 레벨
-																};
+								var mapContainer = document
+								.getElementById('map'), // 지도를 표시할 div 
+									mapOption = {
+										center : new kakao.maps.LatLng(
+												<%=moim.getSche_lat()%>,
+												<%=moim.getSche_lng()%>), // 지도의 중심좌표
+										level : 3
+									// 지도의 확대 레벨
+									};
 
-																var map = new kakao.maps.Map(
-																		mapContainer,
-																		mapOption); // 지도를 생성합니다
+									var map = new kakao.maps.Map(
+											mapContainer,
+											mapOption); // 지도를 생성합니다
 
-																// 마커가 표시될 위치입니다 
-																var markerPosition = new kakao.maps.LatLng(
-																			<%=moim.getSche_lat()%>,
-																			<%=moim.getSche_lng()%>);
+									// 마커가 표시될 위치입니다 
+									var markerPosition = new kakao.maps.LatLng(
+											<%=moim.getSche_lat()%>,
+											<%=moim.getSche_lng()%>);
 
-																// 마커를 생성합니다
-																var marker = new kakao.maps.Marker(
-																		{
-																			position : markerPosition
-																		});
-																marker.setMap(map);
-																
-																var iwContent = '<div style="padding:5px;"><%=moim.getSche_loc()%>
-									</div>', iwPosition = new kakao.maps.LatLng(
-								<%=moim.getSche_lat()%>
-									,
-								<%=moim.getSche_lng()%>
-									); //인포윈도우 표시 위치입니다
-
-									// 인포윈도우를 생성합니다
-									var infowindow = new kakao.maps.InfoWindow(
+									// 마커를 생성합니다
+									var marker = new kakao.maps.Marker(
 											{
-												position : iwPosition,
-												content : iwContent
+												position : markerPosition
 											});
-
-									// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-									infowindow.open(map, marker);
+									
+									marker.setMap(map);
+									
+									var iwContent = '<div style="width:110%; padding:5px;"> <%=moim.getSche_loc()%> </div>',
+									
+								    iwPosition = new kakao.maps.LatLng(
+											<%=moim.getSche_lat()%>,
+											<%=moim.getSche_lng()%>); //인포윈도우 표시 위치입니다
+								
+								// 인포윈도우를 생성합니다
+								var infowindow = new kakao.maps.InfoWindow({
+								    position : iwPosition, 
+								    content : iwContent 
+								});
+								  
+								// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+								infowindow.open(map, marker); 
+									
 								</script>
 							</div>
 						</div>
@@ -137,17 +137,20 @@
 				<div class="col-md-12">
 					<div class="row">
 						<script type="text/JavaScript">
-							function text_copy() {
-								var doc = document.createElement('textarea');
-								doc.textContent = document
-										.getElementById("pagelink").textContent;
-								document.body.append(doc);
-								doc.select();
-								document.execCommand('copy');
-								doc.remove();
-								alert('소스가 저장되었습니다. 붙여넣기 하시면 됩니다.');
-							}
-						</script>
+														function text_copy() {
+															var doc = document
+																	.createElement('textarea');
+															doc.textContent = document
+																	.getElementById("pagelink").textContent;
+															document.body
+																	.append(doc);
+															doc.select();
+															document
+																	.execCommand('copy');
+															doc.remove();
+															alert('소스가 저장되었습니다. 붙여넣기 하시면 됩니다.');
+														}
+													</script>
 						<script type="text/javascript"></script>
 						<textarea name="pagelink" cols="70" rows="1" id="pagelink"><%=moim.getSche_chat()%></textarea>
 						<input name="button" type="button" onclick="text_copy();"
@@ -174,4 +177,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

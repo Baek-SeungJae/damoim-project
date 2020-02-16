@@ -12,8 +12,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
-<link rel="stylesheet"
-	href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+<link rel="stylesheet" href="/damoim/static/common/damoim.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	type="text/javascript"></script>
 <script
@@ -21,82 +20,6 @@
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<style type="text/css">
-:root{
---primary: #FF399B;
-}
-.btn-primary {
-background-color: #FF399B;
-border-color: #FF399B;
-}
-.btn-primary.disabled, .btn-primary:disabled{
-background-color: #FF399B;
-border-color: #FF399B;
-}
-.btn-outline-primary {
-color: #FF399B;
-border-color: #FF399B;
-}
-.btn-outline-primary:hover{
-background-color: #FF399B;
-border-color: #FF399B;
-}
-.btn-outline-primary.disabled, .btn-outline-primary:disabled {
-color: #FF399B;
-}
-.show > .btn-outline-primary.dropdown-toggle {
-background-color: #FF399B;
-border-color: #FF399B;
-}
-.dropdown-item.active, .dropdown-item:active {
-background-color: #FF399B;
-}
-.custom-control-input:checked ~ .custom-control-label::before {
-border-color: #FF399B;
-background-color: #FF399B;
-}
-.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
-border-color: #FF399B;
-background-color: #FF399B;
-}
-.custom-range::-webkit-slider-thumb {
-background-color: #FF399B;
-}
-.custom-range::-moz-range-thumb{
-background-color: #FF399B;
-}
-.custom-range::-ms-thumb{
-background-color: #FF399B;
-}
-.nav-pills .show > .nav-link {
-background-color: #FF399B;
-}
-.page-item.active .page-link{
-background-color: #FF399B;
-border-color: #FF399B;
-}
-.badge-primary{
-background-color: #FF399B;
-}
-.progress-bar{
-background-color: #FF399B;
-}
-.list-group-item.active{
-background-color: #FF399B;
-border-color: #FF399B;
-}
-.bg-primary{
-background-color: #FF399B !important;
-}
-.border-primary{
-border-color: #FF399B !important;
-}
-.text-primary{
-color: #FF399B !important;
-}
-
-
-</style>
 <script type="text/javascript">
 	board_category = "${board_category}";
 	gath_no = "${gath_no}";
@@ -120,7 +43,7 @@ color: #FF399B !important;
 					});
 </script>
 </head>
-<body class="">
+<body>
 	<%
 		ArrayList<BoardListVO> list = (ArrayList<BoardListVO>) request.getAttribute("boardlist");
 		int listsize = list.size();
@@ -130,8 +53,12 @@ color: #FF399B !important;
 		String category = request.getParameter("board_category");
 		//GatheringInfoVO vo = (GatheringInfoVO) request.getAttribute("vo");
 	%>
-	<% MemberVO user = (MemberVO)session.getAttribute("user"); %>
-	<% boolean memchk = (boolean)request.getAttribute("memchk"); %>
+	<%
+		MemberVO user = (MemberVO) session.getAttribute("user");
+	%>
+	<%
+		boolean memchk = (boolean) request.getAttribute("memchk");
+	%>
 	<!-- 메인화면 시작 -->
 	<div class="container-fluid">
 		<div class="row">
@@ -144,9 +71,9 @@ color: #FF399B !important;
 						<br /> <select class="form-control w-50" name="board_category"
 							id="board_category">
 							<option value="all">전체게시물</option>
-							<option value="B01">11</option>
-							<option value="B02">22</option>
-							<option value="B03">33</option>
+							<option value="자유게시판">자유게시판</option>
+							<option value="공지사항">공지사항</option>
+							<option value="질문과답변">질문과답변</option>
 						</select> <br />
 					</div>
 					<div class="col-xl-6"></div>
@@ -172,19 +99,14 @@ color: #FF399B !important;
 										for (int i = 0 + pagenum * 10; i < forsize; i++) {
 											BoardListVO row = list.get(i);
 											String path = "";
-											if(user!=null){
-												if(memchk){
-													path = "/damoim/gathering/article.do?gath_no="+gath_no+"&board_no="+row.getBoard_no()+"&pagenum=0";
-												} else {
-													path = "";
-												}
+											if (user != null) {
+												path = "/damoim/gathering/article.do?gath_no=" + gath_no + "&board_no=" + row.getBoard_no()+ "&pagenum=0";
 											} else {
-												path="/damoim/member/login.do";
+												path = "/damoim/member/login.do";
 											}
-											
 								%><tr>
 									<td style="text-align: center"><%=row.getBoard_category()%></td>
-									<td><a href="<%=path%>"><%=row.getBoard_title()%></a></td>
+									<td><a href="<%=path%>" style="color:black;"><%=row.getBoard_title()%><span style="color: red; font-weight:bold;">&nbsp;[<%=row.getComm_count() %>]</span></a></td>
 									<td style="text-align: center"><%=row.getBoard_nickname()%></td>
 									<td style="text-align: center"><%=row.getBoard_date()%></td>
 									<td style="text-align: center"><%=row.getBoard_hit()%></td>
@@ -198,7 +120,7 @@ color: #FF399B !important;
 									<td style="text-align: center"><%=row.getBoard_category()%></td>
 									<td><a
 										href="/damoim/gathering/article.do?gath_no=<%=gath_no%>&board_no=<%=row.getBoard_no()%>&pagenum=0"
-										style="color: red;"><%=row.getBoard_title()%></a></td>
+										style="color: black;"><%=row.getBoard_title()%><span style="color: red; font-weight:bold;">&nbsp;[<%=row.getComm_count() %>]</span></a></td>
 									<td style="text-align: center"><%=row.getBoard_nickname()%></td>
 									<td style="text-align: center"><%=row.getBoard_date()%></td>
 									<td style="text-align: center"><%=row.getBoard_hit()%></td>
@@ -216,105 +138,140 @@ color: #FF399B !important;
 						<a class="btn btn-primary btn-block"
 							href="/damoim/gathering/newarticle.do?gath_no=<%=gath_no%>&board_category=<%=category%>&state=0">글쓰기</a>
 					</div>
-					
+
 					<div class="col-xl-12">
-					<% if(listsize>=50){%>
-					<% if(pagenum<=2){ %>
+						<%
+							if (listsize >= 50) {
+						%>
+						<%
+							if (pagenum <= 2) {
+						%>
 						<ul class="pagination justify-content-center">
 							<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-							<li class="page-item <%if(pagenum==0){%><%="active"%><%} %>"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=0%>">1</a>
+							<li class="page-item <%if (pagenum == 0) {%><%="active"%><%}%>"><a
+								class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=0%>">1</a>
 							</li>
-							<li class="page-item <%if(pagenum==1){%><%="active"%><%} %>"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=1%>">2</a>
+							<li class="page-item <%if (pagenum == 1) {%><%="active"%><%}%>"><a
+								class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=1%>">2</a>
 							</li>
-							<li class="page-item <%if(pagenum==2){%><%="active"%><%} %>"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=2%>">3</a>
+							<li class="page-item <%if (pagenum == 2) {%><%="active"%><%}%>"><a
+								class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=2%>">3</a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=3%>">4</a>
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=3%>">4</a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=4%>">5</a>
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=4%>">5</a>
 							</li>
-							<li class="page-item"><a class="page-link" href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=5%>">Next</a>
+							<li class="page-item"><a class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=5%>">Next</a>
 							</li>
 						</ul>
-					<%} else if(pagenum>=(Math.ceil(listsize)/10.0)-3){ %>
+						<%
+							} else if (pagenum >= (Math.ceil(listsize) / 10.0) - 3) {
+						%>
 						<ul class="pagination justify-content-center">
-							<li class="page-item"><a class="page-link" 
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=pagenum-3%>">Previous</a></li>
-							<li class="page-item <%if(pagenum==(int)Math.ceil(listsize/10.0)-5){%><%="active"%><%} %>"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=(int)Math.ceil(listsize/10.0)-5%>"><%=(int)Math.ceil(listsize/10.0)-4%></a>
+							<li class="page-item"><a class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=pagenum - 3%>">Previous</a></li>
+							<li
+								class="page-item <%if (pagenum == (int) Math.ceil(listsize / 10.0) - 5) {%><%="active"%><%}%>"><a
+								class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 5%>"><%=(int) Math.ceil(listsize / 10.0) - 4%></a>
 							</li>
-							<li class="page-item <%if(pagenum==(int)Math.ceil(listsize/10.0)-4){%><%="active"%><%} %>"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=(int)Math.ceil(listsize/10.0)-4%>"><%=(int)Math.ceil(listsize/10.0)-3%></a>
+							<li
+								class="page-item <%if (pagenum == (int) Math.ceil(listsize / 10.0) - 4) {%><%="active"%><%}%>"><a
+								class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 4%>"><%=(int) Math.ceil(listsize / 10.0) - 3%></a>
 							</li>
-							<li class="page-item <%if(pagenum==(int)Math.ceil(listsize/10.0)-3){%><%="active"%><%} %>"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=(int)Math.ceil(listsize/10.0)-3%>"><%=(int)Math.ceil(listsize/10.0)-2%></a>
+							<li
+								class="page-item <%if (pagenum == (int) Math.ceil(listsize / 10.0) - 3) {%><%="active"%><%}%>"><a
+								class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 3%>"><%=(int) Math.ceil(listsize / 10.0) - 2%></a>
 							</li>
-							<li class="page-item <%if(pagenum==(int)Math.ceil(listsize/10.0)-2){%><%="active"%><%} %>"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=(int)Math.ceil(listsize/10.0)-2%>"><%=(int)Math.ceil(listsize/10.0)-1%></a>
+							<li
+								class="page-item <%if (pagenum == (int) Math.ceil(listsize / 10.0) - 2) {%><%="active"%><%}%>"><a
+								class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 2%>"><%=(int) Math.ceil(listsize / 10.0) - 1%></a>
 							</li>
-							<li class="page-item <%if(pagenum==(int)Math.ceil(listsize/10.0)-1){%><%="active"%><%} %>"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=(int)Math.ceil(listsize/10.0)-1%>"><%=(int)Math.ceil(listsize/10.0)%></a>
+							<li
+								class="page-item <%if (pagenum == (int) Math.ceil(listsize / 10.0) - 1) {%><%="active"%><%}%>"><a
+								class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=(int) Math.ceil(listsize / 10.0) - 1%>"><%=(int) Math.ceil(listsize / 10.0)%></a>
 							</li>
-							<li class="page-item disabled"><a class="page-link" 
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=5%>">Next</a>
+							<li class="page-item disabled"><a class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=5%>">Next</a>
 							</li>
 						</ul>
-					<%} else{ %>
+						<%
+							} else {
+						%>
 						<ul class="pagination justify-content-center">
-							<li class="page-item"><a class="page-link" 
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=pagenum-3%>">Previous</a></li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=pagenum-2%>"><%=pagenum-1%></a>
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=pagenum - 3%>">Previous</a></li>
+							<li class="page-item"><a class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=pagenum - 2%>"><%=pagenum - 1%></a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=pagenum-1%>"><%=pagenum%></a>
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=pagenum - 1%>"><%=pagenum%></a>
 							</li>
 							<li class="page-item active"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=pagenum%>"><%=pagenum+1%></a>
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=pagenum%>"><%=pagenum + 1%></a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=pagenum+1%>"><%=pagenum+2%></a>
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=pagenum + 1%>"><%=pagenum + 2%></a>
 							</li>
 							<li class="page-item"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=pagenum+2%>"><%=pagenum+3%></a>
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=pagenum + 2%>"><%=pagenum + 3%></a>
 							</li>
-							<li class="page-item"><a class="page-link" 
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=pagenum+3%>">Next</a>
+							<li class="page-item"><a class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=pagenum + 3%>">Next</a>
 							</li>
 						</ul>
-					<%}}else{ %>
+						<%
+							}
+							} else {
+						%>
 						<ul class="pagination justify-content-center">
-						<%for(int i=0; i<listsize/10+1; i++){ %>
-							<li class="page-item <%if(pagenum==i){%><%="active"%><%} %>"><a class="page-link"
-								href="/damoim/gathering/boardsearch.do?gath_no=G001&pagenum=<%=i%>"><%=i+1%></a>
+							<%
+								for (int i = 0; i < listsize / 10 + 1; i++) {
+							%>
+							<li class="page-item <%if (pagenum == i) {%><%="active"%><%}%>"><a
+								class="page-link"
+								href="/damoim/gathering/boardsearch.do?gath_no=<%=gath_no %>&pagenum=<%=i%>"><%=i + 1%></a>
 							</li>
-					<%}%></ul><%} %>
+							<%
+								}
+							%>
+						</ul>
+						<%
+							}
+						%>
 					</div>
 					<div class="col-xl-2"></div>
 					<div class="col-xl-8">
 						<div class="row">
-							<form class="form-inline" method="get" action="/damoim/gathering/boardsearch.do?">
+							<form class="form-inline" method="get"
+								action="/damoim/gathering/boardsearch.do?">
 								<input type="hidden" name="gath_no" value="<%=gath_no%>">
 								<input type="hidden" name="pagenum" value="0">
 								<div class="col-xl-1"></div>
 								<div class="col-xl-3">
 									<select class="form-control w-100" id="sel1" name="date">
-										<option value = all>전체기간</option>
-										<option value = day>1일</option>
-										<option value = week>1주</option>
-										<option value = month>1개월</option>
-										<option value = halfyear>6개월</option>
-										<option value = year>1년</option>
+										<option value=all>전체기간</option>
+										<option value=day>1일</option>
+										<option value=week>1주</option>
+										<option value=month>1개월</option>
+										<option value=halfyear>6개월</option>
+										<option value=year>1년</option>
 									</select>
 								</div>
 								<div class="col-xl-3">
 									<select class="form-control w-100" id="sel2" name="tag">
-										<option value = title>제목</option>
-										<option value = content>내용</option>
+										<option value=title>제목</option>
+										<option value=content>내용</option>
 									</select>
 								</div>
 								<div class="col-xl-5">

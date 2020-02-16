@@ -75,4 +75,24 @@ public class GatheringController {
 		mav.setViewName("redirect:/gathering/newgathering.do");
 		return mav;
 	}
+	@RequestMapping("/gathering/join.do")
+	public ModelAndView join(String gath_no, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO)session.getAttribute("user");
+		
+		if(vo!=null) {
+			GatheringMemberVO memcheck = service.memberCheckOfGathering(vo.getMem_id(), gath_no);
+			if(memcheck!=null) {
+				mav.addObject("memchk",true);
+			}
+			else
+				mav.addObject("memchk",false);
+				service.join(vo.getMem_id(), gath_no);
+		}else {
+			mav.addObject("memchk",false);
+		}
+		mav.setViewName("redirect:/gathering/home.do?gath_no="+gath_no);
+		return mav;
+	}
 }

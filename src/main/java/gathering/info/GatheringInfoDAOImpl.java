@@ -29,4 +29,11 @@ public class GatheringInfoDAOImpl implements GatheringInfoDAO {
 		map.put("gath_no", gath_no);
 		return sqlSession.selectOne("gathering.info.checkingathering", map);
 	}
+	@Override
+	public int join(String mem_id, String gath_no) {
+		Map<String,String> map = new HashMap<String, String>(); 
+		map.put("mem_id", mem_id);
+		map.put("gath_no", gath_no);
+		return sqlSession.insert("gathering.info.join",map);
+	}
 }
