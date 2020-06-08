@@ -8,6 +8,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	// 전부 동의 안하고 다음 누르면 alert(필수 약관에 동의해야 합니다)
+	$(document).ready(function() {
+		checklist = document.getElementsByClassName('form-check-input');
+		size = checklist.length;
+		$("#next").on("click", function() {
+			result = true;	
+			for(i=0; i<size-1; ++i){
+				if(!checklist[i].checked){
+					result = false;
+				}
+			}
+			if(result==false){
+				alert("필수 약관에 동의해야 합니다.");
+			}
+			else{
+				location.href ="/damoim/member/reg2.do";
+			}
+		});
+	});
+
+</script>
+
+
 </head>
 
 <body style="	box-shadow: 0px 0px 4px  black, 0px 0px 4px  black;">
@@ -46,7 +71,7 @@
               <p class="mb-0 lead"> <a href="#">Read more</a> </p>
             </div>
           </div>
-          <div class="form-check"> <input class="form-check-input" type="checkbox" id="form21" value="on"> <label class="form-check-label" for="form21">동의</label> </div>
+          <div class="form-check"> <input class="form-check-input" type="checkbox" id="form22" value="on"> <label class="form-check-label" for="form21">동의</label> </div>
         </div>
         <div class="col-lg-4 p-3" style="">
           <div class="card">
@@ -55,7 +80,7 @@
               <p>위치정보 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 등을 포함하는 다모임 위치기반 서비스를 이용할 수 있습니다. 제 1 조 (목적) 이 약관은 네이버 주식회사 (이하 “회사”)가 제공하는 위치정보사업 또는 위치기반서비스사업과 관련하여&nbsp;</p>
               <p class="mb-0 lead"> <a href="#">Read more</a> </p>
             </div>
-            <div class="form-check"> <input class="form-check-input" type="checkbox" id="form21" value="on"> <label class="form-check-label" for="form21">동의</label> </div>
+            <div class="form-check"> <input class="form-check-input" type="checkbox" id="form23" value="on"> <label class="form-check-label" for="form21">동의</label> </div>
           </div>
         </div>
       </div>
@@ -65,8 +90,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-4 pl-5"><a class="btn btn-secondary" href="http://70.12.115.55:8088/serverweb/webproject/reg2.jsp"><b class="">다 음</b></a></div>
-        <div class="col-md-4"><a class="btn btn-warning btn-block" href="#"><i class="fa fa-download fa-fw"></i>카카오톡으로 회원가입</a></div>
+        <div class="col-md-4 pl-5"><a id="next" class="btn btn-secondary" ><b class="">다 음</b></a></div>
+        <div class="col-md-4"></div>
       </div>
     </div>
   </div>
@@ -74,7 +99,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8"></div>
-        <div class="col-md-4"><a class="btn btn-primary btn-block" href="#"><i class="fa fa-download fa-fw"></i>&nbsp;네이버로 회원가입</a></div>
+        <div class="col-md-4"><div>
       </div>
     </div>
   </div>
@@ -82,7 +107,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8"></div>
-        <div class="col-md-4"><a class="btn btn-danger btn-block" href="#"><i class="fa fa-download fa-fw"></i>이메일로 회원가입</a></div>
+        <div class="col-md-4"></div>
       </div>
       <div class="row">
         <div class="col-md-12 py-5"></div>

@@ -1,3 +1,4 @@
+<%@page import="member.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -8,10 +9,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+	<script type="text/javascript">
+	
+		$(document).ready(function() {
+			<% 
+			boolean check = (boolean)request.getAttribute("fail");	
+			if(check == true) { %> alert("비밀번호가 잘못되었습니다.");
+			<% 	} %>
+			
+			/* 동적컨텐츠에 이벤트 붙이기-on */
+			buttonAble = document.getElementById("sub");
+			$("#passCheck").on("keyup",function(){
+				check = $("#pass").val();
+				if(check == $("#passCheck").val()){
+					$("#checkVal").text("일치");
+					buttonAble.disabled = false;
+				}else{
+					$("#checkVal").text("비밀번호가 일치하지 않습니다.");
+					buttonAble.disabled = true;
+				}
+				
+			});
+			
+	
+		});
+		
+	</script>
+
 </head>
 
 <body >
-<button type="button" class="btn btn-primary" onclick="location.href='http://70.12.115.80:8088/serverweb/project/homeupside4.jsp' "><b>홈</b></button>
   <div class="py-5">
     <div class="container">
       <div class="row">
@@ -25,18 +52,20 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <form class="">
-            <div class="form-group"> <label>Password</label> <input type="password" class="form-control w-25 border-dark" placeholder="비밀번호를 입력하세요" style="opacity: 0.5;"> </div>
-            <div class="form-group"> <label>비밀번호 재입력</label> <input type="password" class="form-control w-25" placeholder="다시 입력하세요">
-              <div class="form-group"><label class="text-danger"><b>비밀번호가 일치하지 않습니다.</b></label></div>
+        	<!-- 컨트롤러 호출  -->
+          <form class="" name="myform" action="/damoim/member/passCheck.do" method="post">
+            <div class="form-group"> <label>Password</label> <input type="password" id= "pass" name="pass" class="form-control w-25 border-dark" placeholder="비밀번호를 입력하세요" style="opacity: 0.5;"> </div>
+            <div class="form-group"> <label>비밀번호 재입력</label> <input type="password" id="passCheck" class="form-control w-25" placeholder="다시 입력하세요">
+             <!--  <div class="form-group"><label class="text-danger" id="checkVal"><b>비밀번호가 일치하지 않습니다.</b></label></div> -->
+              <div style="color: red;" id="checkVal"></div>
+              
               <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4"></div>
               </div>
             </div>
-            <!-- <button type="submit" class="btn btn-primary"><b>확 인</b></button> -->
-             <button type="button" class="btn btn-primary" onclick="location.href='http://70.12.115.55:8088/serverweb/webproject/mypage2.jsp' "><b>확 인</b></button>
+            <button id="sub" type="submit" class="btn btn-primary"><b>확 인</b></button>
           </form>
         </div>
       </div>

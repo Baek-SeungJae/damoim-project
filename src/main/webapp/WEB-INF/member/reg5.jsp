@@ -30,7 +30,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-4 pl-5"><img class="img-fluid d-block w-75 pl-4" src="regFin.png"></div>
+        <div class="col-md-4 pl-5"></div>
         <div class="col-md-4"></div>
       </div>
     </div>
@@ -57,8 +57,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-3 pl-5"><a class="btn btn-secondary" href="#">&lt; 홈으로</a></div>
-        <div class="col-md-3 pl-5"><a class="btn btn-secondary" href="#">로그인 &gt;</a></div>
+        <div class="col-md-3 pl-5"><a class="btn btn-secondary" href="/damoim/main/home">&lt; 홈으로</a></div>
+        <div class="col-md-3 pl-5"><a class="btn btn-secondary" href="/damoim/member/login.do">로그인 &gt;</a></div>
         <div class="col-md-3"></div>
       </div>
     </div>

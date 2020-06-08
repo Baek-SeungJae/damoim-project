@@ -17,8 +17,11 @@
 	<resources mapping="/images/**" location="/WEB-INF/static/images/" />
 	<resources mapping="/common/**" location="/WEB-INF/static/common/" />
 	<resources mapping="/gathering/images/**" location="/WEB-INF/gathering/images/" />
+	<resources mapping="/gathering/boardimages/**" location="/WEB-INF/gathering/boardimages/" />
 	<resources mapping="/main/images/**" location="/WEB-INF/main/images/" />
-	<resources mapping="static/**" location="/WEB-INF/static/" />
+	<resources mapping="/static/**" location="/WEB-INF/static/" />
+	<resources mapping="/css/**" location="/WEB-INF/assets/css/" />
+	<resources mapping="/member/memimg/**" location="/WEB-INF/member/memimg/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/" />
@@ -50,7 +53,7 @@
 	<!-- 1) connection관리를 담당하는 객체 -->
 	<beans:bean id="ds"
 		class="org.springframework.jndi.JndiObjectFactoryBean">
-		<beans:property name="jndiName" value="jdbc/myoracle"/>
+		<beans:property name="jndiName" value="jdbc/myspring"/>
 		<beans:property name="resourceRef" value="true"/>
 	</beans:bean>
 	<!-- 2) spring에서 mybatis의 핵심클래스인 SqlSession을 사용할 수 있도록 생서하는 객체 -->
@@ -64,9 +67,21 @@
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg ref="sqlSessionFactory"/>
 	</beans:bean>	
-		
-	<context:component-scan base-package="web.project.damoim" />
+	
+	<!-- validation -->
+	<beans:bean id="validation"
+	 class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>	
+	
 	<context:component-scan base-package="gathering" />
 	<context:component-scan base-package="main" />
 	<context:component-scan base-package="board" />
+	<context:component-scan base-package="home" />
+	<context:component-scan base-package="member" />
+	<context:component-scan base-package="damoim" />
+	<context:component-scan base-package="image" />
+	<context:component-scan base-package="moim" />
+	<context:component-scan base-package="job" />
+	<context:component-scan base-package="business" />
+	<context:component-scan base-package="location" />
+	<context:component-scan base-package="interest" />
 </beans:beans>
